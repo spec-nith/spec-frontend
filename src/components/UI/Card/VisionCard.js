@@ -1,12 +1,9 @@
 import React from "react";
-
+import pic from '../../../assets/images/yagami.jpg'  //dummy image
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";        //fontawesome imports
 import { faGithub,faLinkedin } from "@fortawesome/free-brands-svg-icons";  //fontawesome imports
 import {faBriefcase} from '@fortawesome/free-solid-svg-icons'       //fontawesome imports
-const card=(props)=>{
-	const pic="https://wallpaperaccess.com/full/1132656.jpg";
-	return(
-
+const card=(props)=>(
     <div className="max-w-4xl flex items-center h-auto lg:h-auto flex-wrap mx-auto my-20 lg:my-10">
 	<div id="profile" className="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
 		<div className="p-4 md:p-12 text-center lg:text-left">
@@ -32,6 +29,5 @@ const card=(props)=>{
 		<img src={pic} alt="pic" className="rounded-none lg:rounded-lg shadow-2xl hidden lg:block"/>		
 	</div>
 </div>
-)
-	};
+);
 export default card;

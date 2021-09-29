@@ -212,8 +212,6 @@
   padding-top:5rem;
 }
 .grid {
-  
-
   display: grid;
   grid-gap: 30px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

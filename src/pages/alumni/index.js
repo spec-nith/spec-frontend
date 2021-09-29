@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Cards from '../UI/Alumni_cards/Cards';
+import Cards from 'components/UI/Card/AlumniCards'
 import axios from 'axios';
-import './alumni.css';
+import 'assets/styles/alumni.css';
 
 
 class Alumni extends Component {
@@ -9,7 +9,7 @@ class Alumni extends Component {
     dummy: []
   }
   componentDidMount() {
-    axios.get('https://spec-backend.herokuapp.com/api/alumni/')
+    axios.get('https://spec-backend.herokuapp.com/api/team/')
       .then(response => {
         console.log(response.data)
         this.setState({ dummy: response.data });

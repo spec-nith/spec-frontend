@@ -1,6 +1,6 @@
-import TeamCard from '../UI/Teamcard';
-import './TeamPage.css';
-import { Component } from 'react';
+import TeamCard from 'components/UI/Card/Teamcard';
+import 'assets/styles/teampage.css';
+import React,{ Component } from 'react';
 import axios from 'axios';
 
 class TeamPage extends Component {
