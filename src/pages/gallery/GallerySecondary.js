@@ -1,6 +1,6 @@
 import React, { useState,Component } from 'react';
 
-import './Gallery.css';
+import '../../assets/styles/gallery.css';
 const secondaryGalleryCard = [{
     title:'2017',
     img : `url('https://source.unsplash.com/random/')`
