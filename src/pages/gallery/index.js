@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-// import 'assets/styles/gallery.css'
+import './Gallery.css';
+
+import { Link } from 'react-router-dom';
 
 let galleryCards = [{
     title: "SPEC",
@@ -31,9 +33,9 @@ export default class Gallery extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
         };
     }
+
     GalleryComponent = galleryCards.map((props) => {
         return (
             <div className="internal-con">
@@ -43,7 +45,6 @@ export default class Gallery extends Component {
                     <div className="gallery-card-title">{props.sub}</div>
                     <div className="gallery-card-title-small">Gallery collection</div>
                     <button className="btn-prime">Gallary</button>
-
                 </div>
             </div>
         )
@@ -54,11 +55,7 @@ export default class Gallery extends Component {
                 <div className="main-container">
                     {this.GalleryComponent}
                 </div>
-
             </div>
         )
     }
 }
-
-
-
