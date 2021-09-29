@@ -1,8 +1,6 @@
 import React from 'react';
-
-const card=(props)=>{
-  const pic="https://wallpaperaccess.com/full/1132656.jpg"
-  return(
+import pic from '../../../assets/images/photo1.jpg';  //dummy image 
+const card=(props)=>(
     <div className="max-w-sm rounded overflow-hidden shadow-lg text-center">
   <img className="w-full" src={pic} alt="Project1"/>
   <div className="px-6 py-4">
@@ -17,6 +15,5 @@ const card=(props)=>{
 			</div>
   </div>
 </div>
-  )
-  };
+);
 export default card;

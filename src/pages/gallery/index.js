@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import './Gallery.css';
-
-import { Link } from 'react-router-dom';
+// import 'assets/styles/gallery.css'
 
 let galleryCards = [{
     title: "SPEC",
