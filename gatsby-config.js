@@ -24,6 +24,7 @@ module.exports = {
     // },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
+    "gatsby-plugin-split-css",
     {
       resolve: "gatsby-plugin-manifest",
       options: {

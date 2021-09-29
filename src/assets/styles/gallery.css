@@ -18,9 +18,6 @@
   align-items: center;
   justify-content: center;
   justify-items: center;
-  
-  
-  
 }
 .main-container .internal-con {
 
@@ -211,7 +208,7 @@
   padding: 2rem;
   padding-top:5rem;
 }
-.grid {
+.galleryGrid {
   display: grid;
   grid-gap: 30px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

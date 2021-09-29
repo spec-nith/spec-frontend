@@ -20,8 +20,10 @@ const card=(props)=>(
 			</div>
 			<p className="pt-8 text-sm">{props.description}</p>
 			<div className="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto text-center space-x-3">
-				<a className="link text-3xl" href={props.github} target="_blank" rel="noreferrer noopener"><FontAwesomeIcon icon={faGithub}/></a>
-				<a className="link text-3xl" href={props.linkedIn} target="_blank" rel="noreferrer noopener"><FontAwesomeIcon icon={faLinkedin}/></a>
+				<a className="link text-3xl" href={props.github} target="_blank" rel="noreferrer noopener">
+					<FontAwesomeIcon icon={faGithub}/></a>
+				<a className="link text-3xl" href={props.linkedIn} target="_blank" rel="noreferrer noopener">
+					<FontAwesomeIcon icon={faLinkedin}/></a>
 			</div>
 		</div>
 	</div>

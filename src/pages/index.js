@@ -1,18 +1,16 @@
 import * as React from 'react';
-import Navbar from 'components/UI/Navbar/Navbar';
-import Footer from 'components/UI/Footer/Footer';
+import Layout from 'components/UI/Layout/Layout';
 import ProjectCard from 'components/UI/Card/ProjectCard';
 import Contain  from 'components/UI/Container/Container';
 import VisionCard from 'components/UI/Card/VisionCard';
-import axios from 'axios';
+import axInstance from 'components/axiosInstance';
 
-class Home extends React.Component
-{
+class Home extends React.Component{
     state={
         data:[]
     }
   componentDidMount(){
-    axios.get('https://spec-backend.herokuapp.com/api/team/')
+    axInstance.get('team/')
     .then(response => {
       console.log(response.data)
       this.setState({data:response.data});
@@ -23,8 +21,7 @@ class Home extends React.Component
   }
   render(){
     return (
-  <React.Fragment>
-    <Navbar/>
+  <Layout>
     <div className='relative'>
         <Contain title="Dashboard"
         text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
@@ -66,9 +63,8 @@ class Home extends React.Component
         </div>
         </main>
     </div>
-    <Footer/>
-  </React.Fragment>
-    )
+  </Layout>
+  )
 }
 };
 export default Home;

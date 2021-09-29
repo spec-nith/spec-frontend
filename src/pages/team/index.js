@@ -1,15 +1,15 @@
 import TeamCard from 'components/UI/Card/Teamcard';
 import 'assets/styles/teampage.css';
 import React,{ Component } from 'react';
-import axios from 'axios';
+import axInstance from 'components/axiosInstance';
+import Layout from 'components/UI/Layout/Layout';
 
 class TeamPage extends Component {
   state = {
     dummy: []
   }
   componentDidMount() {
-    console.log("Gooo MOnkee Abondaon Hooomanity");
-    axios.get('https://spec-backend.herokuapp.com/api/team/')
+    axInstance.get('team/')
       .then(response => {
         console.log(response.data)
         this.setState({ dummy: response.data });
@@ -20,7 +20,7 @@ class TeamPage extends Component {
   }
   render() {
     return (
-      <div >
+      <Layout >
         <h1>Final Year Members</h1>
         <div className="content">
           {this.state.dummy.map(element => (<TeamCard
@@ -40,11 +40,8 @@ class TeamPage extends Component {
           {this.state.dummy.map(element => (<TeamCard
             name={element.name}
             post={element.title} />))}
-
-
         </div>
-
-      </div>
+      </Layout>
     )
   }
 }

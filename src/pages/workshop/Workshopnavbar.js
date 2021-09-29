@@ -16,9 +16,7 @@ export default class Workshopnavbar extends React.Component{
       <div className="flex flex-wrap">
         <div className="w-full">
           <ul
-            className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row text-7x1"
-            role="tablist"
-          >
+            className="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row text-7x1">
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center text-6x1">
               <a
                 className={
@@ -33,8 +31,7 @@ export default class Workshopnavbar extends React.Component{
                 }}
                 data-toggle="tab"
                 href="#link1"
-                role="tablist"
-              >
+                role="tablist">
                 2020-2021
               </a>
             </li>
@@ -88,9 +85,6 @@ export default class Workshopnavbar extends React.Component{
                         <WorkshopCompo number={element.number} workshopname={element.name} content={element.content} />
                       </div>
                     })}
-
-
-
                   </p>
                 </div>
                 <div className={this.state.openTab === 2 ? "block" : "hidden"} id="link2">

@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import Workshopnavbar from './Workshopnavbar'
-import axios from 'axios';
+import axInstance from 'components/axiosInstance';
+import Layout from 'components/UI/Layout/Layout';
 
 class Workshop extends Component {
   state = {
     dummy: [""]
   }
   componentDidMount() {
-    axios.get('https://spec-backend.herokuapp.com/api/workshop/')
+    axInstance.get('workshop/')
       .then(response => {
         console.log(response.data)
         this.setState({ dummy: response.data });
@@ -19,10 +20,12 @@ class Workshop extends Component {
 
   render() {
     return (
+      <Layout>
       <div className="bg-black">
         <div className="text-center font-serif ... text-7xl text-white" >WORKSHOP</div>
         <Workshopnavbar dummy={this.state.dummy} color="grey" />
       </div>
+      </Layout>
     );
   }
 }

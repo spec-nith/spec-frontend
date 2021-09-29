@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import 'assets/styles/gallery.css'
+import 'assets/styles/gallery.css'
+import Layout from 'components/UI/Layout/Layout';
 
 let galleryCards = [{
     title: "SPEC",
@@ -36,13 +37,13 @@ export default class Gallery extends Component {
     }
     GalleryComponent = galleryCards.map((props) => {
         return (
-            <div className="internal-con">
+            <div className="internal-con" key={props.img+Math.random()}>
                 <div className="background" style={{ backgroundImage: props.img }}></div>
                 <div className="text">
                     <div class="gallery-card-title-medium">{props.title}</div>
                     <div className="gallery-card-title">{props.sub}</div>
                     <div className="gallery-card-title-small">Gallery collection</div>
-                    <button className="btn-prime">Gallary</button>
+                    <button className="btn-prime">Gallery</button>
 
                 </div>
             </div>
@@ -50,12 +51,13 @@ export default class Gallery extends Component {
     });
     render() {
         return (
+            <Layout>
             <div className='gallery-main'>
                 <div className="main-container">
                     {this.GalleryComponent}
                 </div>
-
             </div>
+            </Layout>
         )
     }
 }

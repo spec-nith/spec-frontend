@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlusCircle,faChevronRight,faChevronLeft,faTimes } from '@fortawesome/free-solid-svg-icons';
-// import '../../assets/styles/gallery.css';
+import { faChevronRight,faChevronLeft,faTimes } from '@fortawesome/free-solid-svg-icons';
+import 'assets/styles/gallery.css';
+import Layout from 'components/UI/Layout/Layout';
 
 const ImageBox = [{
     title:'2017',
@@ -97,10 +98,9 @@ export default class ImageContainer extends Component {
 
     Image = ImageBox.map((element,index)=>{
         return(
-            <div className="item" style={{ backgroundImage: `url(${element.img})` }} onClick={()=>this.showImage(element.img,index)} >
+            <div className="item" style={{ backgroundImage: `url(${element.img})` }} onClick={()=>this.showImage(element.img,index)} key={element.img+index}>
             <div className="item__details">
               {element.title}
-
             </div>
           </div>
     
@@ -108,29 +108,21 @@ export default class ImageContainer extends Component {
     })
     render() {
         return (
-            <>
-            
+            <Layout>
             {this.state.FullImageCard && <div id="overlay">
-            <div id="prevButton" className={this.state.currentIndex==0 ? "disabled":''} onClick={()=>this.showPrev(this.state.currentIndex)}><FontAwesomeIcon icon={faChevronLeft}  /></div>
-            <img src= {this.state.imageUrl}/ >
+            <div id="prevButton" className={this.state.currentIndex===0 ? "disabled":''} onClick={()=>this.showPrev(this.state.currentIndex)}><FontAwesomeIcon icon={faChevronLeft}  /></div>
+            <img src= {this.state.imageUrl} alt="gallery-image"/>
             
-            <div id="nextButton" className={this.state.currentIndex==(ImageBox.length-1) ? "disabled":''} onClick={()=>this.showNext(this.state.currentIndex)}><FontAwesomeIcon icon={faChevronRight}  /></div>
+            <div id="nextButton" className={this.state.currentIndex===(ImageBox.length-1) ? "disabled":''} onClick={()=>this.showNext(this.state.currentIndex)}><FontAwesomeIcon icon={faChevronRight}  /></div>
             <div id="exitButton" onClick={()=>this.exitButton()}><FontAwesomeIcon icon={faTimes}  /></div>
             </div>}
-            
-            
-            
-            
             <div className = "image-container-background">
-            <div className="grid">
-            
+            <div className="galleryGrid">
                 {this.FullImageCard}
- 
-    {this.Image}
-
-  </div>
+              {this.Image}
+            </div>
         </div>
-        </>
+        </Layout>
         )
     }
 }

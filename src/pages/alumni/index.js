@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Cards from 'components/UI/Card/AlumniCards'
-import axios from 'axios';
+import axInstance from 'components/axiosInstance';
 import 'assets/styles/alumni.css';
+import Layout from 'components/UI/Layout/Layout';
 
 
 class Alumni extends Component {
@@ -9,7 +10,7 @@ class Alumni extends Component {
     dummy: []
   }
   componentDidMount() {
-    axios.get('https://spec-backend.herokuapp.com/api/team/')
+    axInstance.get('team/')
       .then(response => {
         console.log(response.data)
         this.setState({ dummy: response.data });
@@ -21,7 +22,7 @@ class Alumni extends Component {
 
   render() {
     return (
-      <>
+      <Layout>
         <header className="bg-white shadow">
           <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <h1 className="text-6xl font-bold text-gray-900 text-center">OUR ALUMNI</h1>
@@ -71,9 +72,7 @@ class Alumni extends Component {
             link={test.link}
           />))}
         </div>
-
-
-      </>
+      </Layout>
     );
   }
 }
