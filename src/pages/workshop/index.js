@@ -4,7 +4,7 @@ import axios from 'axios';
 
 class Workshop extends Component {
   state = {
-    dummy: []
+    dummy: [""]
   }
   componentDidMount() {
     axios.get('https://spec-backend.herokuapp.com/api/workshop/')

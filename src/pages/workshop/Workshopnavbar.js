@@ -2,11 +2,16 @@ import React from "react";
 import WorkshopCompo from "./WorkshopCompo";
 
 
-export default function Workshopnavbar(props, { color }) {
-  const [openTab, setOpenTab] = React.useState(1);
+export default class Workshopnavbar extends React.Component{
+  constructor(props) {
+    super(props)
+    this.state = {
+      openTab: 1
+    }
+  }
 
-
-  return (
+  render() {
+    return(
     <>
       <div className="flex flex-wrap">
         <div className="w-full">
@@ -18,13 +23,13 @@ export default function Workshopnavbar(props, { color }) {
               <a
                 className={
                   "font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                  (openTab === 1
-                    ? "text-white bg-" + color + "-600"
-                    : "text-" + color + "-600 bg-white")
+                  (this.state.openTab === 1
+                    ? "text-white bg-" + this.props.color + "-600"
+                    : "text-" + this.props.color + "-600 bg-white")
                 }
                 onClick={e => {
                   e.preventDefault();
-                  setOpenTab(1);
+                  this.setState({openTab: 1});
                 }}
                 data-toggle="tab"
                 href="#link1"
@@ -37,13 +42,13 @@ export default function Workshopnavbar(props, { color }) {
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                  (openTab === 2
-                    ? "text-white bg-" + color + "-600"
-                    : "text-" + color + "-600 bg-white")
+                  (this.state.openTab === 2
+                    ? "text-white bg-" + this.props.color + "-600"
+                    : "text-" + this.props.color + "-600 bg-white")
                 }
                 onClick={e => {
                   e.preventDefault();
-                  setOpenTab(2);
+                  this.setState({openTab: 2});
                 }}
                 data-toggle="tab"
                 href="#link2"
@@ -56,13 +61,13 @@ export default function Workshopnavbar(props, { color }) {
               <a
                 className={
                   "text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal " +
-                  (openTab === 3
-                    ? "text-white bg-" + color + "-600"
-                    : "text-" + color + "-600 bg-white")
+                  (this.state.openTab === 3
+                    ? "text-white bg-" + this.props.color + "-600"
+                    : "text-" + this.props.color + "-600 bg-white")
                 }
                 onClick={e => {
                   e.preventDefault();
-                  setOpenTab(3);
+                  this.setState({openTab: 3});
                 }}
                 data-toggle="tab"
                 href="#link3"
@@ -75,10 +80,10 @@ export default function Workshopnavbar(props, { color }) {
           <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
             <div className="px-4 py-5 flex-auto bg-black">
               <div className="tab-content tab-space">
-                <div className={openTab === 1 ? "block" : "hidden"} id="link1">
+                <div className={this.state.openTab === 1 ? "block" : "hidden"} id="link1">
                   <p className="">
 
-                    {props.dummy.map((element) => {
+                    {this.props.dummy.map((element) => {
                       return <div className="">
                         <WorkshopCompo number={element.number} workshopname={element.name} content={element.content} />
                       </div>
@@ -88,9 +93,9 @@ export default function Workshopnavbar(props, { color }) {
 
                   </p>
                 </div>
-                <div className={openTab === 2 ? "block" : "hidden"} id="link2">
+                <div className={this.state.openTab === 2 ? "block" : "hidden"} id="link2">
                   <p>
-                    {props.dummy.map((element) => {
+                    {this.props.dummy.map((element) => {
                       return <div className="">
                         <WorkshopCompo number={element.number} workshopname={element.name} content={element.content} />
                       </div>
@@ -98,9 +103,9 @@ export default function Workshopnavbar(props, { color }) {
 
                   </p>
                 </div>
-                <div className={openTab === 3 ? "block" : "hidden"} id="link3">
+                <div className={this.state.openTab === 3 ? "block" : "hidden"} id="link3">
                   <p>
-                    {props.dummy.map((element) => {
+                    {this.props.dummy.map((element) => {
                       return <div className="">
                         <WorkshopCompo number={element.number} workshopname={element.name} content={element.content} />
                       </div>
@@ -114,6 +119,10 @@ export default function Workshopnavbar(props, { color }) {
         </div>
       </div>
     </>
-  );
+  )};
 };
 
+
+Workshopnavbar.defaultProps = {
+  dummy: [""]
+}
