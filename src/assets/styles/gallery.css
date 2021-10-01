@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,400,700');
+.gallery-color-scheme{
+  background-color: rgb(52, 64, 82);
+}
 .gallery-main{
     min-height: 1000px;
-    background-color: rgb(52, 64, 82);
+    
     display:flex;
     flex-direction: row;
 }
@@ -128,7 +131,7 @@
 }
 
 .container-int {
-  background-color:rgb(52, 64, 82);
+  /* background-color:rgb(52, 64, 82); */
   box-sizing: border-box;
   font-family: 'Muli', sans-serif;
   display: flex;
@@ -298,7 +301,6 @@
   -ms-user-select: none;
   user-select: none;
 }
-
 
 @keyframes fadeInAnimation {
   0% {
