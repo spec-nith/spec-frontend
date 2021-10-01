@@ -94,7 +94,8 @@
   border-radius: 1rem;
   display: inline-block;
   padding: 0.375em 0.5em;
-  background: #1a61cb;
+  background: rgb(52, 64, 82);
+  color: #fff;
   text-align: center;
   opacity: 0;
   
@@ -159,13 +160,14 @@
   margin: 10px;
   position: relative;
   transition: flex 0.7s ease-in;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .gallery-panel h3 {
-  font-size: 20px;
+  font-size: 10em;
   position: absolute;
-  bottom: 20px;
-  left: 20px;
   margin: 0;
   opacity: 0;
 }
@@ -183,7 +185,9 @@
   .container {
     width: 100vw;
   }
-  
+  .gallery-panel h3 {
+    font-size: 1rem;
+  }
   .gallery-panel:nth-of-type(4), .gallery-panel:nth-of-type(5) {
     display: none;
   }
@@ -203,7 +207,6 @@
 }
 .gallery-grid {
   
-
   display: grid;
   grid-gap: 30px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

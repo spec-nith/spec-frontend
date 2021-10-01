@@ -1,6 +1,28 @@
 import React, { useState,Component } from 'react';
-
+import { Link } from 'gatsby';
 import '../../../assets/styles/gallery.css';
+const secondaryGalleryCard = [{
+    year:'2017',
+    img : `url('https://source.unsplash.com/random/')`
+},
+{
+    year:'2018',
+    img : `url('https://source.unsplash.com/random/)`
+},
+{
+    year:'2019',
+    img : `url('https://source.unsplash.com/random/')`
+},
+{
+    year:'2020',
+    img : `url('https://source.unsplash.com/random/')`
+},
+{
+    year:'2021',
+    img : `url('https://source.unsplash.com/random/')`
+}]
+
+
 
 export default class GallerySecondary extends Component {
     constructor(props){
@@ -11,14 +33,14 @@ export default class GallerySecondary extends Component {
             data : []
 
         };
-        console.log(this.state.data);
     }
     
-    SecondaryComponent = this.state.data.map((card)=>{
+    SecondaryComponent = secondaryGalleryCard.map((card)=>{
+
         return (
             
             <div className="gallery-panel" style={{ backgroundImage: card.img }}>
-                <h3>{card.year}</h3>
+                <h3><Link to = {`/gallery/imagecontainer/?name=${card.year}`}> {card.year}</Link></h3>
             </div>
         )
     })
@@ -29,7 +51,7 @@ export default class GallerySecondary extends Component {
             <div className="container-int">
                 
                 <div className="container">
-                    {/* {this.state.data.length && this.SecondaryComponent} */}
+                    {this.SecondaryComponent}
                 </div>
             </div>
             </div>

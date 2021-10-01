@@ -61,7 +61,8 @@ export default class ImageContainer extends Component {
             imageUrl : null,
             currentIndex : 0,
             data : [],
-            
+            title : props.location.search.slice(6),
+
         };
     }
 
@@ -98,7 +99,8 @@ export default class ImageContainer extends Component {
     })
     render() {
         return (
-            <>
+            <div className= "gallery-color-scheme">
+            <h1>{this.state.title}</h1>
             {this.state.FullImageCard && <div id="overlay">
                 <div id="prevButton" className={this.state.currentIndex==0 ? "gallery-disabled":''} onClick={()=>this.showPrev(this.state.currentIndex)}><FontAwesomeIcon icon={faChevronLeft}  /></div>
                 <img src= {this.state.imageUrl}/ >
@@ -112,7 +114,7 @@ export default class ImageContainer extends Component {
 
                 </div>
             </div>
-        </>
+        </div>
         )
     }
 }
