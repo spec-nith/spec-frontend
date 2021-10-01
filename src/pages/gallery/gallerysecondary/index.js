@@ -11,6 +11,7 @@ export default class GallerySecondary extends Component {
             data : []
 
         };
+        console.log(this.state.data);
     }
     
     SecondaryComponent = this.state.data.map((card)=>{
@@ -28,7 +29,7 @@ export default class GallerySecondary extends Component {
             <div className="container-int">
                 
                 <div className="container">
-                    {this.SecondaryComponent}
+                    {/* {this.state.data.length && this.SecondaryComponent} */}
                 </div>
             </div>
             </div>

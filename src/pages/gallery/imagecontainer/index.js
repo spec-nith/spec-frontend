@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle,faChevronRight,faChevronLeft,faTimes } from '@fortawesome/free-solid-svg-icons';
-import '../../assets/styles/gallery.css';
+import '../../../assets/styles/gallery.css';
 const ImageBox = [{
     title:'2017',
     img : 'https://source.unsplash.com/random/'
@@ -60,6 +60,8 @@ export default class ImageContainer extends Component {
             FullImageCard: false,
             imageUrl : null,
             currentIndex : 0,
+            data : [],
+            
         };
     }
 
