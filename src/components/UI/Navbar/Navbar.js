@@ -1,54 +1,119 @@
-import React,{Component} from "react";
+import React, { Component } from "react";
 import { Transition } from "@headlessui/react";
-import {faAlignJustify,faTimes} from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"; 
-import {Link} from 'gatsby';
+import {
+  faHome,
+  faAlignJustify,
+  faUsers,
+  faImages,
+  faChalkboardTeacher,
+  faUserGraduate,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import logo from "assets/images/logo.ico";
+import NavItem from "./NavItem";
 
-class Navbar extends Component{
-  state={
-    isOpen:false
-  }
-  render(){
+class Navbar extends Component {
+  state = {
+    isOpen: false,
+  };
+  drawerHandler = () => {
+    this.setState({
+      isOpen: false,
+    });
+  };
+  render() {
     return (
-      <div className="sticky top-0 z-50">
-        <nav className="bg-gray-800">
-          <div className="max-w-7xl mr-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between h-16">
-              <div className="-mr-2 flex">
-                <button onClick={() => this.setState((prevState)=>({isOpen:!prevState.isOpen}))} type="button"
-                  className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                  aria-controls="menu"
-                  aria-expanded="false">
-                  <span className="sr-only">Open main menu</span>
-                  {!this.state.isOpen ? (
-                    <FontAwesomeIcon className="text-2xl" icon={faAlignJustify}/>
-                  ) : (<FontAwesomeIcon className="text-2xl" icon={faTimes}/>
-                  )}
-                </button>
-              </div>
-            </div>
+      <React.Fragment>
+        <nav class="flex fixed w-full items-center justify-between px-6 h-16 bg-white text-gray-700 border-b border-gray-200 z-10">
+          <div class="flex items-center">
+            <button
+              class="mr-2"
+              aria-label="Open Menu"
+              onClick={() =>
+                this.setState((prevState) => ({ isOpen: !prevState.isOpen }))
+              }
+            >
+              <FontAwesomeIcon className="text-2xl" icon={faAlignJustify} />
+            </button>
+            <img src={logo} alt="Logo" class="ml-2 h-10 w-10" />
           </div>
-          <Transition show={this.state.isOpen}
-            enter="transition ease-out duration-100 transform"
-            enterFrom="opacity-0 scale-95"
-            enterTo="opacity-100 scale-100"
-            leave="transition ease-in duration-75 transform"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95">
-            {(ref) => (
-              <div id="menu">
-                <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                  <Link to="/" className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">Home</Link>
-                  <Link to="/gallery" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Gallery</Link>
-                  <Link to="/team" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team Spec</Link>
-                  <Link to="/workshop" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Workshop</Link>
-                  <Link to="/alumni" className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Alumni</Link>
-                </div>
-              </div>
-            )}
+          {/* <div class="flex items-center">
+      <div class="hidden md:block md:flex md:justify-between md:bg-transparent">
+       </div>
+     </div> */}
+
+          <Transition
+            show={this.state.isOpen}
+            enter="ease-out transition-medium"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="ease-out transition-medium"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <div
+              // keydown....esc
+              v-show="isOpen"
+              class="z-10 fixed inset-0 transition-opacity"
+            >
+              <div
+                onClick={this.drawerHandler}
+                class="absolute inset-0 bg-black opacity-50"
+                tabindex="0"
+              ></div>
+            </div>
           </Transition>
+          <aside
+            className={`transform top-0 left-0 w-64 bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
+              this.state.isOpen ? "translate-x-0" : "-translate-x-full"
+            }`}
+          >
+            <span
+              onClick={this.drawerHandler}
+              class="flex w-full items-center p-4 border-b"
+            >
+              <img src={logo} alt="Logo" class="h-16 w-16 mx-auto" />
+            </span>
+            <NavItem
+              name="Home"
+              icon={faHome}
+              clicked={this.drawerHandler}
+              route=""
+            />
+            <NavItem
+              name="Gallery"
+              icon={faImages}
+              route="gallery"
+              clicked={this.drawerHandler}
+            />
+            <NavItem
+              name="Workshops"
+              icon={faChalkboardTeacher}
+              route="workshop"
+              clicked={this.drawerHandler}
+            />
+            <NavItem
+              name="Team Spec"
+              icon={faUsers}
+              route="team"
+              clicked={this.drawerHandler}
+            />
+            <NavItem
+              name="Our Alumni"
+              icon={faUserGraduate}
+              route="alumni"
+              clicked={this.drawerHandler}
+            />
+            <div class="fixed bottom-0 w-full">
+              {/* <a rel="noopener"
+          class="flex items-center p-4 bg-orange-700 text-white "
+          href=""
+          target="_blank">
+        </a> */}
+            </div>
+          </aside>
         </nav>
-      </div>
+      </React.Fragment>
     );
   }
 }

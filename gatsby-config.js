@@ -5,8 +5,7 @@ module.exports = {
     title: "Spec ",
   },
   plugins: [
-    
-    'gatsby-plugin-postcss',
+    "gatsby-plugin-postcss",
     {
       resolve: `gatsby-plugin-sass`,
       options: {

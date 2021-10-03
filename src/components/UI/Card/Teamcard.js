@@ -1,20 +1,42 @@
-import React from 'react'
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 function TeamCard(props) {
-    return (
-        <>
-<div className="card 1">
-  <div className="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" alt={props.name} /> </div>
-  <div className="card_title title-white">
-    <p >{props.name}</p>
-    <a href={props.linkedin} ><i aria-label="linkedIn" className="fa fa-linkedin"></i></a>
-  <a href={props.github}><i aria-label="linkedIn" className="fa fa-github"></i></a>
-    <p className="post">{props.post}</p>
-
-  </div>
-</div>
-</>
-    )
+  return (
+    <>
+      <div className="card 1 ">
+        <div className="card_image">
+          {" "}
+          <img src={props.data.profile_pic_url} alt={props.data.name} />{" "}
+        </div>
+        <div className="card_title title-white">
+          <p>{props.data.name}</p>
+          {props.data.github_id && (
+            <a
+              href={props.data.github_id}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {" "}
+              <FontAwesomeIcon icon={faGithub} size="1x" />
+            </a>
+          )}
+          {props.data.linkedin_id && (
+            <a
+              href={props.data.linkedin_id}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {" "}
+              <FontAwesomeIcon icon={faLinkedin} size="1x" />
+            </a>
+          )}
+          <p className="post">{props.data.post}</p>
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default TeamCard
+export default TeamCard;

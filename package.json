@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "engines": {
-    "node": "16.9.1"
+    "node": ">=16.9.1"
   },
   "engineStrict": true,
   "scripts": {
