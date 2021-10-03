@@ -42,7 +42,7 @@ export default class Gallery extends Component {
           style={{ backgroundImage: props.img }}
         ></div>
         <div className="text">
-          <div class="gallery-card-title-medium">{props.title}</div>
+          <div className="gallery-card-title-medium">{props.title}</div>
           <div className="gallery-card-title">{props.sub}</div>
           <div className="gallery-card-title-small">Gallery collection</div>
           <button className="btn-prime">Gallery</button>
