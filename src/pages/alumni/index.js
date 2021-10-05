@@ -20,7 +20,6 @@ class Alumni extends Component {
         console.log(err);
       });
   }
-
   render() {
     return (
       <Layout>
@@ -31,58 +30,40 @@ class Alumni extends Component {
             </h1>
           </div>
         </header>
-        <div className="batch">Batch 2020</div>
+
+        <div className="batch">Batch 2021</div>
         <div className="grid md:grid-cols-2 gap-y-2 sm:grid-cols-1">
-          {this.state.dummy.map((test) => (
-            <Cards
+          {this.state.dummy.map((test, index) => (
+            test.batch == "2017" && <Cards
               name={test.name}
               key={test.name}
               imgsrc={test.profile_pic_url}
               company={test.company}
-              batch={test.batch}
-              link={test.link}
+              linkedin_id={test.linkedin_id}
             />
-          ))}
-        </div>
+          ))}</div>
+        <div className="batch">Batch 2020</div>
+        <div className="grid md:grid-cols-2 gap-y-2 sm:grid-cols-1">
+          {this.state.dummy.map((test, index) => (
+            test.batch == "2016" && <Cards
+              name={test.name}
+              key={test.name}
+              imgsrc={test.profile_pic_url}
+              company={test.company}
+              linkedin_id={test.linkedin_id}
+            />
+          ))}</div>
         <div className="batch">Batch 2019</div>
         <div className="grid md:grid-cols-2 gap-y-2 sm:grid-cols-1">
-          {this.state.dummy.map((test) => (
-            <Cards
+          {this.state.dummy.map((test, index) => (
+            test.batch == "2015" && <Cards
               name={test.name}
               key={test.name}
-              imgsrc={test.profile_pic}
+              imgsrc={test.profile_pic_url}
               company={test.company}
-              batch={test.batch}
-              link={test.link}
+              linkedin_id={test.linkedin_id}
             />
-          ))}
-        </div>
-        <div className="batch">Batch 2018</div>
-        <div className="grid md:grid-cols-2 gap-y-2 sm:grid-cols-1">
-          {this.state.dummy.map((test) => (
-            <Cards
-              name={test.name}
-              key={test.name}
-              imgsrc={test.profile_pic}
-              company={test.company}
-              batch={test.batch}
-              link={test.link}
-            />
-          ))}
-        </div>
-        <div className="batch">Batch Before 2018</div>
-        <div className="grid md:grid-cols-2 gap-y-2 sm:grid-cols-1">
-          {this.state.dummy.map((test) => (
-            <Cards
-              name={test.name}
-              key={test.name}
-              imgsrc={test.profile_pic}
-              company={test.company}
-              batch={test.batch}
-              link={test.link}
-            />
-          ))}
-        </div>
+          ))}</div>
       </Layout>
     );
   }

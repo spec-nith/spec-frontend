@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 function spec(props) {
   return (
@@ -10,9 +12,17 @@ function spec(props) {
             {props.name}
           </h2>
           <p className="text-orange-700 h-48">
-            {props.title}
+            {props.company}
             <h3>{props.batch}</h3>
-            <a href={props.link}>Links</a>
+            
+            <a
+              href={props.linkedin_id}
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {" "}
+              <FontAwesomeIcon icon={faLinkedin} size="1x" />
+            </a>
           </p>
         </div>
       </div>
