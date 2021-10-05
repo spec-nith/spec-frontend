@@ -39,7 +39,9 @@ class TeamPage extends Component {
             <>
               {this.state.dummy.map(
                 (element, index) =>
-                  element.title === obj && <TeamCard data={element} key={element.id}/>
+                  element.title === obj && (
+                    <TeamCard data={element} key={element.id} />
+                  )
               )}
             </>
           ))}
@@ -51,7 +53,9 @@ class TeamPage extends Component {
             <div className="content">
               {this.state.dummy.map(
                 (element, index) =>
-                  element.title === obj && <TeamCard data={element} key={element.id}/>
+                  element.title === obj && (
+                    <TeamCard data={element} key={element.id} />
+                  )
               )}
             </div>
           </div>
