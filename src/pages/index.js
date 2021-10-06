@@ -14,7 +14,6 @@ class Home extends React.Component {
     axios
       .get(projectURL)
       .then((response) => {
-        console.log(response.data);
         this.setState({ data: response.data });
       })
       .catch((err) => {
