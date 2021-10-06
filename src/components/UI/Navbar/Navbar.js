@@ -1,13 +1,6 @@
 import React, { Component } from "react";
 import { Transition } from "@headlessui/react";
-import {
-  faHome,
-  faAlignJustify,
-  faUsers,
-  faImages,
-  faChalkboardTeacher,
-  faUserGraduate,
-} from "@fortawesome/free-solid-svg-icons";
+import {faAlignJustify} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "assets/images/logo.ico";
 import NavItem from "./NavItem";
