@@ -1,10 +1,11 @@
-h1 {
+.team_heading {
+  
   font-size: 30px;
   font-family: sans-serif;
   text-align: center;
   text-decoration: underline;
 }
-.content {
+.team_content {
   z-index: 0;
   width: 100%;
   display: flex;
@@ -12,7 +13,7 @@ h1 {
   flex-wrap: wrap;
 }
 
-.card {
+.team_card {
   margin: 30px auto;
   width: 290px;
   height: 350px;
@@ -23,20 +24,20 @@ h1 {
   transition: 0.4s;
 }
 
-.card .card_image {
+.team_card .team_card_image {
   width: inherit;
   height: inherit;
   border-radius: 40px;
 }
 
-.card .card_image img {
+.team_card .team_card_image .team_img {
   width: inherit;
   height: inherit;
   border-radius: 40px;
   object-fit: cover;
 }
 
-.card .card_title {
+.team_card .team_card_title {
   text-align: center;
   border-radius: 0px 0px 40px 40px;
   font-family: sans-serif;
@@ -46,7 +47,7 @@ h1 {
   height: 40px;
 }
 
-.card:hover {
+.team_card:hover {
   transform: scale(0.9, 0.9);
   box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
     -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
@@ -61,20 +62,20 @@ h1 {
 .fa-github:hover {
   color: black;
 }
-.post {
+.team_post {
   margin: 30px;
   font-size: 19px;
 }
-.title-white {
+.team_title-white {
   color: white;
 }
 
-.title-black {
+.team_title-black {
   color: black;
 }
 
 @media all and (max-width: 500px) {
-  .card-list {
+  .team_card-list {
     /* On small screens, we are no longer using row direction but column */
     flex-direction: column;
   }

@@ -5,12 +5,12 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 function TeamCard(props) {
   return (
     <>
-      <div className="card 1 ">
-        <div className="card_image">
+      <div className="team_card 1 ">
+        <div className="team_card_image">
           {" "}
-          <img src={props.data.profile_pic_url} alt={props.data.name} />{" "}
+          <img className="team_img" src={props.data.profile_pic_url} alt={props.data.name} />{" "}
         </div>
-        <div className="card_title title-white">
+        <div className="team_card_title team_title-white">
           <p>{props.data.name}</p>
           {props.data.github_id && (
             <a
@@ -32,7 +32,7 @@ function TeamCard(props) {
               <FontAwesomeIcon icon={faLinkedin} size="1x" />
             </a>
           )}
-          <p className="post">{props.data.post}</p>
+          <p className="team_post">{props.data.title}</p>
         </div>
       </div>
     </>
