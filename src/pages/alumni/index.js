@@ -13,7 +13,6 @@ class Alumni extends Component {
     axios
       .get(alumniURL)
       .then((response) => {
-        console.log(response.data);
         this.setState({ dummy: response.data });
       })
       .catch((err) => {
@@ -23,7 +22,7 @@ class Alumni extends Component {
   
 
   render() {
-    const year_of_grad =["2021","2020","2019","2018"];
+    const year_of_grad =[...new Set(this.state.dummy.map(item => item.batch))].sort((a,b)=>a<b);
     return (
       <Layout>
         <header className="bg-white shadow">
@@ -39,7 +38,7 @@ class Alumni extends Component {
             <div className="batch">{"Batch "+ obj}</div>
             <div className="grid md:grid-cols-2 gap-y-2 sm:grid-cols-1">
               {this.state.dummy.map(test => 
-              test.batch == obj &&  <Cards
+              test.batch === obj &&  <Cards
               person={test}
               key={test.id}
               
