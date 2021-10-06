@@ -4,3 +4,9 @@
   font-family: sans-serif;
   font-weight: bold;
 }
+.alumni_img {
+  float: left;
+  width:  250px;
+  height: 300px;
+  object-fit: cover;
+}
