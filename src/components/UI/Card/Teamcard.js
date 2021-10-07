@@ -8,7 +8,11 @@ function TeamCard(props) {
       <div className="team_card 1 ">
         <div className="team_card_image">
           {" "}
-          <img className="team_img" src={props.data.profile_pic_url} alt={props.data.name} />{" "}
+          <img
+            className="team_img"
+            src={props.data.profile_pic_url}
+            alt={props.data.name}
+          />{" "}
         </div>
         <div className="team_card_title team_title-white">
           <p>{props.data.name}</p>
