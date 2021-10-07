@@ -30,16 +30,21 @@ class TeamPage extends Component {
       "Technical Lead",
       "Finance Head",
     ];
-    const juniorPosts = ["Coordinator", "Executive"];
+    const juniorPosts = ["Coordinator", "Executive", "Volunteer"];
+
     return (
       <Layout>
-        <h1>Final Year Members</h1>
-        <div className="content">
+        {this.state.dummy.find((e) => finalYearPosts.includes(e.title)) ? (
+          <h1 className="team_heading">Final Year Members</h1>
+        ) : null}
+        <div className="team_content">
           {finalYearPosts.map((obj) => (
             <>
               {this.state.dummy.map(
                 (element, index) =>
-                  element.title === obj && <TeamCard data={element} key={element.id}/>
+                  element.title === obj && (
+                    <TeamCard data={element} key={element.id} />
+                  )
               )}
             </>
           ))}
@@ -47,11 +52,16 @@ class TeamPage extends Component {
 
         {juniorPosts.map((obj) => (
           <div>
-            <h1>{obj + "s"}</h1>
-            <div className="content">
+            {this.state.dummy.find((e) => e.title === obj) ? (
+              <h1 className="team_heading">{obj + "s"}</h1>
+            ) : null}
+            <h1 className="team_heading"></h1>
+            <div className="team_content">
               {this.state.dummy.map(
                 (element, index) =>
-                  element.title === obj && <TeamCard data={element} key={element.id}/>
+                  element.title === obj && (
+                    <TeamCard data={element} key={element.id} />
+                  )
               )}
             </div>
           </div>

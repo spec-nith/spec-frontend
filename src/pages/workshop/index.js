@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Workshopnavbar from "./Workshopnavbar";
 import { worskhopURL } from "components/Routes";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
+import WorkshopCard from "../../components/UI/Card/WorkshopCard";
 
 class Workshop extends Component {
   state = {
@@ -12,7 +12,6 @@ class Workshop extends Component {
     axios
       .get(worskhopURL)
       .then((response) => {
-        console.log(response.data);
         this.setState({ dummy: response.data });
       })
       .catch((err) => {
@@ -23,11 +22,13 @@ class Workshop extends Component {
   render() {
     return (
       <Layout>
-        <div className="bg-black">
-          <div className="text-center font-serif ... text-7xl text-white">
-            WORKSHOP
+        <div>
+          <div className="text-center font-serif text-7xl">WORKSHOP</div>
+          <div>
+            {this.state.dummy.map((element) => (
+              <WorkshopCard key={element.id} shop={element} />
+            ))}
           </div>
-          <Workshopnavbar dummy={this.state.dummy} color="grey" />
         </div>
       </Layout>
     );
@@ -35,3 +36,19 @@ class Workshop extends Component {
 }
 
 export default Workshop;
+
+// datTimeHandler=(dat)=>{
+//   return new Date(dat).getFullYear();
+//  }
+
+// filtering function
+// {this.props.dummy.filter(e=> this.datTimeHandler(e.event_date)==2021).map((element) => (
+
+//   <WorkshopCompo
+//        number={element.id}
+//        workshopname={element.title}
+//        content={element.description}
+//        backgroundImage={element.cover_url}
+//      />
+
+// ))}

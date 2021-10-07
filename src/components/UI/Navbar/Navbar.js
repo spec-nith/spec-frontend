@@ -1,33 +1,30 @@
 import React, { Component } from "react";
 import { Transition } from "@headlessui/react";
-import {
-  faHome,
-  faAlignJustify,
-  faUsers,
-  faImages,
-  faChalkboardTeacher,
-  faUserGraduate,
-} from "@fortawesome/free-solid-svg-icons";
+import { faAlignJustify } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "assets/images/logo.ico";
 import NavItem from "./NavItem";
+import NavbarItems from "./Items";
+import { Location } from "@reach/router";
 
 class Navbar extends Component {
   state = {
     isOpen: false,
   };
+
   drawerHandler = () => {
     this.setState({
       isOpen: false,
     });
   };
+
   render() {
     return (
       <React.Fragment>
-        <nav class="flex fixed w-full items-center justify-between px-6 h-16 bg-white text-gray-700 border-b border-gray-200 z-10">
-          <div class="flex items-center">
+        <nav className="flex fixed w-full items-center justify-between px-6 h-16 bg-white text-gray-700 border-b border-gray-200 z-10">
+          <div className="flex items-center">
             <button
-              class="mr-2"
+              className="mr-2"
               aria-label="Open Menu"
               onClick={() =>
                 this.setState((prevState) => ({ isOpen: !prevState.isOpen }))
@@ -35,10 +32,10 @@ class Navbar extends Component {
             >
               <FontAwesomeIcon className="text-2xl" icon={faAlignJustify} />
             </button>
-            <img src={logo} alt="Logo" class="ml-2 h-10 w-10" />
+            <img src={logo} alt="Logo" className="ml-2 h-10 w-10" />
           </div>
-          {/* <div class="flex items-center">
-      <div class="hidden md:block md:flex md:justify-between md:bg-transparent">
+          {/* <div className="flex items-center">
+      <div className="hidden md:block md:flex md:justify-between md:bg-transparent">
        </div>
      </div> */}
 
@@ -54,12 +51,12 @@ class Navbar extends Component {
             <div
               // keydown....esc
               v-show="isOpen"
-              class="z-10 fixed inset-0 transition-opacity"
+              className="z-10 fixed inset-0 transition-opacity"
             >
               <div
                 onClick={this.drawerHandler}
-                class="absolute inset-0 bg-black opacity-50"
-                tabindex="0"
+                className="absolute inset-0 bg-black opacity-50"
+                tabIndex="0"
               ></div>
             </div>
           </Transition>
@@ -70,43 +67,16 @@ class Navbar extends Component {
           >
             <span
               onClick={this.drawerHandler}
-              class="flex w-full items-center p-4 border-b"
+              className="flex w-full items-center p-4 border-b"
             >
-              <img src={logo} alt="Logo" class="h-16 w-16 mx-auto" />
+              <img src={logo} alt="Logo" className="h-16 w-16 mx-auto" />
             </span>
-            <NavItem
-              name="Home"
-              icon={faHome}
-              clicked={this.drawerHandler}
-              route=""
-            />
-            <NavItem
-              name="Gallery"
-              icon={faImages}
-              route="gallery"
-              clicked={this.drawerHandler}
-            />
-            <NavItem
-              name="Workshops"
-              icon={faChalkboardTeacher}
-              route="workshop"
-              clicked={this.drawerHandler}
-            />
-            <NavItem
-              name="Team Spec"
-              icon={faUsers}
-              route="team"
-              clicked={this.drawerHandler}
-            />
-            <NavItem
-              name="Our Alumni"
-              icon={faUserGraduate}
-              route="alumni"
-              clicked={this.drawerHandler}
-            />
-            <div class="fixed bottom-0 w-full">
+            {NavbarItems.map((element) => (
+              <NavItem item={element} clicked={this.drawerHandler} />
+            ))}
+            <div className="fixed bottom-0 w-full">
               {/* <a rel="noopener"
-          class="flex items-center p-4 bg-orange-700 text-white "
+          className="flex items-center p-4 bg-orange-700 text-white "
           href=""
           target="_blank">
         </a> */}
@@ -118,4 +88,8 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default (props) => (
+  <Location>
+    {(locationProps) => <Navbar {...locationProps} {...props} />}
+  </Location>
+);
