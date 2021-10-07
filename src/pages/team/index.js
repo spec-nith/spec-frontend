@@ -8,7 +8,6 @@ import axios from "axios";
 class TeamPage extends Component {
   state = {
     dummy: [],
-
   };
   componentDidMount() {
     axios
@@ -16,13 +15,11 @@ class TeamPage extends Component {
       .then((response) => {
         this.setState({
           dummy: response.data.sort((a, b) => a.name.localeCompare(b.name)),
-      
         });
       })
       .catch((err) => {
         console.log(err);
       });
-
   }
   render() {
     const finalYearPosts = [
@@ -33,13 +30,13 @@ class TeamPage extends Component {
       "Technical Lead",
       "Finance Head",
     ];
-    const juniorPosts = ["Coordinator", "Executive"];
- 
+    const juniorPosts = ["Coordinator", "Executive", "Volunteer"];
+
     return (
-
       <Layout>
-
-{this.state.dummy[0]!=null?<h1 className="team_heading">Final Year Members</h1>:<h1></h1>}
+        {this.state.dummy.find((e) => finalYearPosts.includes(e.title)) ? (
+          <h1 className="team_heading">Final Year Members</h1>
+        ) : null}
         <div className="team_content">
           {finalYearPosts.map((obj) => (
             <>
@@ -47,22 +44,17 @@ class TeamPage extends Component {
                 (element, index) =>
                   element.title === obj && (
                     <TeamCard data={element} key={element.id} />
-                 
                   )
-                
               )}
-              
-          
-        
             </>
-         
           ))}
-       
         </div>
 
         {juniorPosts.map((obj) => (
           <div>
-            {this.state.dummy[2]!=null?<h1 className="team_heading">{obj + "s"}</h1>:<h1></h1>}
+            {this.state.dummy.find((e) => e.title === obj) ? (
+              <h1 className="team_heading">{obj + "s"}</h1>
+            ) : null}
             <h1 className="team_heading"></h1>
             <div className="team_content">
               {this.state.dummy.map(

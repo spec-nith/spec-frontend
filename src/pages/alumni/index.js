@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Cards from "components/UI/Card/AlumniCards";
+import Cards from "components/UI/Card/AlumniCard";
 import axios from "axios";
 import "assets/styles/alumni.css";
 import Layout from "components/UI/Layout/Layout";
@@ -19,10 +19,11 @@ class Alumni extends Component {
         console.log(err);
       });
   }
-  
 
   render() {
-    const year_of_grad =[...new Set(this.state.dummy.map(item => item.batch))].sort((a,b)=>a<b);
+    const year_of_grad = [
+      ...new Set(this.state.dummy.map((item) => item.batch)),
+    ].sort((a, b) => a < b);
     return (
       <Layout>
         <header className="bg-white shadow">
@@ -33,20 +34,17 @@ class Alumni extends Component {
           </div>
         </header>
 
-          {year_of_grad.map(obj => (
+        {year_of_grad.map((obj) => (
           <React.Fragment key={obj}>
-            <div className="batch">{"Batch "+ obj}</div>
+            <div className="batch">{"Batch " + obj}</div>
             <div className="grid md:grid-cols-2 gap-y-2 sm:grid-cols-1">
-              {this.state.dummy.map(test => 
-              test.batch === obj &&  <Cards
-              person={test}
-              key={test.id}
-              
-              />)}
+              {this.state.dummy.map(
+                (test) =>
+                  test.batch === obj && <Cards person={test} key={test.id} />
+              )}
             </div>
           </React.Fragment>
         ))}
-
       </Layout>
     );
   }
