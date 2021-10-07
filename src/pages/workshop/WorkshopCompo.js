@@ -7,7 +7,7 @@ export default function WorkshopCompo(props) {
     <div>
       <div className="centerflipcards">
         <div className="square-flip">
-          <div className="square" data-image="">
+          <div className="square" style={{backgroundImage: `url(${props.backgroundImage})`}}>
             <div className="square-container">
               <div className="align-center">
                 <img src="" className="boxshadow" alt="" />
@@ -17,7 +17,7 @@ export default function WorkshopCompo(props) {
             </div>
             <div className="flip-overlay"></div>
           </div>
-          <div className="square2" data-image="">
+          <div className="square2">
             <div className="square-container2">
               <div className="align-center"></div>
               <h2>{props.content}</h2>
