@@ -85,9 +85,10 @@ export default class Workshopnavbar extends React.Component {
                         return (
                           <div className="">
                             <WorkshopCompo
-                              number={element.number}
-                              workshopname={element.name}
-                              content={element.content}
+                              number={element.id}
+                              workshopname={element.title}
+                              content={element.description}
+                              backgroundImage={element.cover_url}
                             />
                           </div>
                         );
@@ -103,9 +104,10 @@ export default class Workshopnavbar extends React.Component {
                         return (
                           <div className="">
                             <WorkshopCompo
-                              number={element.number}
-                              workshopname={element.name}
-                              content={element.content}
+                                   number={element.id}
+                                   workshopname={element.title}
+                                   content={element.description}
+                                   backgroundImage={element.cover_url}
                             />
                           </div>
                         );
@@ -121,9 +123,10 @@ export default class Workshopnavbar extends React.Component {
                         return (
                           <div className="">
                             <WorkshopCompo
-                              number={element.number}
-                              workshopname={element.name}
-                              content={element.content}
+                            number={element.id}
+                            workshopname={element.title}
+                            content={element.description}
+                            backgroundImage={element.cover_url}
                             />
                           </div>
                         );
