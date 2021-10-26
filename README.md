@@ -1,54 +1,111 @@
 <p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
+  <img src="https://specnith.com/Home-files/assets/logo2.png" alt="Logo" width="480">
+
+  <h2 align="center">SPEC NITH</h2>
+
+  <p align="center">
+    Official Codebase
+    <br>
+    <a href="https://github.com/spec-nith/spec-frontend/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/spec-nith/spec-frontend/issues">Request Feature</a>
+  </p>
+</p>
+<br>
+<p align="center">
+  <a href="https://github.com/spec-nith/spec-frontend/graphs/contributors">
+    <img alt="Contributors" src="https://img.shields.io/github/contributors/spec-nith/spec-frontend.svg?style=for-the-badge" style="max-width:100%;">
+  </a>
+  <a href="https://github.com/spec-nith/spec-frontend/network/members">
+    <img alt="Forks" src="https://img.shields.io/github/forks/spec-nith/spec-frontend.svg?style=for-the-badge" style="max-width:100%;">
+  </a>
+  <a  href="https://github.com/spec-nith/spec-frontend/stargazers">
+    <img alt="Stargazers" src="https://img.shields.io/github/stars/spec-nith/spec-frontend.svg?style=for-the-badge" style="max-width:100%;">
+  </a>
+  <a href="https://github.com/spec-nith/spec-frontend/issues">
+    <img alt="Issues" src="https://img.shields.io/github/issues/spec-nith/spec-frontend.svg?style=for-the-badge" style="max-width:100%;">
   </a>
 </p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
 
-## 🚀 Quick start
+## 📝 General Overview 
 
-1.  **Create a Gatsby site.**
+This is the official website for Society for Promotion of Electronics Culture (SPEC), NIT Hamirpur from 2021 onwards. SPEC is run under the aegis of Electronics and Communication Department of NITH and is renowned for conducting a national level hackathon [ELECTROTHON](https://specnith.com/electrothon.html) along with a plethora of workshops, competitions, guest talks and the annual technical fest - [SPECFEST](https://specnith.com/specfest2k21.html).
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+Visit the current official website of SPEC from [here](https://specnith.com/).
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
+
+## ⚙️ Installation and Set-Up 
+- Make sure you have a valid Node.js installation on your machine. Alternatively, you can use the following commands:
+  - **For Ubuntu\Debian**: 
+    ```
+    sudo apt install npm
+    ``` 
+
+  - **For Arch**: 
+    ```
+    sudo pacman -S npm-lts
     ```
 
-2.  **Start developing.**
+- Install Gatsby command line interface **(Optional)**:
+  ```
+  npm install -g gatsby-cli
+  ```
 
-    Navigate into your new site’s directory and start it up.
+- Install all dependencies for the project using:
+  ```
+  npm install
+  ```
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+- To start site at localhost, use:
+  ```
+  gatsby develop
+  ``` 
+  **or**
+  ```
+  npm run start
+  ```
 
-3.  **Open the code and start customizing!**
+- The server runs on port **8000**. It can be accessed from the browser at 
+  ```
+  https:\\localhost:8000
+  ```
 
-    Your site is now running at http://localhost:8000!
+_Note: You can read more about gatsby from [Official Gatsby Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)_
 
-    Edit `src/pages/index.js` to see your site update in real-time!
 
-4.  **Learn more**
+## 🎯  Contributing Guidelines
+Contributions are what make the open source community such an amazing place to  learn, inspire and build experiences that are cherished for a lifetime.  Go ahead and follow these steps to contribute to the community.
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- Fork this repository by clicking on   *Fork* button on the top right side.
 
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- Clone your Fork to your local machine
+  ```
+  git clone [https://github.com/your-username/spec-frontend.git]
+  ```
+         
+- Create your Feature Branch
+  ```
+  git checkout -b [branch-name]
+  ```
+         
+- Make your changes and commit them
+  ```
+  git add . 
+  git commit -m "Add some amazing feature" 
+  ```
 
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- To check the status
+  ```
+  git status
+  ```
+         
+- And then push the changes to your forked repository
+  ```
+  git push origin [branch name]
+  ```
 
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- Click on the *New Pull Request* button at the top of your repository to create a new pull request from your forked repository.
 
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+- Wait for your PR review and merge approval.
 
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-## 🚀 Quick start (Gatsby Cloud)
-
-Deploy this starter with one click on [Gatsby Cloud](https://www.gatsbyjs.com/cloud/):
-
-[<img src="https://www.gatsbyjs.com/deploynow.svg" alt="Deploy to Gatsby Cloud">](https://www.gatsbyjs.com/dashboard/deploynow?url=https://github.com/gatsbyjs/gatsby-starter-minimal)
+- Don't forget to ⭐ this repository.
