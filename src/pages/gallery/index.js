@@ -17,7 +17,7 @@ export default class GallerySecondary extends Component {
         <div className="mx-10 my-28 xl:mx-28 grid gap-4 xl:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-2xl font-bold xl:text-3xl">
           <div className="w-58 h-120 lg:h-120 lg:row-span-2 bg-gray-400 object-center gallery-main-boxes" style={{ backgroundImage: `url('images/gallery/specfest.jpg')` }}>
             <div className="gallay-mainpage-inner">
-              <Link to="/gallery/FinalGallery/?page=SpecFest">
+              <Link to="/gallery/view/?page=SpecFest">
                 <button className="text-2xl font-bold xl:text-3xl hover:bg-gray-100 hover:bg-opacity-20 text-white font-bold py-2 px-4 rounded">
                 <h3>SPECFEST</h3>
                 </button>
@@ -27,7 +27,7 @@ export default class GallerySecondary extends Component {
 
           <div className="w-58 h-60 bg-gray-400 object-scale-down gallery-main-boxes" style={{ backgroundImage:  `url('images/gallery/electrothon.jpg')` }}>
             <div className="gallay-mainpage-inner">
-              <Link to="/gallery/FinalGallery/?page=Electrothon">
+              <Link to="/gallery/view/?page=Electrothon">
               <button className="text-2xl font-bold xl:text-3xl hover:bg-gray-100 hover:bg-opacity-20 text-white font-bold py-2 px-4 rounded">
                 <h3>ELECTROTHON</h3>
                 </button>
@@ -36,7 +36,7 @@ export default class GallerySecondary extends Component {
           </div>
           <div className="w-58 h-60 lg:col-span-2 bg-gray-400 object-cover gallery-main-boxes" style={{ backgroundImage: `url('images/gallery/workshop.jpg')` }}>
             <div className="gallay-mainpage-inner">
-              <Link to="/gallery/FinalGallery/?page=Workshop">
+              <Link to="/gallery/view/?page=Workshop">
               <button className="text-2xl font-bold xl:text-3xl hover:bg-gray-100 hover:bg-opacity-20 text-white font-bold py-2 px-4 rounded">
                 <h3>WORKSHOP</h3>
                 </button>
@@ -45,7 +45,7 @@ export default class GallerySecondary extends Component {
           </div>
           <div className="w-58 h-60 lg:col-span-3 bg-gray-400  object-cover gallery-main-boxes" style={{ backgroundImage: `url('images/gallery/random.jpg')` }}>
             <div className="gallay-mainpage-inner">
-              <Link to="/gallery/FinalGallery/?page=random">
+              <Link to="/gallery/view/?page=random">
               <button className="text-2xl font-bold xl:text-3xl hover:bg-gray-100 hover:bg-opacity-20 text-white font-bold py-2 px-4 rounded">
                 <h3>RANDOM</h3>
                 </button>
