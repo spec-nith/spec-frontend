@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "gatsby";
 import { useLocation } from "@reach/router";
 
-const NavItem = ({ item }) => {
+const NavItem = ({ item,icons }) => {
   const location = useLocation()
     .pathname.split("/")
     .filter((e) => e); //for removing empty elements coming from leading and trailing '/'
@@ -20,9 +20,9 @@ const NavItem = ({ item }) => {
           (path && "bg-indigo-700 text-white")
         }
       >
-        <span className="mr-2">
+       {icons && (<span className="mr-2">
           <FontAwesomeIcon className="text-lg" icon={item.icon} fixedWidth />
-        </span>
+        </span>)}
         <span className="block px-3 py-2 rounded-md text-base font-medium">
           {item.name}
         </span>

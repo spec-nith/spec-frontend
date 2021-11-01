@@ -6,7 +6,7 @@ const layout = (props) => {
   return (
     <React.Fragment>
       <Navbar />
-      <div className="pt-14">{props.children}</div>
+      <div className="bg-black text-white pt-14">{props.children}</div>
       <Footer />
     </React.Fragment>
   );
