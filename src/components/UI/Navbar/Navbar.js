@@ -21,8 +21,9 @@ class Navbar extends Component {
   render() {
     return (
       <React.Fragment>
-        <nav className="flex fixed w-full items-center justify-between px-6 h-16 bg-white text-gray-700 border-b border-gray-200 z-10">
-          <div className="flex items-center">
+        <nav className="flex fixed w-full items-center justify-between px-6 h-16 bg-black text-white z-10">
+          <div className="flex justify-between w-full">
+            <div className="flex">
             <button
               className="mr-2"
               aria-label="Open Menu"
@@ -32,7 +33,13 @@ class Navbar extends Component {
             >
               <FontAwesomeIcon className="text-2xl" icon={faAlignJustify} />
             </button>
-            <img src={logo} alt="Logo" className="ml-2 h-10 w-10" />
+            <img src={logo} alt="Logo" className="ml-6 md:mt-4 h-10 w-10" />
+            </div>
+            <div className="hidden md:flex">
+            {NavbarItems.map((element) => (
+              <NavItem item={element} clicked={this.drawerHandler} icons={false}/>
+              ))}
+              </div>
           </div>
           {/* <div className="flex items-center">
       <div className="hidden md:block md:flex md:justify-between md:bg-transparent">
@@ -61,7 +68,7 @@ class Navbar extends Component {
             </div>
           </Transition>
           <aside
-            className={`transform top-0 left-0 w-64 bg-white fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
+            className={`transform top-0 left-0 w-64 bg-black fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
               this.state.isOpen ? "translate-x-0" : "-translate-x-full"
             }`}
           >
@@ -72,7 +79,7 @@ class Navbar extends Component {
               <img src={logo} alt="Logo" className="h-16 w-16 mx-auto" />
             </span>
             {NavbarItems.map((element) => (
-              <NavItem item={element} clicked={this.drawerHandler} />
+              <NavItem item={element} clicked={this.drawerHandler} icons={true} />
             ))}
             <div className="fixed bottom-0 w-full">
               {/* <a rel="noopener"
