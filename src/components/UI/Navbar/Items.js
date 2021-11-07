@@ -4,37 +4,44 @@ import {
   faImages,
   faChalkboardTeacher,
   faUserGraduate,
+  faStickyNote,
 } from "@fortawesome/free-solid-svg-icons";
 const navItems = [
   {
     name: "Home",
     route: "",
     icon: faHome,
-    active: false,
+    external: false,
   },
   {
     name: "Gallery",
     route: "gallery",
     icon: faImages,
-    active: false,
+    external: false,
   },
   {
     name: "Workshop",
     route: "workshop",
     icon: faChalkboardTeacher,
-    active: false,
+    external: false,
   },
   {
     name: "Team Spec",
     route: "team",
     icon: faUsers,
-    active: false,
+    external: false,
   },
   {
     name: "Our Alumni",
     route: "alumni",
     icon: faUserGraduate,
-    active: false,
+    external: false,
+  },
+  {
+    name: "Notes",
+    route: "https://drive.google.com/drive/folders/1_R5x_sAkFsrC4RRgPOygdzydzDhtHBOQ?usp=sharing",
+    icon: faStickyNote,
+    external: true,
   },
 ];
 export default navItems;
