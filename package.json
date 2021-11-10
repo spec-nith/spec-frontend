@@ -42,11 +42,13 @@
     "gatsby-plugin-split-css": "^2.0.0",
     "gatsby-source-filesystem": "^3.14.0",
     "react": "^16.9.6",
+    "react-awesome-slider": "^4.1.0",
     "react-dom": "^16.9.6",
     "react-grid-gallery": "^0.5.5",
     "react-helmet": "^6.1.0",
     "react-images": "^1.0.0",
     "react-photo-gallery": "^8.0.0",
+    "react-responsive-carousel": "^3.2.22",
     "sass": "^1.42.1",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.16"
   },
