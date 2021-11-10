@@ -1,16 +1,15 @@
-import React, { Component, useState, useCallback } from "react";
+import React, { Component } from "react";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
 import Gallery from "react-photo-gallery";
 import { photos } from "./photos";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faPlusCircle,
   faChevronRight,
   faChevronLeft,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-import "../../../assets/styles/gallery.css";
+import "assets/styles/gallery.css";
 export default class Images extends Component {
     constructor(props) {
         super(props);
@@ -22,7 +21,6 @@ export default class Images extends Component {
             title: this.props.location.search.slice(6),
             currentImage: 0,
             viewerIsOpen: false
-
         };
     }
     async componentDidMount() {
@@ -124,9 +122,9 @@ export default class Images extends Component {
               <div
                 id="nextButton"
                 className={
-                  this.state.currentIndex == this.state.data.length - 1
+                  this.state.currentIndex === this.state.data.length - 1
                     ? "gallery-disabled"
-                    : ""
+                    : "nextButton"
                 }
                 onClick={() => this.showNext(this.state.currentIndex)}
               >
@@ -137,8 +135,10 @@ export default class Images extends Component {
               </div>
             </div>
           )}
-                <div className="mx-8 lg:mx-16 2xl:mx-32 my-16">
+          
+                <div className="mx-8 lg:mx-16 2xl:mx-32 mt-16 pb-32">
                     <Gallery photos={photos} onClick={this.openLightbox} />
+                <div className="mt-10"></div>
                 </div>
             </Layout>
         );

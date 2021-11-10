@@ -1,0 +1,54 @@
+[33m688babc[m[33m ([m[1;36mHEAD -> [m[1;32mgallery2.0[m[33m)[m Gallery added
+[33mda8168c[m Merge branch 'staging' of https://github.com/spec-nith/spec-frontend into gallery2.0
+[33mda83844[m Added
+[33mad8eaa8[m Added Gallery2.0
+[33m1a926eb[m Add tructure
+[33m0509c4d[m[33m ([m[1;31morigin/gallery2.0[m[33m)[m Added source code
+[33md805370[m Added new gallery
+[33mf3f07d1[m[33m ([m[1;31mupstream/staging[m[33m)[m Merge branch 'main' of github.com:spec-nith/spec-frontend into staging
+[33m5027349[m added
+[33md095a50[m Added new lib=nk
+[33me7ffce0[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge pull request #32 from Smriti925/alumni
+[33m7401c6f[m Merge pull request #30 from suyash2002/TeamPage
+[33mdfb3f8b[m Merge pull request #31 from DragnEmperor/staging
+[33m2645c3d[m Home Page Design, Code Refactoring
+[33mf6edd7e[m Alumni page styled and added filter functionality
+[33m3f5bb8b[m TeamCard Styling changes, added filter
+[33md03b875[m Merge pull request #29 from Priyanshu-rajput-01/gallery2.0
+[33mb8181ee[m Modified gallery
+[33mf30bb3b[m Merge branch 'spec-nith:main' into gallery2.0
+[33m99bae54[m Added Gallery styles
+[33m7fece06[m Add formatter
+[33m7bb94ac[m Merge pull request #28 from spec-nith/staging
+[33md682410[m Update README instructions for installation and usage
+[33mf095d1a[m Update README.md
+[33m47ec675[m[33m ([m[1;32mmain[m[33m)[m Update logo path in gatsby-config
+[33mc62dedc[m Merge pull request #26 from spec-nith/staging
+[33m4698d1d[m Merge pull request #25 from DragnEmperor/changes
+[33maeb6bba[m Major Code Refactoring, added static folder
+[33meb95fae[m Merge pull request #23 from suyash2002/staging
+[33m0ae6e91[m Merge pull request #24 from MitAbhay/main
+[33m39b4465[m Changed key names so that data can be shown
+[33m5964227[m Merge pull request #22 from DragnEmperor/changes
+[33m856d9aa[m Update year_of_grad expression
+[33m16f65ae[m Merge branch 'spec-nith:staging' into staging
+[33mb393069[m post prop rectified,heading rendering sorted
+[33m1f5b2c3[m Merge pull request #21 from Smriti925/staging
+[33mf7c3f4a[m updated alumni card and refactored code
+[33m489b49e[m Merge pull request #20 from DragnEmperor/staging
+[33m8c39d7b[m Added Active NavLinks
+[33m3735176[m Improve Gallery View, Prettier Formatting
+[33md3f967d[m Improved gallery, formatting update
+[33me19da0b[m Merge pull request #13 from spec-nith/staging
+[33m30d1c98[m Merge pull request #12 from AvishrantsSh/staging
+[33m7a2df81[m Key prop changes in team section
+[33m8c2ac22[m Merge pull request #3 from DragnEmperor/changes
+[33m82da243[m Added Navbar,UI and URL changes
+[33m7cbdd13[m Added Layout, axios instance changed gallery css
+[33m4ba84cb[m package.json
+[33m342c9d1[m workshopnavbar bug fixes
+[33m664111a[m gh-pages with gatsby
+[33mdf619c4[m Merge pull request #1 from DragnEmperor/routing
+[33m034e2df[m Added gatsby
+[33m4abd88b[m Init
+[33mbc052fb[m first commit
