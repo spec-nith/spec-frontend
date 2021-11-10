@@ -1,12 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@300;400;500&display=swap');
+::-webkit-scrollbar {
+  width: 5px;
+  height:10px;}
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; } 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(53, 54, 56); 
+  border-radius:10px;}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; }
 .batch {
   text-align: center;
   font-size: 30px;
-  font-family: sans-serif;
+  color: white;
   font-weight: bold;
-}
-.alumni_img {
-  float: left;
-  width: 250px;
-  height: 300px;
-  object-fit: cover;
-}
+  background-color: #1F1F1F;}
+.name{
+  color: gainsboro;}
+.alumni_icon{
+  position: relative;
+  left: 90%;
+  top:-3.6rem;}
+.alumni_batch{
+  position: relative;
+  left: 90%;
+  top:0.5rem;}
+.our_alumni{
+  font-family: 'Abril Fatface';
+  font-size: 45px;}
+.text{
+  color: rgb(161, 159, 158);
+  font-family: 'Josefin Sans', sans-serif;}
+.hide{
+  display:none;}
+.card{
+  background-color: #353535;}
+.alumni_bg{
+  background-color: #1F1F1F;}
