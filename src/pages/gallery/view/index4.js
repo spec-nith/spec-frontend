@@ -2,7 +2,7 @@ import React, { Component , useState, useCallback } from "react";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
 import Gallery from "react-photo-gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
+// import Carousel, { Modal, ModalGateway } from "react-images";
 import { photos } from "./photos";
 import "../../../assets/styles/gallery.css";
 export default class Images extends Component {
@@ -82,7 +82,7 @@ export default class Images extends Component {
                 <div className="mx-32 my-16">
 
                 <Gallery photos={photos} onClick={this.openLightbox} />
-      <ModalGateway>
+      {/* <ModalGateway>
         {this.state.viewerIsOpen ? (
           <Modal onClose={this.closeLightbox}>
             <Carousel
@@ -95,7 +95,7 @@ export default class Images extends Component {
             />
           </Modal>
         ) : null}
-      </ModalGateway>
+      </ModalGateway> */}
 
                 </div>
             </Layout>

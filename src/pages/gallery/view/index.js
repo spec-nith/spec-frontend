@@ -114,9 +114,7 @@ export default class Images extends Component {
         this.setState({ FullImageCard: false });
     }
     render() {
-
         return (
-            
             <Layout>
                 <h1 className="text-5xl font-bold text-center mt-16 sm:text-7xl md:text-8xl">{this.state.title}</h1>
                 {this.state.FullImageCard && (
