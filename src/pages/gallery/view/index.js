@@ -59,27 +59,20 @@ export default class Images extends Component {
                         rs[i].height = 2;
                     }
                 }
-                
                 this.setState({ data: photos });
                 console.log(photos);
-
-
             })
             .catch((err) => {
                 console.log(err);
             });
     }
-
     openLightbox = (event, { photo, index }) => {
         console.log('awftsf');
         this.setState({ currentImage: index, viewerIsOpen: true })
         this.showImage(photo,index);
-
     };
-
     closeLightbox = () => {
         this.setState({ currentImage: 0, viewerIsOpen: false })
-
     };
     showImage = (img, ind) => {
         let url = this.state.data[ind].image_url;
@@ -98,7 +91,6 @@ export default class Images extends Component {
                 currentIndex: ind - 1,
             });
         }
-
     }
     showNext = (ind) => {
         if (ind < this.state.data.length - 1) {
@@ -145,10 +137,8 @@ export default class Images extends Component {
               </div>
             </div>
           )}
-                <div className="mx-32 my-16">
-
+                <div className="mx-8 lg:mx-16 2xl:mx-32 my-16">
                     <Gallery photos={photos} onClick={this.openLightbox} />
-                   
                 </div>
             </Layout>
         );
