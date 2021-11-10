@@ -2,7 +2,6 @@ import React, { Component, useState, useCallback } from "react";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
 import Gallery from "react-photo-gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
 import { photos } from "./photos";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -83,9 +82,10 @@ export default class Images extends Component {
 
     };
     showImage = (img, ind) => {
+        let url = this.state.data[ind].image_url;
         this.setState({
             FullImageCard: true,
-            imageUrl: img,
+            imageUrl: url,
             currentIndex: ind,
         });
     }
@@ -150,21 +150,7 @@ export default class Images extends Component {
                 <div className="mx-32 my-16">
 
                     <Gallery photos={photos} onClick={this.openLightbox} />
-                    <ModalGateway>
-                        {/* {this.state.viewerIsOpen ? (
-                            <Modal onClose={this.closeLightbox}>
-                                <Carousel
-                                    currentIndex={this.state.currentImage}
-                                    views={photos.map(x => ({
-                                        ...x,
-                                        srcset: x.srcSet,
-                                        caption: x.title
-                                    }))}
-                                />
-                            </Modal>
-                        ) : null} */}
-                    </ModalGateway>
-
+                   
                 </div>
             </Layout>
         );
