@@ -94,7 +94,7 @@ class Workshop extends Component {
                 {this.state.selected_year == 0 ? (
                   <div>
                     <div
-                      className="text-white text-center"
+                      className="font-abrilface text-white text-center"
                       style={{ fontSize: "40px" }}
                     >
                       Year {obj}
@@ -111,7 +111,7 @@ class Workshop extends Component {
                 ) : obj == this.state.selected_year ? (
                   <div>
                     <div
-                      className="text-white text-center"
+                      className="font-abrilface text-white text-center"
                       style={{ fontSize: "40px" }}
                     >
                       Year {obj}
