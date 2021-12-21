@@ -54,7 +54,7 @@ class Workshop extends Component {
       <Layout>
         <div className="bg-black">
           <header className="head my-5">
-            <div className="text-center font-serif text-7xl py-12 text-white">
+            <div className="font-abrilface text-center font-serif text-7xl py-12 text-white">
               {" "}
               WORKSHOPS
             </div>

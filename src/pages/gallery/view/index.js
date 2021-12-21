@@ -122,7 +122,7 @@ export default class Images extends Component {
     render() {
         return (
             <Layout>
-                <h1 className="text-5xl font-bold text-center mt-16 sm:text-7xl md:text-8xl">{this.state.title}</h1>
+                <h1 className="text-5xl text-center mt-16 sm:text-7xl md:text-8xl font-abrilface">{this.state.title}</h1>
                 {this.state.FullImageCard && (
             <div id="overlay">
               <div
