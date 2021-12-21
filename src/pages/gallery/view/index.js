@@ -74,7 +74,7 @@ export default class Images extends Component {
                         rs[i].height = 2;
                     }
                 }
-                this.setState({ data: photos });
+                this.setState({ data: rs });
                 console.log(photos);
             })
             .catch((err) => {

@@ -3,7 +3,7 @@ import Layout from "components/UI/Layout/Layout";
 import { Link } from "gatsby";
 import "assets/styles/gallery.css";
 
-export default class GallerySecondary extends Component {
+export default class Gallery extends Component {
   constructor(props) {
     super(props);
     this.state = {};
