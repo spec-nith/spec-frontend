@@ -12,11 +12,11 @@ function TeamCard(props) {
       <div className="overflow-hidden flex flex-col justify-center items-center w-full sticky shadow-lg hover:shadow-2xl transition duration-500 transform hover:scale-105 ">
         <div className="col-md-4 col-sm-6 col-xs-12 ">
           <article className="team-card Red relative h-0 mb-14 text-xl m-0 leading-6  ">
-            <h2 className="absolute left-0   w-full">
+            <h2 className="absolute left-0   w-full pt-2 pb-2">
               <span className="text-xl text-white px-4 block">
                 {props.data.name}
               </span>
-              <strong className="text-base text-gray-800 font-normal team_post px-4 block pt-3 pb-4">
+              <strong className="text-base text-gray-900 font-normal team_post px-4 block pt-1 pb-3">
                 {props.data.title == "Coordinator" ? (
                   <a className="text-white">
                     {" "}
@@ -36,7 +36,7 @@ function TeamCard(props) {
                 {props.data.title}
               </strong>
               <div className="team_socials">
-                <div className="team_icons relative -top-20 pt-1 ">
+                <div className="team_icons relative -top-20 pt-3 ">
                   <div>
                     {" "}
                     {props.data.github_id && (
@@ -69,9 +69,8 @@ function TeamCard(props) {
               </div>
             </h2>
             <div className="absolute top-0 right-0 bottom-4 left-4">
-              <div className="img-container overflow-hidden absolute top-0 left-0 w-full h-full">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F5d%2F3f%2F65%2F5d3f65e285db1fa2855a9c48c61499f9.jpg&f=1&nofb=1" />
-                {/* <img src={props.data.profile_pic_url} alt={props.data.name} /> */}
+              <div className="img-container overflow-hidden absolute top-0 left-0 w-full h-full"> 
+                <img src={props.data.profile_pic_url} alt={props.data.name} />
               </div>
             </div>
             <div>
