@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 import React, { Component } from "react";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
 import Gallery from "react-photo-gallery";
+=======
+import React, { Component, useState, useCallback } from "react";
+import Layout from "components/UI/Layout/Layout";
+import axios from "axios";
+import Gallery from "react-photo-gallery";
+import Carousel, { Modal, ModalGateway } from "react-images";
+>>>>>>> 26fcad6ce42096f024d2390dcf854e8c1f408cbd
 import { photos } from "./photos";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {galleryURL} from "../../../components/Routes";
@@ -10,7 +18,11 @@ import {
   faChevronLeft,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
+<<<<<<< HEAD
 import "assets/styles/gallery.css";
+=======
+import "../../../assets/styles/gallery.css";
+>>>>>>> 26fcad6ce42096f024d2390dcf854e8c1f408cbd
 export default class Images extends Component {
     constructor(props) {
         super(props);
@@ -22,6 +34,7 @@ export default class Images extends Component {
             title: this.props.location.search.slice(6),
             currentImage: 0,
             viewerIsOpen: false
+<<<<<<< HEAD
         };
         
     }
@@ -45,6 +58,16 @@ export default class Images extends Component {
                 }
                 rs.sort(select);
                 console.log(rs);
+=======
+
+        };
+    }
+    async componentDidMount() {
+        await axios
+            .get("https://spec-backend.herokuapp.com/api/gallery/?event=" + this.state.title)
+            .then((response) => {
+                let rs = response.data;
+>>>>>>> 26fcad6ce42096f024d2390dcf854e8c1f408cbd
                 for (let i = 0; i < response.data.length; i++) {
                     rs[i].src = response.data[i].thumb_image_url;
                     rs[i].width = 3;
@@ -74,13 +97,22 @@ export default class Images extends Component {
                         rs[i].height = 2;
                     }
                 }
+<<<<<<< HEAD
                 this.setState({ data: photos });
                 console.log(photos);
+=======
+                
+                this.setState({ data: photos });
+                console.log(photos);
+
+
+>>>>>>> 26fcad6ce42096f024d2390dcf854e8c1f408cbd
             })
             .catch((err) => {
                 console.log(err);
             });
     }
+<<<<<<< HEAD
     openLightbox = (event, { photo, index }) => {
         this.setState({ currentImage: index, viewerIsOpen: true })
         this.showImage(photo,index);
@@ -93,6 +125,24 @@ export default class Images extends Component {
         this.setState({
             FullImageCard: true,
             imageUrl: url,
+=======
+
+    openLightbox = (event, { photo, index }) => {
+        console.log('awftsf');
+        this.setState({ currentImage: index, viewerIsOpen: true })
+        this.showImage(photo,index);
+
+    };
+
+    closeLightbox = () => {
+        this.setState({ currentImage: 0, viewerIsOpen: false })
+
+    };
+    showImage = (img, ind) => {
+        this.setState({
+            FullImageCard: true,
+            imageUrl: img,
+>>>>>>> 26fcad6ce42096f024d2390dcf854e8c1f408cbd
             currentIndex: ind,
         });
     }
@@ -105,6 +155,7 @@ export default class Images extends Component {
                 currentIndex: ind - 1,
             });
         }
+<<<<<<< HEAD
     }
     showNext = (ind) => {
         if (ind < this.state.data.length - 1) {
@@ -121,6 +172,27 @@ export default class Images extends Component {
     }
     render() {
         return (
+=======
+
+    }
+    showNext = (ind) => {
+        if (ind < this.state.data.length - 1) {
+            let url = this.state.data[ind + 1].image_url;
+            this.setState({
+                FullImageCard: true,
+                imageUrl: url,
+                currentIndex: ind + 1,
+            });
+        }
+    }
+    exitButton = () => {
+        this.setState({ FullImageCard: false });
+    }
+    render() {
+
+        return (
+            
+>>>>>>> 26fcad6ce42096f024d2390dcf854e8c1f408cbd
             <Layout>
                 <h1 className="text-5xl font-bold text-center mt-16 sm:text-7xl md:text-8xl">{this.state.title}</h1>
                 {this.state.FullImageCard && (
@@ -138,7 +210,11 @@ export default class Images extends Component {
               <div
                 id="nextButton"
                 className={
+<<<<<<< HEAD
                   this.state.currentIndex === this.state.data.length - 1
+=======
+                  this.state.currentIndex == this.state.data.length - 1
+>>>>>>> 26fcad6ce42096f024d2390dcf854e8c1f408cbd
                     ? "gallery-disabled"
                     : "nextButton"
                 }
@@ -151,10 +227,31 @@ export default class Images extends Component {
               </div>
             </div>
           )}
+<<<<<<< HEAD
           
                 <div className="mx-8 lg:mx-16 2xl:mx-32 mt-16 pb-32">
                     <Gallery photos={this.state.data} onClick={this.openLightbox} />
                 <div className="mt-10"></div>
+=======
+                <div className="mx-32 my-16">
+
+                    <Gallery photos={photos} onClick={this.openLightbox} />
+                    <ModalGateway>
+                        {/* {this.state.viewerIsOpen ? (
+                            <Modal onClose={this.closeLightbox}>
+                                <Carousel
+                                    currentIndex={this.state.currentImage}
+                                    views={photos.map(x => ({
+                                        ...x,
+                                        srcset: x.srcSet,
+                                        caption: x.title
+                                    }))}
+                                />
+                            </Modal>
+                        ) : null} */}
+                    </ModalGateway>
+
+>>>>>>> 26fcad6ce42096f024d2390dcf854e8c1f408cbd
                 </div>
             </Layout>
         );
