@@ -13,30 +13,53 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #555; }
 .batch {
-  text-align: center;
+  text-align: left;
+  margin-left: 8.5vw;
+  margin-bottom: 5px;
   font-size: 30px;
+  font-family: 'Josefin Sans';
   color: white;
   font-weight: bold;
-  background-color: #1F1F1F;}
-.name{
-  color: gainsboro;}
+  background-color: #000000;}
 .alumni_icon{
   position: relative;
   left: 90%;
-  top:-3.6rem;}
+  top:-4rem;}
 .alumni_batch{
   position: relative;
-  left: 90%;
-  top:0.5rem;}
+  top:0.2rem;}
 .our_alumni{
-  font-family: 'Abril Fatface';
+  font-family: 'Montserrat';
   font-size: 45px;}
-.text{
+.bottom_text{
   color: rgb(161, 159, 158);
   font-family: 'Josefin Sans', sans-serif;}
-.hide{
-  display:none;}
-.card{
+.card_bg{
   background-color: #353535;}
 .alumni_bg{
-  background-color: #1F1F1F;}
+  background-color: #000000;}
+.years {
+padding:5px;
+text-align: center;
+font-size:16px;
+font-family: 'Josefin Sans';
+font-weight: 500;
+border-radius: 20px;
+margin:1rem 10.5vw 1rem 0;
+background-color: #000000;
+color: white;
+border: 1px solid white; /* Green */
+cursor: pointer;
+appearance: none;
+-webkit-appearance: none;
+-moz-appearance:none;}
+.fa-filter{
+  color:white;
+  position:relative;
+  top:-3.4rem}
+.alumni_res{
+  display: flex;}
+@media screen and (max-width:500px) {
+   .alumni_res{
+    display: block;
+  }} 
