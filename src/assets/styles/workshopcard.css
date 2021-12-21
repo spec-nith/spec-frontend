@@ -6,22 +6,19 @@
 	 --font-sans: 'Rubik', sans-serif;
 	 --font-serif: 'Cardo', serif;
 }
- * {
-	 box-sizing: border-box;
-}
- html, body {
-	 height: 100%;
-}
- body {
+
+
+.workshop-card-section{
 	 display: grid;
 	 place-items: center;
+	 box-sizing: border-box;
 }
- .page-content {
+ .workshop-page-content {
 	 grid-gap: 6rem;
 	 /* margin: 0 auto; */
 	 font-family: var(--font-sans);
 }
-.card {
+.workshop-card {
 	background-repeat: no-repeat;
 	background-size: 300px 419px;
 	opacity: 0.7;
@@ -29,32 +26,31 @@
 	height: 419px;
 }
  @media (min-width: 600px) {
-	 .page-content {
+	 .workshop-page-content {
 		 grid-template-columns: repeat(4, 1fr);
 	}
 }
  @media (max-width: 600px) {
-	 .page-content {
+	 .workshop-page-content {
 		 grid-template-columns: repeat(2, 1fr);
 	}
-	.card {
+	.workshop-card {
 		width: 300px;
 	height: 419px;
 	}
 }
 @media (max-width: 400px) {
-	.page-content {
+	.workshop-page-content {
 		grid-template-columns: repeat(1, 1fr);
    }
 
-   .card{
-	   /* margin-left: 72px;
-	   margin-right: 72px; */
+   .workshop-card{
+	  
 
 	   margin: auto;
    }
 }
- .card:before {
+ .workshop-card:before {
 	 content: '';
 	 position: absolute;
 	 top: 0;
@@ -66,7 +62,7 @@
 	 transition: transform calc(var(--d) * 1.5) var(--e);
 	 pointer-events: none;
 }
- .card:after {
+ .workshop-card:after {
 	 content: '';
 	 display: block;
 	 position: absolute;
@@ -79,55 +75,55 @@
 	 transform: translateY(-50%);
 	 transition: transform calc(var(--d) * 2) var(--e);
 }
- .content {
+ .workshop-content {
 	 transition: transform var(--d) var(--e);
 	 z-index: 1;
 }
- .content > * + * {
+ .workshop-content > * + * {
 	 margin-top: 1rem;
 }
- .btn {
+ .workshop-btn {
 	 padding: 0.75rem 1.5rem;
 	 letter-spacing: 0.025rem;
 	 border: none;
 }
- .btn:hover {
+ .workshop-btn:hover {
 	 background-color: #0d0d0d;
 }
- .btn:focus {
+ .workshop-btn:focus {
 	 outline: 1px dashed yellow;
 	 outline-offset: 3px;
 }
  @media (hover: hover) and (min-width: 600px) {
-	 .card:after {
+	 .workshop-card:after {
 		 transform: translateY(0);
 	}
-	 .content {
+	 .workshop-content {
 		 transform: translateY(calc(100% - 4.5rem));
 	}
-	 .content > *:not(.title) {
+	 .workshop-content > *:not(.workshop-title) {
 		 opacity: 0;
 		 transform: translateY(1rem);
 		 transition: transform var(--d) var(--e), opacity var(--d) var(--e);
 	}
-	 .card:hover, .card:focus-within {
+	 .workshop-card:hover, .workshop-card:focus-within {
 		 align-items: center;
 	}
-	 .card:hover:before, .card:focus-within:before {
+	 .workshop-card:hover:before, .workshop-card:focus-within:before {
 		 transform: translateY(-4%);
 	}
-	 .card:hover:after, .card:focus-within:after {
+	 .workshop-card:hover:after, .workshop-card:focus-within:after {
 		 transform: translateY(-50%);
 	}
-	 .card:hover .content, .card:focus-within .content {
+	 .workshop-card:hover .workshop-content, .workshop-card:focus-within .workshop-content {
 		 transform: translateY(0);
 	}
-	 .card:hover .content > *:not(.title), .card:focus-within .content > *:not(.title) {
+	 .workshop-card:hover .workshop-content > *:not(.workshop-title), .workshop-card:focus-within .workshop-content > *:not(.workshop-title) {
 		 opacity: 1;
 		 transform: translateY(0);
 		 transition-delay: calc(var(--d) / 8);
 	}
-	 .card:focus-within:before, .card:focus-within:after, .card:focus-within .content, .card:focus-within .content > *:not(.title) {
+	 .workshop-card:focus-within:before, .workshop-card:focus-within:after, .workshop-card:focus-within .workshop-content, .workshop-card:focus-within .workshop-content > *:not(.workshop-title) {
 		 transition-duration: 0s;
 	}
 }
