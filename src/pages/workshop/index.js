@@ -4,6 +4,7 @@ import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
 import WorkshopCard from "../../components/UI/Card/WorkshopCard";
 import "react-tabs/style/react-tabs.css";
+import "assets/styles/workshopcard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 
@@ -98,7 +99,7 @@ class Workshop extends Component {
                     >
                       Year {obj}
                     </div>
-                    <div className="page-content grid p-4">
+                    <div className="workshop-page-content grid p-4">
                       {this.state.dummy.map(
                         (element) =>
                           this.datTimeHandler(element.event_date) === obj && (
@@ -115,7 +116,7 @@ class Workshop extends Component {
                     >
                       Year {obj}
                     </div>
-                    <div className="page-content grid p-4 max-w-screen-lg">
+                    <div className="workshop-page-content grid p-4 max-w-screen-lg">
                       {this.state.dummy.map(
                         (element) =>
                           this.datTimeHandler(element.event_date) === obj && (

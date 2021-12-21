@@ -22,17 +22,18 @@ export default function WorkshopCard({ shop }) {
   };
   return (
     <>
+    <section className="workshop-card-section">
       <div
-        className="card relative flex items-end overflow-hidden p-4 w-4/5 text-center border-black-700 border-2 rounded-lg "
+        className="workshop-card relative flex items-end overflow-hidden p-4 w-4/5 text-center border-black-700 border-2 rounded-lg "
         style={{ backgroundImage: `url(${shop.cover_url})` }}
       >
-        <div className="content relative flex flex-col items-center w-full p-4">
-          <h2 className="title text-xl font-bold text-white">{shop.title}</h2>
+        <div className="workshop-content relative flex flex-col items-center w-full p-4">
+          <h2 className="workshop-title text-xl font-bold text-white">{shop.title}</h2>
           <p className="copy text-lg italic text-white"> At {shop.venue}</p>
           <button
             id="open-btn"
             onClick={handleopenbtn}
-            className="btn cursor-pointer mt-6 text-xs font-bold uppercase text-white bg-black"
+            className="workshop-btn cursor-pointer mt-6 text-xs font-bold uppercase text-white bg-black"
           >
             Read More
           </button>
@@ -62,6 +63,7 @@ export default function WorkshopCard({ shop }) {
           </div>
         </div>
       </div>
+      </section>
     </>
   );
 }

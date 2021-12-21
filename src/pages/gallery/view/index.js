@@ -1,8 +1,7 @@
-import React, { Component, useState, useCallback } from "react";
+import React, { Component } from "react";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
 import Gallery from "react-photo-gallery";
-import Carousel, { Modal, ModalGateway } from "react-images";
 import { photos } from "./photos";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {galleryURL} from "../../../components/Routes";
@@ -11,7 +10,7 @@ import {
   faChevronLeft,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-import "../../../assets/styles/gallery.css";
+import "assets/styles/gallery.css";
 export default class Images extends Component {
     constructor(props) {
         super(props);
@@ -23,14 +22,29 @@ export default class Images extends Component {
             title: this.props.location.search.slice(6),
             currentImage: 0,
             viewerIsOpen: false
-
         };
+        
     }
     async componentDidMount() {
+        let url = "/?event=" + this.state.title;
+        if(this.state.title ==="Random"){
+            url = "";
+        }
+        console.log(this.state.url);
         await axios
-            .get("https://spec-backend.herokuapp.com/api/gallery/?event=" + this.state.title)
+            .get(galleryURL + url)
             .then((response) => {
                 let rs = response.data;
+                function select(a,b){
+                    if(a.year>b.year){
+                        return 1;
+                    }
+                    else{
+                        return -1;
+                    }
+                }
+                rs.sort(select);
+                console.log(rs);
                 for (let i = 0; i < response.data.length; i++) {
                     rs[i].src = response.data[i].thumb_image_url;
                     rs[i].width = 3;
@@ -60,32 +74,25 @@ export default class Images extends Component {
                         rs[i].height = 2;
                     }
                 }
-                
                 this.setState({ data: photos });
                 console.log(photos);
-
-
             })
             .catch((err) => {
                 console.log(err);
             });
     }
-
     openLightbox = (event, { photo, index }) => {
-        console.log('awftsf');
         this.setState({ currentImage: index, viewerIsOpen: true })
         this.showImage(photo,index);
-
     };
-
     closeLightbox = () => {
         this.setState({ currentImage: 0, viewerIsOpen: false })
-
     };
     showImage = (img, ind) => {
+        let url = this.state.data[ind].image_url;
         this.setState({
             FullImageCard: true,
-            imageUrl: img,
+            imageUrl: url,
             currentIndex: ind,
         });
     }
@@ -98,7 +105,6 @@ export default class Images extends Component {
                 currentIndex: ind - 1,
             });
         }
-
     }
     showNext = (ind) => {
         if (ind < this.state.data.length - 1) {
@@ -114,9 +120,7 @@ export default class Images extends Component {
         this.setState({ FullImageCard: false });
     }
     render() {
-
         return (
-            
             <Layout>
                 <h1 className="text-5xl font-bold text-center mt-16 sm:text-7xl md:text-8xl">{this.state.title}</h1>
                 {this.state.FullImageCard && (
@@ -134,7 +138,7 @@ export default class Images extends Component {
               <div
                 id="nextButton"
                 className={
-                  this.state.currentIndex == this.state.data.length - 1
+                  this.state.currentIndex === this.state.data.length - 1
                     ? "gallery-disabled"
                     : "nextButton"
                 }
@@ -147,24 +151,10 @@ export default class Images extends Component {
               </div>
             </div>
           )}
-                <div className="mx-32 my-16">
-
-                    <Gallery photos={photos} onClick={this.openLightbox} />
-                    <ModalGateway>
-                        {/* {this.state.viewerIsOpen ? (
-                            <Modal onClose={this.closeLightbox}>
-                                <Carousel
-                                    currentIndex={this.state.currentImage}
-                                    views={photos.map(x => ({
-                                        ...x,
-                                        srcset: x.srcSet,
-                                        caption: x.title
-                                    }))}
-                                />
-                            </Modal>
-                        ) : null} */}
-                    </ModalGateway>
-
+          
+                <div className="mx-8 lg:mx-16 2xl:mx-32 mt-16 pb-32">
+                    <Gallery photos={this.state.data} onClick={this.openLightbox} />
+                <div className="mt-10"></div>
                 </div>
             </Layout>
         );
