@@ -4,6 +4,7 @@ import axios from "axios";
 import Gallery from "react-photo-gallery";
 import { photos } from "./photos";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {galleryURL} from "../../../components/Routes";
 import {
   faChevronRight,
   faChevronLeft,
@@ -22,12 +23,28 @@ export default class Images extends Component {
             currentImage: 0,
             viewerIsOpen: false
         };
+        
     }
     async componentDidMount() {
+        let url = "/?event=" + this.state.title;
+        if(this.state.title ==="Random"){
+            url = "";
+        }
+        console.log(this.state.url);
         await axios
-            .get("https://spec-backend.herokuapp.com/api/gallery/?event=" + this.state.title)
+            .get(galleryURL + url)
             .then((response) => {
                 let rs = response.data;
+                function select(a,b){
+                    if(a.year>b.year){
+                        return 1;
+                    }
+                    else{
+                        return -1;
+                    }
+                }
+                rs.sort(select);
+                console.log(rs);
                 for (let i = 0; i < response.data.length; i++) {
                     rs[i].src = response.data[i].thumb_image_url;
                     rs[i].width = 3;
@@ -65,7 +82,6 @@ export default class Images extends Component {
             });
     }
     openLightbox = (event, { photo, index }) => {
-        console.log('awftsf');
         this.setState({ currentImage: index, viewerIsOpen: true })
         this.showImage(photo,index);
     };
@@ -137,7 +153,7 @@ export default class Images extends Component {
           )}
           
                 <div className="mx-8 lg:mx-16 2xl:mx-32 mt-16 pb-32">
-                    <Gallery photos={photos} onClick={this.openLightbox} />
+                    <Gallery photos={this.state.data} onClick={this.openLightbox} />
                 <div className="mt-10"></div>
                 </div>
             </Layout>
