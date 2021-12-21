@@ -4,6 +4,8 @@ import React, { Component, useState } from "react";
 import { teamURL } from "components/Routes";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
 class TeamPage extends Component {
   constructor() {
     super();
@@ -43,16 +45,16 @@ class TeamPage extends Component {
     return (
       <div className="team_body">
         <Layout>
-          <div className="flex justify-end">
+          <div className="flex justify-end mt-5 ">
+         <span className="mt-16 p-3 rounded-lg " > <FontAwesomeIcon icon={faFilter} size="1x" /></span>
             <select
-              class="posts"
+  
               onChange={this.Selected_Post}
-              className="mt-16 p-3 mr-3 rounded-lg"
-              
+              className="mt-16 mr-10 h-10 rounded-lg posts"
             >
-              <option value={" "}>Team Spec</option>
+              <option value={" "} className="team_post_option p-10">Team Spec</option>
               {team_posts.map((obj) => (
-                <option value={obj}>{obj}</option>
+                <option value={obj}className="team_post_option p-10">{obj}</option>
               ))}
             </select>
           </div>
@@ -62,10 +64,10 @@ class TeamPage extends Component {
               <div>
                 {this.state.dummy.find((e) => FinalYear.includes(e.title)) ? (
                   <h1 className="team_years text-white text-3xl text-center m-3">
-                    {this.state.selected_post}
+                    {this.state.selected_post +" Members"}
                   </h1>
                 ) : null}
-                <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12 flex justify-evenly">
+                <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 pb-12 flex justify-evenly">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {FinalYear.map((obj) => (
                       <>
@@ -85,9 +87,9 @@ class TeamPage extends Component {
             <>
               <div>
                 <h1 className="team_years text-white text-center text-3xl m-3">
-                  {this.state.selected_post}
+                  {this.state.selected_post +"s"}
                 </h1>
-                <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12 flex justify-center">
+                <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 pb-12 flex justify-center">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {this.state.dummy.map(
                       (element, index) =>
@@ -104,10 +106,10 @@ class TeamPage extends Component {
               <div>
                 {this.state.dummy.find((e) => FinalYear.includes(e.title)) ? (
                   <h1 className="team_years text-white text-3xl text-center m-3">
-                    Final Year
+                    Final Year Members
                   </h1>
                 ) : null}
-                <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12 flex justify-evenly">
+                <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 pb-12 flex justify-evenly">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {FinalYear.map((obj) => (
                       <>
@@ -131,7 +133,7 @@ class TeamPage extends Component {
                       </h1>
                     ) : null}
                     <h1 className="team_years"></h1>
-                    <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12 flex justify-center">
+                    <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 pb-12 flex justify-center">
                       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {this.state.dummy.map(
                           (element, index) =>
