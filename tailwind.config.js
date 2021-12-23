@@ -1,6 +1,8 @@
 module.exports = {
-  purge: ["./src/**/*.js"],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  important: true,
   theme: {
     fontFamily:{
       abrilface:['Abril Fatface, cursive'],
@@ -41,8 +43,5 @@ module.exports = {
        }
     },
   },
-  variants: {
-    extend: {},
-  },
   plugins: [],
-};
+}

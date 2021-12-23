@@ -4,8 +4,6 @@ import axios from "axios";
 import "assets/styles/alumni.css";
 import Layout from "components/UI/Layout/Layout";
 import { alumniURL } from "components/Routes";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from "react-responsive-carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 

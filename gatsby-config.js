@@ -2,19 +2,9 @@ module.exports = {
   pathPrefix: "/spec-frontend",
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
-    title: "Spec ",
+    title: "SPEC",
   },
   plugins: [
-    "gatsby-plugin-postcss",
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        postCssPlugins: [
-          require("tailwindcss"),
-          require("./tailwind.config.js"), // Optional: Load custom Tailwind CSS configuration
-        ],
-      },
-    },
     // {
     //   resolve: "gatsby-plugin-google-analytics",
     //   options: {
@@ -23,14 +13,6 @@ module.exports = {
     // },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
-    "gatsby-plugin-split-css",
-    {
-      resolve: "gatsby-plugin-manifest",
-      options: {
-        icon: "src/assets/images/logo.png",
-      },
-    },
-    "gatsby-plugin-resolve-src",
     "gatsby-plugin-mdx",
     {
       resolve: "gatsby-source-filesystem",
@@ -40,5 +22,9 @@ module.exports = {
       },
       __key: "pages",
     },
+    "gatsby-plugin-postcss",
+    "gatsby-plugin-fontawesome-css",
+    "gatsby-plugin-split-css",
+    "gatsby-plugin-resolve-src"
   ],
 };

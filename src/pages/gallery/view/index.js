@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
 import Gallery from "react-photo-gallery";
-import { photos } from "./photos";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {galleryURL} from "../../../components/Routes";
 import {
@@ -11,6 +10,9 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import "assets/styles/gallery.css";
+
+const photos = require("./photos.json");
+
 export default class Images extends Component {
     constructor(props) {
         super(props);
