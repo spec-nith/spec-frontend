@@ -32,7 +32,8 @@
   position: relative;
   width: auto;
 }
-.slider::before, .slider::after {
+.slider::before,
+.slider::after {
   /* background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%); */
   content: "";
   height: auto;
@@ -51,7 +52,7 @@
 }
 .slider .slide-track {
   -webkit-animation: scroll 40s linear infinite;
-          animation: scroll 40s linear infinite;
+  animation: scroll 40s linear infinite;
   display: flex;
   width: calc(250px * 14);
 }

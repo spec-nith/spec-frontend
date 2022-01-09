@@ -1,65 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@300;400;500&display=swap");
 ::-webkit-scrollbar {
   width: 5px;
-  height:10px;}
+  height: 10px;
+}
 /* Track */
 ::-webkit-scrollbar-track {
-  background: transparent; } 
+  background: transparent;
+}
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(53, 54, 56); 
-  border-radius:10px;}
+  background: rgb(53, 54, 56);
+  border-radius: 10px;
+}
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; }
+  background: #555;
+}
 .batch {
   text-align: left;
   margin-left: 8.5vw;
   margin-bottom: 5px;
   font-size: 30px;
-  font-family: 'Josefin Sans';
+  font-family: "Josefin Sans";
   color: white;
   font-weight: bold;
-  background-color: #000000;}
-.alumni_icon{
+  background-color: #000000;
+}
+.alumni_icon {
   position: relative;
   left: 90%;
-  top:-4rem;}
-.alumni_batch{
+  top: -4rem;
+}
+.alumni_batch {
   position: relative;
-  top:0.2rem;}
-.our_alumni{
-  font-family: 'Montserrat';
-  font-size: 45px;}
-.bottom_text{
+  top: 0.2rem;
+}
+.our_alumni {
+  font-family: "Montserrat";
+  font-size: 45px;
+}
+.bottom_text {
   color: rgb(161, 159, 158);
-  font-family: 'Josefin Sans', sans-serif;}
-.card_bg{
-  background-color: #353535;}
-.alumni_bg{
-  background-color: #000000;}
+  font-family: "Josefin Sans", sans-serif;
+}
+.card_bg {
+  background-color: #353535;
+}
+.alumni_bg {
+  background-color: #000000;
+}
 .years {
-padding:5px;
-text-align: center;
-font-size:16px;
-font-family: 'Josefin Sans';
-font-weight: 500;
-border-radius: 20px;
-margin:1rem 10.5vw 1rem 0;
-background-color: #000000;
-color: white;
-border: 1px solid white; /* Green */
-cursor: pointer;
-appearance: none;
--webkit-appearance: none;
--moz-appearance:none;}
-.fa-filter{
-  color:white;
-  position:relative;
-  top:-3.4rem}
-.alumni_res{
-  display: flex;}
-@media screen and (max-width:500px) {
-   .alumni_res{
+  padding: 5px;
+  text-align: center;
+  font-size: 16px;
+  font-family: "Josefin Sans";
+  font-weight: 500;
+  border-radius: 20px;
+  margin: 1rem 10.5vw 1rem 0;
+  background-color: #000000;
+  color: white;
+  border: 1px solid white; /* Green */
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+.fa-filter {
+  color: white;
+  position: relative;
+  top: -3.4rem;
+}
+.alumni_res {
+  display: flex;
+}
+@media screen and (max-width: 500px) {
+  .alumni_res {
     display: block;
-  }} 
+  }
+}

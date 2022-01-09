@@ -25,6 +25,7 @@ module.exports = {
     "gatsby-plugin-postcss",
     "gatsby-plugin-fontawesome-css",
     "gatsby-plugin-split-css",
-    "gatsby-plugin-resolve-src"
+    "gatsby-plugin-resolve-src",
+    "gatsby-plugin-typescript",
   ],
 };

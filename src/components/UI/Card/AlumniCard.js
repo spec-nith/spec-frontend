@@ -6,23 +6,32 @@ function spec({ person }) {
   return (
     <div className="card">
       <div>
-        <div className= "card_bg rounded-2xl overflow-hidden shadow-lg w-72 h-96 border border-indigo-600">
+        <div className="card_bg rounded-2xl overflow-hidden shadow-lg w-72 h-96 border border-indigo-600">
           <img
-            //  src={person.profile_pic_url}
-            src="https://image.oppo.com/content/dam/oppo/product-asset-library/a/a93/v1/sec-4-img-3.jpg"
+            src={person.profile_pic_url}
+            // src="https://image.oppo.com/content/dam/oppo/product-asset-library/a/a93/v1/sec-4-img-3.jpg"
             // src="https://image.freepik.com/free-photo/handsome-young-man-with-new-stylish-haircut_176420-19637.jpg"
             className="w-80 h-72 object-fill"
-            alt="img" />
+            alt="img"
+          />
           <div className=" bottom_text px-4 pt-1 w-auto ">
             <div className="text-left text-md">
               <ul className="">
-                <div className="alumni_batch text-sm font-normal pb-2">{person.batch}</div>
-                <li className="uppercase text-gray-200 font-bold">{person.name}</li>
-                <li className="uppercase font-normal text-xs text-gray-400">{person.company}</li>
-                <a className="alumni_icon"
+                <div className="alumni_batch text-sm font-normal pb-2">
+                  {person.batch}
+                </div>
+                <li className="uppercase text-gray-200 font-bold">
+                  {person.name}
+                </li>
+                <li className="uppercase font-normal text-xs text-gray-400">
+                  {person.company}
+                </li>
+                <a
+                  className="alumni_icon"
                   href={person.linkedin_id}
                   target="_blank"
-                  rel="noreferrer noopener">
+                  rel="noreferrer noopener"
+                >
                   <FontAwesomeIcon icon={faLinkedin} size="2x" />
                 </a>
               </ul>

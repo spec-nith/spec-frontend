@@ -2,21 +2,22 @@ import * as React from "react";
 import Layout from "components/UI/Layout/Layout";
 import ProjectCard from "components/UI/Card/ProjectCard";
 import Contain from "components/UI/Container/Container";
-import AboutCard from "components/UI/Card/AboutCard";
+import About from "components/Home/About";
 import { projectURL } from "components/Routes";
 import axios from "axios";
 import { data3 } from "assets/data/VisionData";
 import { projects } from "assets/data/ProjectData";
 import VisionCard from "components/UI/Card/VisionCard";
-import AwesomeSlider from 'react-awesome-slider';
-import withAutoplay from 'react-awesome-slider/dist/autoplay';
-import 'assets/styles/CarouselStyle.css'
+import AwesomeSlider from "react-awesome-slider";
+import withAutoplay from "react-awesome-slider/dist/autoplay";
+import "assets/styles/CarouselStyle.css";
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 class Home extends React.Component {
   state = {
     data: [],
+    pathName: this.props.location.pathname.split("/").pop(),
   };
   componentDidMount() {
     axios
@@ -32,23 +33,23 @@ class Home extends React.Component {
     const slider2 = (
       <AutoplaySlider
         play={true}
-        cancelOnInteraction={true} 
+        cancelOnInteraction={true}
         interval={5000}
         organicArrows={false}
       >
-      {data3.map(element=>(
-        <div className="bg-black h-auto">
+        {data3.map((element) => (
+          <div className="bg-black h-auto">
             <VisionCard key={element.id} vision={element} />
-            </div> 
-            ))}
+          </div>
+        ))}
       </AutoplaySlider>
     );
     return (
-      <Layout>
+      <Layout curLocation={this.state.pathName}>
         <div className="relative">
           <Contain title="SOCIETY FOR PROMOTION OF ELECTRONICS CULTURE" />
-           <div className="max-w-7xl mx-auto pt-6 pb-20 sm:px-6 lg:px-8">
-          <AboutCard />
+          <div className="max-w-7xl mx-auto pt-6 pb-20 sm:px-6 lg:px-8">
+            <About />
           </div>
           <Contain title="WHAT WE DO?" />
           <main>
@@ -63,7 +64,7 @@ class Home extends React.Component {
             </div>
           </main>
           <main>
-            <div className="max-w-5xl mx-auto py-6 pb-24 sm:px-6 lg:px-8" >
+            <div className="max-w-5xl mx-auto py-6 pb-24 sm:px-6 lg:px-8">
               {slider2}
             </div>
           </main>

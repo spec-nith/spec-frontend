@@ -61,16 +61,14 @@ class Workshop extends Component {
             <div className="flex flex-wrap justify-center text-center">
               <div className="h-48 mx-8 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 bg-gray-900 text-white rounded-lg align-center">
                 <p className="pt-5 px-1">
-                "Spec provides students to keep a beady eye with the ever
-                changing technology by holding workshops on many fascinating
-                topics. For instance, many workshops on Arduino, Photoshop, IOT,
-                Integrated circuits are held which ignites the passion for
-                electronics and technology among students."
+                  "Spec provides students to keep a beady eye with the ever
+                  changing technology by holding workshops on many fascinating
+                  topics. For instance, many workshops on Arduino, Photoshop,
+                  IOT, Integrated circuits are held which ignites the passion
+                  for electronics and technology among students."
                 </p>
               </div>
-              <div className="h-48 mx-8 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 bg-gray-900 text-white rounded-lg">
-               
-              </div>
+              <div className="h-48 mx-8 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 bg-gray-900 text-white rounded-lg"></div>
             </div>
           </header>
           <div className="flex mt-5">

@@ -105,13 +105,13 @@
 .gallery-disabled {
   opacity: 0;
 }
-.gallery-disabled:hover{
+.gallery-disabled:hover {
   opacity: 0;
 }
 
 @media (max-width: 800px) {
-  .gallery-main-boxes{
-      height:15rem;
+  .gallery-main-boxes {
+    height: 15rem;
   }
 }
 .gallery-main-boxes {
@@ -133,8 +133,8 @@
   border-radius: 10px;
   border: 1px solid black;
 }
-.gallery-main-boxes:hover{
+.gallery-main-boxes:hover {
   outline: 0.875rem solid rgba(0, 0, 0, 0.6);
-  opacity:0.9;
+  opacity: 0.9;
   transition: 300ms;
-} 
+}
