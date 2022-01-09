@@ -3,38 +3,43 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 function spec({ person }) {
-  return (<div style={{margin:'10px'}}>
-    <div className="">
-      <div className="card rounded overflow-hidden shadow-lg w-64 h-72 border border-indigo-600">
-
-        <img
-          //  src={person.profile_pic_url}
-          src="https://i.redd.it/aewgzghlaiq71.png"
-          className="w-64 h-48 sm:h-48 object-fill"
-          alt="img"
-        />
-        <div className=" text px-4 pt-1 w-auto ">
-          <div className="name font-bold text-left text-md mt-1 mb-0">
-          <ul className="pb-0">
-          <li className="uppercase mb-1">{person.name}
-          </li>
-          <li className="uppercase font-normal text-xs">{person.company}</li>
-          <div className="alumni_batch text-xs font-normal">{person.batch}
+  return (
+    <div className="card">
+      <div>
+        <div className="card_bg rounded-2xl overflow-hidden shadow-lg w-72 h-96 border border-indigo-600">
+          <img
+            src={person.profile_pic_url}
+            // src="https://image.oppo.com/content/dam/oppo/product-asset-library/a/a93/v1/sec-4-img-3.jpg"
+            // src="https://image.freepik.com/free-photo/handsome-young-man-with-new-stylish-haircut_176420-19637.jpg"
+            className="w-80 h-72 object-fill"
+            alt="img"
+          />
+          <div className=" bottom_text px-4 pt-1 w-auto ">
+            <div className="text-left text-md">
+              <ul className="">
+                <div className="alumni_batch text-sm font-normal pb-2">
+                  {person.batch}
+                </div>
+                <li className="uppercase text-gray-200 font-bold">
+                  {person.name}
+                </li>
+                <li className="uppercase font-normal text-xs text-gray-400">
+                  {person.company}
+                </li>
+                <a
+                  className="alumni_icon"
+                  href={person.linkedin_id}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <FontAwesomeIcon icon={faLinkedin} size="2x" />
+                </a>
+              </ul>
+            </div>
           </div>
-          <a className="alumni_icon"
-              href={person.linkedin_id}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-            <FontAwesomeIcon icon={faLinkedin} size="2x" />
-          </a> 
-          </ul>
-          </div> 
-
-        </div>
-        </div>
         </div>
       </div>
+    </div>
   );
 }
 export default spec;
