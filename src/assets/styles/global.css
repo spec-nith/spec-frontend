@@ -2,9 +2,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abel&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 body {
   background-color: rgb(19, 19, 23);
+}
+
+.section-content {
+  /* box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);	 */
+  position: relative;
+  /* box-shadow:  7px 7px 24px #4e4bbf,
+                             -7px -7px 24px #4e4bbf; */
+  background: inherit;
+  overflow: hidden;
+}
+
+.section-content:before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.2);
+  filter: blur(5px);
+  margin: -20px;
+}
+.bg-gradient{
+  background: rgb(0,0,0);
+  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(69,67,67,1) 50%, rgba(0,0,0,1) 100%);
 }

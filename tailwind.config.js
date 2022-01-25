@@ -9,6 +9,7 @@ module.exports = {
       monty:['Montserrat, sans-serif'],
       josefin:['Josefin Sans, sans-serif'],
       abel:['Abel, sans-serif'],
+      outfit:['Outfit, sans-serif'],
     },
     extend: {
       gridTemplateRows:{
