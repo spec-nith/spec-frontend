@@ -1,50 +1,56 @@
 @import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
-
 :root {
   --d: 700ms;
   --e: cubic-bezier(0.19, 1, 0.22, 1);
   --font-sans: "Rubik", sans-serif;
   --font-serif: "Cardo", serif;
 }
+.head {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1392' height='537' preserveAspectRatio='none' viewBox='0 0 1392 537'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2056%26quot%3b)' fill='none'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2058%26quot%3b)'%3e%3cpath d='M129.5 240.5L166.5 240.5M55.5 277.5L92.5 314.5L129.5 314.5L166.5 314.5M-18.5 277.5L18.5 277.5L55.5 277.5L92.5 277.5L129.5 240.5L166.5 203.5L203.5 203.5' stroke='url(%23SvgjsLinearGradient2057)' stroke-width='6.17'%3e%3c/path%3e%3cpath d='M194.25 203.5 a9.25 9.25 0 1 0 18.5 0 a9.25 9.25 0 1 0 -18.5 0zM157.25 240.5 a9.25 9.25 0 1 0 18.5 0 a9.25 9.25 0 1 0 -18.5 0zM157.25 314.5 a9.25 9.25 0 1 0 18.5 0 a9.25 9.25 0 1 0 -18.5 0z' fill='url(%23SvgjsLinearGradient2057)'%3e%3c/path%3e%3cpath d='M-18.5 240.5L18.5 240.5' stroke='url(%23SvgjsLinearGradient2057)' stroke-width='6.17'%3e%3c/path%3e%3cpath d='M9.25 240.5 a9.25 9.25 0 1 0 18.5 0 a9.25 9.25 0 1 0 -18.5 0z' fill='url(%23SvgjsLinearGradient2057)'%3e%3c/path%3e%3cpath d='M-18.5 314.5L18.5 314.5' stroke='url(%23SvgjsLinearGradient2057)' stroke-width='6.17'%3e%3c/path%3e%3cpath d='M9.25 314.5 a9.25 9.25 0 1 0 18.5 0 a9.25 9.25 0 1 0 -18.5 0z' fill='url(%23SvgjsLinearGradient2057)'%3e%3c/path%3e%3cpath d='M18.5 203.5L55.5 203.5M-18.5 203.5L18.5 203.5L55.5 166.5L92.5 166.5L129.5 166.5L166.5 166.5' stroke='url(%23SvgjsLinearGradient2057)' stroke-width='6.17'%3e%3c/path%3e%3cpath d='M157.25 166.5 a9.25 9.25 0 1 0 18.5 0 a9.25 9.25 0 1 0 -18.5 0zM46.25 203.5 a9.25 9.25 0 1 0 18.5 0 a9.25 9.25 0 1 0 -18.5 0z' fill='url(%23SvgjsLinearGradient2057)'%3e%3c/path%3e%3cpath d='M351.5 92.5L388.5 129.5M203.5 92.5L240.5 129.5L277.5 129.5M55.5 129.5L92.5 92.5L129.5 92.5M-18.5 166.5L18.5 166.5L55.5 129.5L92.5 129.5L129.5 129.5L166.5 92.5L203.5 92.5L240.5 92.5L277.5 92.5L314.5 92.5L351.5 92.5L388.5 92.5L425.5 92.5' stroke='url(%23SvgjsLinearGradient2057)' stroke-width='6.17'%3e%3c/path%3e%3cpath d='M416.25 92.5 a9.25 9.25 0 1 0 18.5 0 a9.25 9.25 0 1 0 -18.5 0zM379.25 129.5 a9.25 9.25 0 1 0 18.5 0 a9.25 9.25 0 1 0 -18.5 0zM268.25 129.5 a9.25 9.25 0 1 0 18.5 0 a9.25 9.25 0 1 0 -18.5 0zM120.25 92.5 a9.25 9.25 0 1 0 18.5 0 a9.25 9.25 0 1 0 -18.5 0z' fill='url(%23SvgjsLinearGradient2057)'%3e%3c/path%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2056'%3e%3crect width='1392' height='537' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='0' y1='268.5' x2='570.72' y2='268.5' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2057'%3e%3cstop stop-color='%233a7cc3' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(49%2c 18%2c 136%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3cmask id='SvgjsMask2058'%3e%3crect width='1392' height='537' fill='white'%3e%3c/rect%3e%3cpath d='M198.87 203.5 a4.63 4.63 0 1 0 9.26 0 a4.63 4.63 0 1 0 -9.26 0zM161.87 240.5 a4.63 4.63 0 1 0 9.26 0 a4.63 4.63 0 1 0 -9.26 0zM161.87 314.5 a4.63 4.63 0 1 0 9.26 0 a4.63 4.63 0 1 0 -9.26 0z' fill='black'%3e%3c/path%3e%3cpath d='M13.87 240.5 a4.63 4.63 0 1 0 9.26 0 a4.63 4.63 0 1 0 -9.26 0z' fill='black'%3e%3c/path%3e%3cpath d='M13.87 314.5 a4.63 4.63 0 1 0 9.26 0 a4.63 4.63 0 1 0 -9.26 0z' fill='black'%3e%3c/path%3e%3cpath d='M161.87 166.5 a4.63 4.63 0 1 0 9.26 0 a4.63 4.63 0 1 0 -9.26 0zM50.87 203.5 a4.63 4.63 0 1 0 9.26 0 a4.63 4.63 0 1 0 -9.26 0z' fill='black'%3e%3c/path%3e%3cpath d='M420.87 92.5 a4.63 4.63 0 1 0 9.26 0 a4.63 4.63 0 1 0 -9.26 0zM383.87 129.5 a4.63 4.63 0 1 0 9.26 0 a4.63 4.63 0 1 0 -9.26 0zM272.87 129.5 a4.63 4.63 0 1 0 9.26 0 a4.63 4.63 0 1 0 -9.26 0zM124.87 92.5 a4.63 4.63 0 1 0 9.26 0 a4.63 4.63 0 1 0 -9.26 0z' fill='black'%3e%3c/path%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e"),
+    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1600' height='537' preserveAspectRatio='none' viewBox='0 0 1392 537'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2107%26quot%3b)' fill='none'%3e%3cg mask='url(%26quot%3b%23SvgjsMask2109%26quot%3b)'%3e%3cpath d='M1267.5 253.5L1228.5 253.5L1189.5 253.5M1423.5 253.5L1384.5 253.5L1345.5 253.5L1306.5 253.5L1267.5 253.5L1228.5 214.5L1189.5 214.5' stroke='url(%23SvgjsLinearGradient2108)' stroke-width='6.5'%3e%3c/path%3e%3cpath d='M1179.75 214.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0zM1179.75 253.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0z' fill='url(%23SvgjsLinearGradient2108)'%3e%3c/path%3e%3cpath d='M1423.5 292.5L1384.5 292.5L1345.5 292.5L1306.5 292.5L1267.5 292.5L1228.5 292.5L1189.5 292.5' stroke='url(%23SvgjsLinearGradient2108)' stroke-width='6.5'%3e%3c/path%3e%3cpath d='M1179.75 292.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0z' fill='url(%23SvgjsLinearGradient2108)'%3e%3c/path%3e%3cpath d='M1072.5 136.5L1033.5 175.5M1111.5 175.5L1072.5 175.5M1150.5 175.5L1111.5 214.5M1423.5 214.5L1384.5 214.5L1345.5 214.5L1306.5 214.5L1267.5 214.5L1228.5 175.5L1189.5 175.5L1150.5 175.5L1111.5 175.5L1072.5 136.5L1033.5 136.5L994.5 136.5' stroke='url(%23SvgjsLinearGradient2108)' stroke-width='6.5'%3e%3c/path%3e%3cpath d='M984.75 136.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0zM1023.75 175.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0zM1062.75 175.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0zM1101.75 214.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0z' fill='url(%23SvgjsLinearGradient2108)'%3e%3c/path%3e%3cpath d='M1423.5 331.5L1384.5 331.5L1345.5 331.5L1306.5 331.5L1267.5 331.5' stroke='url(%23SvgjsLinearGradient2108)' stroke-width='6.5'%3e%3c/path%3e%3cpath d='M1257.75 331.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0z' fill='url(%23SvgjsLinearGradient2108)'%3e%3c/path%3e%3cpath d='M1306.5 175.5L1267.5 175.5M1423.5 175.5L1384.5 175.5L1345.5 175.5L1306.5 175.5L1267.5 136.5L1228.5 136.5L1189.5 136.5L1150.5 136.5L1111.5 136.5L1072.5 97.5L1033.5 97.5L994.5 97.5L955.5 97.5' stroke='url(%23SvgjsLinearGradient2108)' stroke-width='6.5'%3e%3c/path%3e%3cpath d='M945.75 97.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0zM1257.75 175.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0z' fill='url(%23SvgjsLinearGradient2108)'%3e%3c/path%3e%3cpath d='M1384.5 370.5L1345.5 409.5L1306.5 409.5M1267.5 370.5L1228.5 409.5L1189.5 409.5L1150.5 409.5M1423.5 370.5L1384.5 370.5L1345.5 370.5L1306.5 370.5L1267.5 370.5L1228.5 370.5' stroke='url(%23SvgjsLinearGradient2108)' stroke-width='6.5'%3e%3c/path%3e%3cpath d='M1218.75 370.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0zM1296.75 409.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0zM1140.75 409.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0z' fill='url(%23SvgjsLinearGradient2108)'%3e%3c/path%3e%3cpath d='M1384.5 136.5L1345.5 97.5L1306.5 97.5M1423.5 136.5L1384.5 136.5L1345.5 136.5L1306.5 136.5L1267.5 97.5L1228.5 97.5L1189.5 97.5L1150.5 97.5L1111.5 97.5' stroke='url(%23SvgjsLinearGradient2108)' stroke-width='6.5'%3e%3c/path%3e%3cpath d='M1101.75 97.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0zM1296.75 97.5 a9.75 9.75 0 1 0 19.5 0 a9.75 9.75 0 1 0 -19.5 0z' fill='url(%23SvgjsLinearGradient2108)'%3e%3c/path%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask2107'%3e%3crect width='1392' height='537' fill='white'%3e%3c/rect%3e%3c/mask%3e%3clinearGradient x1='821.28' y1='268.5' x2='1392' y2='268.5' gradientUnits='userSpaceOnUse' id='SvgjsLinearGradient2108'%3e%3cstop stop-color='%233a7cc3' offset='0'%3e%3c/stop%3e%3cstop stop-color='rgba(49%2c 18%2c 136%2c 1)' offset='1'%3e%3c/stop%3e%3c/linearGradient%3e%3cmask id='SvgjsMask2109'%3e%3crect width='1392' height='537' fill='white'%3e%3c/rect%3e%3cpath d='M1184.62 214.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0zM1184.62 253.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0z' fill='black'%3e%3c/path%3e%3cpath d='M1184.62 292.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0z' fill='black'%3e%3c/path%3e%3cpath d='M989.62 136.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0zM1028.62 175.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0zM1067.62 175.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0zM1106.62 214.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0z' fill='black'%3e%3c/path%3e%3cpath d='M1262.62 331.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0z' fill='black'%3e%3c/path%3e%3cpath d='M950.62 97.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0zM1262.62 175.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0z' fill='black'%3e%3c/path%3e%3cpath d='M1223.62 370.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0zM1301.62 409.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0zM1145.62 409.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0z' fill='black'%3e%3c/path%3e%3cpath d='M1106.62 97.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0zM1301.62 97.5 a4.88 4.88 0 1 0 9.76 0 a4.88 4.88 0 1 0 -9.76 0z' fill='black'%3e%3c/path%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
 
+  background-repeat: no-repeat;
+}
 .workshop-card-section {
   display: grid;
   place-items: center;
   box-sizing: border-box;
 }
 .workshop-page-content {
-  grid-gap: 6rem;
-  /* margin: 0 auto; */
+  grid-gap: 3rem;
+  margin: auto;
   font-family: var(--font-sans);
+  width: 100%;
 }
 .workshop-card {
   background-repeat: no-repeat;
   background-size: 300px 419px;
-  opacity: 0.7;
-  width: 300px;
-  height: 419px;
+  opacity: 0.5;
+  width: 90%;
+  height: 26rem;
 }
-@media (min-width: 600px) {
+@media (min-width: 1000px) {
   .workshop-page-content {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
   .workshop-page-content {
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
   }
   .workshop-card {
-    width: 300px;
-    height: 419px;
+    width: 310px;
+    height: 26rem;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 650px) {
   .workshop-page-content {
     grid-template-columns: repeat(1, 1fr);
   }
-
   .workshop-card {
     margin: auto;
+    width: 310px;
   }
 }
 .workshop-card:before {

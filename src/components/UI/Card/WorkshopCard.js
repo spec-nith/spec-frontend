@@ -1,25 +1,12 @@
 import React from "react";
+import { useState } from "react";
 // import GridLayout from 'react-grid-layout';
 import "assets/styles/workshopcard.css";
 
 export default function WorkshopCard({ shop }) {
   console.log(shop);
 
-  let modal = document.getElementById("my-modal");
-
-  const handleopenbtn = () => {
-    modal.style.display = "block";
-  };
-
-  const handleokbtn = () => {
-    modal.style.display = "none";
-  };
-
-  window.onclick = (event) => {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  };
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
       <section className="workshop-card-section">
@@ -34,37 +21,51 @@ export default function WorkshopCard({ shop }) {
             <p className="copy text-lg italic text-white"> At {shop.venue}</p>
             <button
               id="open-btn"
-              onClick={handleopenbtn}
+              onClick={() => setShowModal(true)}
               className="workshop-btn cursor-pointer mt-6 text-xs font-bold uppercase text-white bg-black"
             >
               Read More
             </button>
           </div>
         </div>
-        <div
-          className="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-20"
-          id="my-modal"
-        >
-          <div className="relative top-20 mx-auto p-5 border w-5/12 rounded-md bg-white">
-            <div className="mt-3 text-center">
-              <h3 className="text-xl leading-6 font-medium text-red-700">
-                {shop.title}
-              </h3>
-              <div className="mt-2 px-7 py-3">
-                <p className="text-lg text-black">{shop.description}</p>
-              </div>
-              <div className="items-center px-4 py-3">
-                <button
-                  onClick={handleokbtn}
-                  id="ok-btn"
-                  className="px-4 py-2 bg-black text-white text-base font-medium rounded-md w-full shadow-sm hover:bg-black-600 focus:outline-none focus:ring-2 focus:ring-green-300"
-                >
-                  OK
-                </button>
+        {showModal ? (
+          <>
+            <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+              <div className="relative w-auto my-6 mx-auto max-w-3xl">
+                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                  <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t text-center">
+                    <h3 className="text-3xl font-semibold text-blue-900">
+                      {shop.title}
+                    </h3>
+                    <button
+                      className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                      onClick={() => setShowModal(false)}
+                    >
+                      <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                        ×
+                      </span>
+                    </button>
+                  </div>
+                  <div className="relative p-6 flex-auto">
+                    <p className="my-4 text-black text-lg leading-relaxed">
+                      {shop.description}
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
+                    <button
+                      className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      type="button"
+                      onClick={() => setShowModal(false)}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+          </>
+        ) : null}
       </section>
     </>
   );
