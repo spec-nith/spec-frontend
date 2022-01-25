@@ -14,6 +14,7 @@ import "assets/styles/CarouselStyle.css";
 
 const AutoplaySlider = withAutoplay(AwesomeSlider);
 
+
 class Home extends React.Component {
   state = {
     data: [],
