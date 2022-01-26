@@ -53,7 +53,7 @@ const About = () => {
             {data.map((image, index) => {
               return (
                 <SwiperSlide>
-                  <img src={image} key={index} className="" />
+                  <img src={image} key={index} className="" alt="carousel img" />
                 </SwiperSlide>
               );
             })}
