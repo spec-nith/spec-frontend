@@ -57,7 +57,7 @@ class Home extends React.Component {
           <main>
             <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 flex justify-center">
               <div className="px-4 py-6 sm:px-0">
-                <div className="rounded-lg h-auto grid gap-x-14 gap-y-20 sm:grid-cols-1 md:grid-cols-2 justify-center">
+                <div className="rounded-lg h-auto grid gap-x-36 gap-y-24 sm:grid-cols-1 md:grid-cols-2 justify-center">
                   {projects.map((element) => (
                     <ProjectCard key={element.id} project={element} />
                   ))}

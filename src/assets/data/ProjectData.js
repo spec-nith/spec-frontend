@@ -19,19 +19,19 @@ export const projects = [
   {
     title: "Embedded Systems",
     content:
-      "An embedded system is a microprocessor-based computer hardware system with software",
+      "An embedded system is a microprocessor-based computer hardware system with software.",
     image: "images/embedded.jpg",
   },
   {
     title: "Internet of Things",
     content:
-      "The interconnection via the internet of computing devices embedded in everyday objects",
+      "The interconnection via the internet of computing devices embedded in everyday objects.",
     image: "images/iot.jpg",
   },
   {
     title: "App Development",
     content:
-      "App Development refers to the creation of computer applications for use on mobile devices",
+      "App Development refers to the creation of computer applications for use on mobile devices.",
     image: "images/app.jpg",
   },
 ];
