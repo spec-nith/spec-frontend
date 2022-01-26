@@ -4,11 +4,12 @@ import Footer from "components/UI/Footer/Footer";
 
 const Layout = (props) => {
   return (
-    <React.Fragment>
+    <div className="bg-gradient">
+      
       <Navbar curLocation={props.curLocation} />
       <div className=" text-white pt-14">{props.children}</div>
       <Footer />
-    </React.Fragment>
+    </div>
   );
 };
 export default Layout;

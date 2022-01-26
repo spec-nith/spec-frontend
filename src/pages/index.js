@@ -8,11 +8,9 @@ import axios from "axios";
 import { data3 } from "assets/data/VisionData";
 import { projects } from "assets/data/ProjectData";
 import VisionCard from "components/UI/Card/VisionCard";
-import AwesomeSlider from "react-awesome-slider";
-import withAutoplay from "react-awesome-slider/dist/autoplay";
-import "assets/styles/CarouselStyle.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, Autoplay } from "swiper";
 
-const AutoplaySlider = withAutoplay(AwesomeSlider);
 
 class Home extends React.Component {
   state = {
@@ -31,18 +29,22 @@ class Home extends React.Component {
   }
   render() {
     const slider2 = (
-      <AutoplaySlider
-        play={true}
-        cancelOnInteraction={true}
-        interval={5000}
-        organicArrows={false}
-      >
-        {data3.map((element) => (
-          <div className="bg-black h-auto">
-            <VisionCard key={element.id} vision={element} />
-          </div>
-        ))}
-      </AutoplaySlider>
+      <Swiper
+            modules={[Pagination, Autoplay]}
+            pagination={{ clickable: true }}
+            loop={true}
+            autoplay={{delay: 2500}}
+            spaceBetween={0}
+            slidesPerView={1}
+          >
+            {data3.map((element, index) => {
+              return (
+                <SwiperSlide>
+                  <VisionCard key={element.id} vision={element} />
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
     );
     return (
       <Layout curLocation={this.state.pathName}>
@@ -51,11 +53,11 @@ class Home extends React.Component {
           <div className="max-w-7xl mx-auto pt-6 pb-20 sm:px-6 lg:px-8">
             <About />
           </div>
-          <Contain title="WHAT WE DO?" />
+          <Contain title="What WE do?" >
           <main>
             <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 flex justify-center">
               <div className="px-4 py-6 sm:px-0">
-                <div className="rounded-lg h-auto grid lg:grid-cols-3 gap-x-14 gap-y-20 sm:grid-cols-1 md:grid-cols-2 justify-center">
+                <div className="rounded-lg h-auto grid gap-x-14 gap-y-20 sm:grid-cols-1 md:grid-cols-2 justify-center">
                   {projects.map((element) => (
                     <ProjectCard key={element.id} project={element} />
                   ))}
@@ -63,11 +65,14 @@ class Home extends React.Component {
               </div>
             </div>
           </main>
+          </Contain>
+          <Contain title="Our Vision?">
           <main>
             <div className="max-w-5xl mx-auto py-6 pb-24 sm:px-6 lg:px-8">
               {slider2}
             </div>
           </main>
+          </Contain>
         </div>
       </Layout>
     );

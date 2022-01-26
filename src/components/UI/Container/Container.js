@@ -4,7 +4,7 @@ const container = (props) => {
     <div>
       <header>
         <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-          <h1 className="text-5xl font-abrilface text-center">{props.title}</h1>
+          <h1 className="text-5xl font-outfit text-center">{props.title}</h1>
         </div>
       </header>
       {props.text ? (
@@ -18,6 +18,7 @@ const container = (props) => {
           </div>
         </main>
       ) : null}
+      {props.children}
     </div>
   );
 };
