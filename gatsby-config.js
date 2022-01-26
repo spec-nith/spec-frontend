@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: "/spec-frontend",
+  pathPrefix: "",
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
     title: "SPEC",
