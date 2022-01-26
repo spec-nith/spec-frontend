@@ -13,11 +13,30 @@ class Navbar extends Component {
   state = {
     isOpen: false,
     visible:true,
-    scrollPosition:0
+    scrollPosition:0,
+    isBg:false
   };
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleScroll);
+    var scrollComponent = this;
+    this._isMounted = true;
+    document.addEventListener("scroll", function (e) {
+      scrollComponent.toggleBg();
+    });
+  }
+  toggleBg() {
+    if (this._isMounted === true) {
+      if (window.pageYOffset > 100) {
+        this.setState({
+          isBg: true,
+        });
+      } else {
+        this.setState({
+          isBg: false,
+        });
+      }
+    }
   }
 
   handleScroll = debounce(() => {
@@ -43,7 +62,7 @@ class Navbar extends Component {
   render() {
     return (
       <React.Fragment>
-        <nav className={"flex fixed w-full items-center justify-between px-6 h-16 navbar-color text-white z-50 opacity-90 " + (!this.state.visible ? "scrolled-down" : "scrolled-up")}>
+        <nav className={"flex fixed w-full items-center justify-between px-6 h-16 navbar-color text-white z-50 opacity-90 " + (!this.state.visible ? "scrolled-down" : "scrolled-up")+(this.state.isBg ?" bg-zinc-800":null)}>
           <div className="flex justify-between w-full">
             <div className="md:hidden flex">
             <button
@@ -85,7 +104,8 @@ class Navbar extends Component {
               <div
                 onClick={this.drawerHandler}
                 className="absolute inset-0 navbar-color opacity-50"
-                tabIndex="0"
+                onKeyDown={this.drawerHandler}
+                role="button" tabIndex="0" aria-label="menu-btn"
               ></div>
             </div>
           </Transition>
@@ -96,6 +116,8 @@ class Navbar extends Component {
           >
             <span
               onClick={this.drawerHandler}
+              onKeyDown={this.drawerHandler}
+                role="button" tabIndex="0" aria-label="menu-btn"
               className="flex w-full items-center p-4 border-b"
             >
               <img src={logo} alt="Logo" className="h-16 w-16 mx-auto" />
@@ -117,8 +139,10 @@ class Navbar extends Component {
   }
 }
 
-export default (props) => (
+const nav= (props) => (
   <Location>
     {(locationProps) => <Navbar {...locationProps} {...props} />}
   </Location>
 );
+
+export default nav;

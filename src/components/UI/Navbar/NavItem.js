@@ -19,6 +19,8 @@ const NavItem = ({ item,icons }) => {
           "flex items-center p-4 hover:bg-indigo-500 hover:text-white " +
           (path && "bg-indigo-700 text-white")
         }
+        onKeyDown={item.clicked}
+        role="button" tabIndex="0" 
       >
        {icons && (<span className="mr-2">
           <FontAwesomeIcon className="text-lg" icon={item.icon}  />
@@ -31,6 +33,8 @@ const NavItem = ({ item,icons }) => {
     (<a target="_blank" rel="noopener noreferrer" href="https://drive.google.com/drive/folders/1_R5x_sAkFsrC4RRgPOygdzydzDhtHBOQ?usp=sharing">
       <span
         onClick={item.clicked}
+        onKeyDown={item.clicked}
+        role="button" tabIndex="0"
         className={
           "flex items-center p-4 hover:bg-indigo-500 hover:text-white " +
           (path && "bg-indigo-700 text-white")
