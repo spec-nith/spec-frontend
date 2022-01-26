@@ -51,7 +51,7 @@ class Home extends React.Component {
       <Layout curLocation={this.state.pathName}>
         <div className="relative">
           <Contain title="SOCIETY FOR PROMOTION OF ELECTRONICS CULTURE" />
-          <div className="max-w-7xl mx-auto pt-6 pb-20 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto pt-6 sm:px-6 lg:px-8">
             <About />
           </div>
           <Contain title="What WE do?" >
@@ -69,7 +69,7 @@ class Home extends React.Component {
           </Contain>
           <Contain title="Our Vision?">
           <main>
-            <div className="max-w-5xl mx-auto py-6 pb-24 sm:px-6 lg:px-8">
+            <div className="max-w-5xl mx-auto py-6 sm:px-6 lg:px-8">
               {slider2}
             </div>
           </main>
