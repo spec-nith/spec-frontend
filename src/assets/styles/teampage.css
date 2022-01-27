@@ -1,13 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Josefin+Sans:wght@300;400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
-.team_years {
-  margin-bottom: 3rem;
-  font-family: "Poppins", sans-serif;
-}
-.team_body {
-  background-color: #1f1f1f;
-  font-family: "Josefin Sans", sans-serif;
-}
+
 .team_icons {
   left: 87%;
 }
@@ -16,13 +7,11 @@
 }
 .team-card h2 {
   top: calc(100% - 16px);
-  color: #020a79;
-
-  background: #4338ca;
+  color: rgb(133, 133, 133);
+background:   rgb(77, 77, 77);
 }
 .posts {
   padding: 7px;
-
   font-size: 19px;
   border-radius: 8px;
   margin: 1rem;
@@ -67,12 +56,4 @@
   opacity: 1;
   transform: translate(0) scale(1);
   visibility: visible;
-}
-.hide {
-  display: none;
-}
-.fa-filter {
-  color: white;
-  position: relative;
-  top: -3rem;
 }

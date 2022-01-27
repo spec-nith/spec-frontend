@@ -70,36 +70,32 @@ class TeamPage extends Component {
       return (
           <Layout>
             <div className="min-h-90v">
-            <div className="flex justify-end mt-5">
-              <span className="mt-16 p-3 rounded-lg ">
-                {" "}
-                <FontAwesomeIcon icon={faFilter} size="1x" />
-              </span>
-              <select
-                onChange={this.Selected_Post}
-                className="mt-16 mr-10 h-10 rounded-lg posts"
-              >
-                <option value={" "} className="team_post_option p-10">
-                  Team Spec
-                </option>
-                {team_posts.map((obj) => (
-                  <option value={obj} className="team_post_option p-10">
-                    {obj}
-                  </option>
-                ))}
-              </select>
+ <div className="flex mt-5  justify-center xl:justify-end xl:mr-16">
+            <span className="mt-16 ml-2 mr-2 ">
+              <FontAwesomeIcon icon={faFilter} size="1x" />
+            </span>
+            <select
+              className="h-10 text-white font-bold bg-zinc-800  rounded-lg p-2 font-monty "
+              onChange={this.Selected_Post}
+            >
+            
+              <option value={" "}>Team Spec</option>
+              {team_posts.map((obj) => (
+                <option value={obj}>{obj}</option>
+              ))}
+            </select>
             </div>
             {this.state.selected_post === "Final Year" ? (
               <>
                 {" "}
                 <div>
                   {this.state.data.find((e) => FinalYear.includes(e.title)) ? (
-                    <h1 className="team_years text-white text-3xl text-center m-3">
+                    <h1 className="font-outfit text-white text-4xl text-center m-3 mb-16">
                       {this.state.selected_post + " Members"}
                     </h1>
                   ) : null}
-                  <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 pb-12 flex justify-evenly">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <section className="     px-4 sm:px-6 lg:px-4 pb-12 flex justify-center">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
                       {FinalYear.map((obj) => (
                         <>
                           {this.state.data.map(
@@ -117,11 +113,11 @@ class TeamPage extends Component {
             ) : juniorPosts.includes(this.state.selected_post) ? (
               <>
                 <div>
-                  <h1 className="team_years text-white text-center text-3xl m-3">
+                  <h1 className="font-outfit text-white text-4xl text-center m-3 mb-16">
                     {this.state.selected_post + "s"}
                   </h1>
-                  <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 pb-12 flex justify-center">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <section className=" px-4 sm:px-6 lg:px-4 pb-12 flex justify-center">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
                       {this.state.data.map(
                         (element, index) =>
                           element.title === this.state.selected_post && (
@@ -136,12 +132,12 @@ class TeamPage extends Component {
               <>
                 <div>
                   {this.state.data.find((e) => FinalYear.includes(e.title)) ? (
-                    <h1 className="team_years text-white text-3xl text-center m-3">
+                    <h1 className="font-outfit text-white text-4xl text-center m-3 mb-16">
                       Final Year Members
                     </h1>
                   ) : null}
-                  <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 pb-12 flex justify-evenly">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <section className="  px-4 sm:px-6 lg:px-4 pb-12 flex justify-center">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
                       {FinalYear.map((obj) => (
                         <>
                           {this.state.data.map(
@@ -159,13 +155,13 @@ class TeamPage extends Component {
                   {juniorPosts.map((obj) => (
                     <div>
                       {this.state.data.find((e) => e.title === obj) ? (
-                        <h1 className="team_years text-white text-center text-3xl m-3">
+                        <h1 className="font-outfit text-white text-4xl text-center m-3 mb-16">
                           {obj + "s"}
                         </h1>
                       ) : null}
-                      <h1 className="team_years"></h1>
-                      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 pb-12 flex justify-center">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                      <h1 className="font-outfit text-white text-4xl text-center m-3 mb-16"></h1>
+                      <section className="    px-4 sm:px-6 lg:px-4 pb-12 flex justify-center">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8">
                           {this.state.data.map(
                             (element, index) =>
                               element.title === obj && (
