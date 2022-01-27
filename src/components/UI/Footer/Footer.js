@@ -8,7 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 const footer = () => (
-  <footer className="pl-4 divide-y bg-black text-white">
+  <footer className="pl-4 mt-24 divide-y bg-zinc-800 text-white">
     <div className="container flex flex-col justify-around py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
       <div className="flex-1 lg:w-1/3 flex flex-col justify-center items-center">
         <img className="w-1/3" src="images/logo.png" alt="spec_logo" />
@@ -24,7 +24,7 @@ const footer = () => (
           <div className="rounded-md">
             <div className="max-w-screen-xl pr-8 grid gap-x-24 gap-y-8 grid-cols-1 mx-auto">
               <textarea
-                className="w-full h-32 content-theme  mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                className="w-full h-32 text-black mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                 placeholder="Enter your query"
                 aria-label="Enter your query"
               />

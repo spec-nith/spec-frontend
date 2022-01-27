@@ -11,8 +11,8 @@ export default function WorkshopCard({ shop }) {
     <>
       <section className="workshop-card-section">
         <div
-          className="workshop-card relative flex items-end overflow-hidden p-4 w-4/5 text-center border-black-700 border-2 rounded-lg "
-          style={{ backgroundImage: `url(${shop.cover_url})` }}
+          className="workshop-card relative flex items-end overflow-hidden p-4 text-center border-black-700 border-2 rounded-lg "
+          style={{ backgroundImage: `url("${shop.cover_url}")` }}
         >
           <div className="workshop-content relative flex flex-col items-center w-full p-4">
             <h2 className="workshop-title text-xl font-bold text-white">
@@ -32,13 +32,13 @@ export default function WorkshopCard({ shop }) {
           <>
             <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-gray-700 outline-none focus:outline-none">
                   <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t text-center">
-                    <h3 className="text-3xl font-semibold text-blue-900">
+                    <h3 className="text-3xl font-semibold text-black">
                       {shop.title}
                     </h3>
                     <button
-                      className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                      className="p-1 ml-auto bg-transparent border-0 text-white opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                       onClick={() => setShowModal(false)}
                     >
                       <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
@@ -47,13 +47,13 @@ export default function WorkshopCard({ shop }) {
                     </button>
                   </div>
                   <div className="relative p-6 flex-auto">
-                    <p className="my-4 text-black text-lg leading-relaxed">
+                    <p className="my-4 text-white text-lg leading-relaxed">
                       {shop.description}
                     </p>
                   </div>
                   <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                     <button
-                      className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="text-black background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={() => setShowModal(false)}
                     >
