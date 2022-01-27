@@ -135,7 +135,7 @@ class Alumni extends Component {
                         </section>
                       </div>
                     </>
-                  ) : obj != this.state.selected_year ? (
+                  ) : obj !== this.state.selected_year ? (
                     <div
                       className="hide"
                       id={obj}

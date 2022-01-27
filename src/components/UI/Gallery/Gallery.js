@@ -19,7 +19,7 @@ export default class Gallery extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.loadStatus != prevProps.loadStatus) {
+    if (this.props.loadStatus !== prevProps.loadStatus) {
       this.setState({ wait: false, data: this.props.photos });
     }
   }
