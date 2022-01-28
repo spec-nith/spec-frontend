@@ -144,9 +144,6 @@ export default class Images extends Component {
   onInit = () => {
 
   };
-  clicked = (e) =>{
-
-  }
   render() {
     return (
       <Layout>
