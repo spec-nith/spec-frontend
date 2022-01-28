@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Loader from "react-loader-spinner";
 
 // CSS Imports
-
+import "assets/styles/gallerygrid.css";
 // Constants
 
 // Begin
@@ -39,23 +39,21 @@ export default class Gallery extends Component {
       );
     } else {
       return (
-        <div className="flex flex-wrap -mx-px overflow-hidden min-h-90v">
+        <section class="gallery-section">
+        <div className="gallery-grid">
           {this.state.data.map((img_data) => {
             return (
-              <div
-                className="my-1 px-1 overflow-hidden w-full sm:w-full md:w-1/2 lg:w-1/4 xl:w-1/5 items-center justify-center object-cover lg:max-h-48 xl:max-h-48 max-h-56"
-                key={img_data.id}
-                onClick={(e) => this.showLightbox(e, img_data.id)}
-              >
-                <img
-                  src={img_data.thumb_image_url}
-                  alt="image"
-                  className="w-full"
-                />
+              <div class="gallery-item item--medium"
+               style={{backgroundImage:`url(${img_data.thumb_image_url})`}}>
+              <div class="item__details">
+                sesame snaps chocolate
               </div>
+            </div>
+              
             );
           })}
         </div>
+        </section>
       );
     }
   };
@@ -64,7 +62,7 @@ export default class Gallery extends Component {
     if (this.state.lightbox) {
       return (
         <div>
-          GGWP
+          
           {this.state.lightbox_index}
         </div>
       );

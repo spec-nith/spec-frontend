@@ -78,7 +78,7 @@ class Workshop extends Component {
           <div className="mx-auto" style={{ padding: "auto" }}>
             {year_of_grad.map((obj) => (
               <React.Fragment key={obj}>
-                {this.state.selected_year == 0 ? (
+                {this.state.selected_year === 0 ? (
                   <div>
                     <div className="text-white  text-center text-4xl py-8 font-outfit">
                       YEAR{" "}
@@ -93,7 +93,7 @@ class Workshop extends Component {
                       )}
                     </div>
                   </div>
-                ) : obj == this.state.selected_year ? (
+                ) : obj === this.state.selected_year ? (
                   <div>
                     <div
                       className="text-white text-center text-4xl py-8 font-outfit"
