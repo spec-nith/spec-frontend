@@ -18,7 +18,7 @@ export const visionData = [
     name: "MR. YUVRAJ KADALE",
     post: "PRESIDENT, SPEC",
     content: `"Not all of us, do great things. But we can all do small things, with great effort, and together we can do something great." SPEC as a team has always believed in giving equal opportunities to everyone, bringing their ideas and talent to light and encouraging them to step out of their cocoon. Our team’s motto “We rise, we shine” truly reflects in our lives`,
-    image: "images/yuvraj.png",
+    image: "images/yuvraj.jpg",
   },
   {
     name: "MR. YASH PRAKASH GUPTA",

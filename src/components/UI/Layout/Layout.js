@@ -5,11 +5,11 @@ import Particles from "react-tsparticles";
 
 const Layout = (props) => {
   const particlesInit = (main) => {
-    console.log(main);
+    
   };
 
   const particlesLoaded = (container) => {
-    console.log(container);
+    
   };
   return (
     <div className="bg-gradient">
@@ -67,7 +67,7 @@ const Layout = (props) => {
               enable: true,
               area: 800,
             },
-            value: 50,
+            value: 30,
           },
           opacity: {
             value: 0.3,

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { worskhopURL } from "components/Routes";
+import { worskhopURL } from "assets/utils/Routes";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
 import WorkshopCard from "../../components/UI/Card/WorkshopCard";

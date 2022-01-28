@@ -23,13 +23,18 @@
     right: 0;
     bottom: 0;
     box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.2);
-    filter: blur(5px);
+    filter: blur(40px);
     margin: -20px;
   }
 }
   
 
 .bg-gradient{
-  background: rgb(0,0,0);
-  background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(52,51,51,1) 50%, rgba(0,0,0,1) 100%);
+  background-color: #130f40;
+  background-image: linear-gradient(315deg, #0d0933 0%, #000 74%);
+}
+
+#demo path{
+  stroke-dasharray: 41700;
+  stroke-dashoffset: 0;
 }

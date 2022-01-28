@@ -12,8 +12,8 @@
   },
   "engineStrict": true,
   "scripts": {
-    "develop": "gatsby develop -H 0.0.0.0",
-    "start": "gatsby develop",
+    "develop": "gatsby develop",
+    "start": "gatsby develop -H 0.0.0.0",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
@@ -23,6 +23,7 @@
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
+    "@formspree/react": "^2.2.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",

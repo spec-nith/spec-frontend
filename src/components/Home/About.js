@@ -46,8 +46,6 @@ const About = () => {
             autoplay={{ delay: 2500 }}
             spaceBetween={0}
             slidesPerView={1}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
           >
             {data.map((image, index) => {
               return (
