@@ -1,7 +1,7 @@
 // Import Components
 import TeamCard from "components/UI/Card/Teamcard";
 import React, { Component, useState } from "react";
-import { teamURL } from "components/Routes";
+import { teamURL } from "assets/utils/Routes";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

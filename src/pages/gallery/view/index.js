@@ -3,14 +3,13 @@ import React, { Component } from "react";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
 // import Gallery from "react-photo-gallery";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { galleryURL } from "assets/utils/Routes";
-// import {
-//   faChevronRight,
-//   faChevronLeft,
-//   faTimes,
-// } from "@fortawesome/free-solid-svg-icons";
-import Gallery from "components/UI/Gallery/Gallery";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { galleryURL } from "../../../components/Routes";
+import {
+  faChevronRight,
+  faChevronLeft,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 // import LightGallery from 'lightgallery/react';
 // import lgThumbnail from 'lightgallery/plugins/thumbnail';
 // import lgZoom from 'lightgallery/plugins/zoom';
@@ -20,9 +19,11 @@ import Gallery from "components/UI/Gallery/Gallery";
 // import 'lightgallery/css/lg-zoom.css';
 // import 'lightgallery/css/lg-thumbnail.css';
 import "assets/styles/gallery.css";
+import Loader from "react-loader-spinner";
+import "assets/styles/gallerygrid.css";
 
 // Constants
-// const photos = require("./photos.json");
+const photo = require("./photos.json");
 
 // console.log(lightgallery)
 // console.log(gallery)
@@ -52,19 +53,20 @@ export default class Images extends Component {
       .get(galleryURL + url)
       .then((response) => {
         let photos = response.data;
-        // function select(a,b){
-        //     if(a.year>b.year){
-        //         return 1;
-        //     }
-        //     else{
-        //         return -1;
-        //     }
-        // }
-        // rs.sort(select);
+        function select(a,b){
+            if(a.year>b.year){
+                return 1;
+            }
+            else{
+                return -1;
+            }
+        }
+        photos.sort(select);
+       
         // console.log(rs);
         // const photos = rs;
         // for (let i = 0; i < response.data.length; i++) {
-        //     rs[i].src = response.data[i].thumb_image_url;
+        //     rs[i].src = response.data[i].image_url;
         //     rs[i].width = 3;
         //     rs[i].height = 4;
         //     if (i % 3 === 0) {
@@ -92,62 +94,63 @@ export default class Images extends Component {
         //         rs[i].height = 2;
         //     }
         // }
-        this.setState({ data: photos });
+        this.setState({ data: photo });
         this.setState({ load_status: false });
-        console.log(photos);
+        console.log(this.state.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }
-  // openLightbox = (event, { photo, index }) => {
-  //     this.setState({ currentImage: index, viewerIsOpen: true })
-  //     this.showImage(photo,index);
-  // };
-  // closeLightbox = () => {
-  //     this.setState({ currentImage: 0, viewerIsOpen: false })
-  // };
-  // showImage = (img, ind) => {
-  //     let url = this.state.data[ind].image_url;
-  //     this.setState({
-  //         FullImageCard: true,
-  //         imageUrl: url,
-  //         currentIndex: ind,
-  //     });
-  // }
-  // showPrev = (ind) => {
-  //     if (ind > 0) {
-  //         let url = this.state.data[ind - 1].image_url;
-  //         this.setState({
-  //             FullImageCard: true,
-  //             imageUrl: url,
-  //             currentIndex: ind - 1,
-  //         });
-  //     }
-  // }
-  // showNext = (ind) => {
-  //     if (ind < this.state.data.length - 1) {
-  //         let url = this.state.data[ind + 1].image_url;
-  //         this.setState({
-  //             FullImageCard: true,
-  //             imageUrl: url,
-  //             currentIndex: ind + 1,
-  //         });
-  //     }
-  // }
-  // exitButton = () => {
-  //     this.setState({ FullImageCard: false });
-  // }
+  openLightbox = (photo, index ) => {
+      this.setState({ currentImage: index, viewerIsOpen: true })
+      this.showImage(photo,index);
+      
+  };
+  closeLightbox = () => {
+      this.setState({ currentImage: 0, viewerIsOpen: false })
+  };
+  showImage = (img, ind) => {
+      let url = this.state.data[ind].image_url;
+      this.setState({
+          FullImageCard: true,
+          imageUrl: url,
+          currentIndex: ind,
+      });
+  }
+  showPrev = (ind) => {
+      if (ind > 0) {
+          let url = this.state.data[ind - 1].image_url;
+          this.setState({
+              FullImageCard: true,
+              imageUrl: url,
+              currentIndex: ind - 1,
+          });
+      }
+  }
+  showNext = (ind) => {
+      if (ind < this.state.data.length - 1) {
+          let url = this.state.data[ind + 1].image_url;
+          this.setState({
+              FullImageCard: true,
+              imageUrl: url,
+              currentIndex: ind + 1,
+          });
+      }
+  }
+  exitButton = () => {
+      this.setState({ FullImageCard: false });
+  }
   onInit = () => {
-    console.log("LG init");
+
   };
   render() {
     return (
       <Layout>
-        {/* <React.Fragment> */}
+        <React.Fragment>
 
-        {/* <h1 className="text-5xl font-bold text-center mt-16 sm:text-7xl md:text-8xl">{this.state.title}</h1> */}
-        {/* {this.state.FullImageCard && (
+        <h1 className="text-5xl font-bold text-center mt-16 sm:text-7xl md:text-8xl">{this.state.title}</h1>
+        {this.state.FullImageCard && (
             <div id="overlay">
               <div
                 id="prevButton"
@@ -174,10 +177,27 @@ export default class Images extends Component {
                 <FontAwesomeIcon icon={faTimes} />
               </div>
             </div>
-          )} */}
+          )}
 
         {/* <div className="mx-8 lg:mx-16 2xl:mx-32 mt-16 pb-32"> */}
-        <Gallery photos={this.state.data} loadStatus={this.state.load_status} />
+        <section class="p-8 lg:p-16 gallery-section">
+        <div className="grid gap-8 grid-flow-row-dense gallery-grid">
+          {this.state.data.map((img_data,ind) => {
+            return (
+              <div class="flex flex-col bg-cover bg-center cursor-pointer relative justify-end col-auto box-border  gallery-item"
+              // onClick={() => console.log('hello ',img_data,ind)}
+              onClick={() => this.openLightbox(img_data,ind)}
+
+               style={{backgroundImage:`url(${img_data.thumb_image_url})`}}>
+              <div class=" font-semibold p-4 bg-white text-black">
+                <span className="font-extrabold">{ind}</span> {img_data.event} {img_data.year} {img_data.sub_event}
+              </div>
+            </div>
+              
+            );
+          })}
+        </div>
+        </section>
         {/* <LightGallery
                 onInit={this.onInit}
                 speed={500}
@@ -186,7 +206,7 @@ export default class Images extends Component {
                 {
                     this.state.data.map((img_data) => {
                         return(
-                            <a data-src={img_data.image_url} key={img_data.id} className="gallery-item">
+                            <a data-src={img_data.thumb_image_url} key={img_data.id} className="gallery-item">
                                 <img src={img_data.thumb_image_url} className="img-responsive"/>
                             </a>
                         )
@@ -195,7 +215,7 @@ export default class Images extends Component {
             </LightGallery> */}
         {/* <div className="mt-10"></div> */}
         {/* </div> */}
-        {/* </React.Fragment> */}
+        </React.Fragment>
       </Layout>
     );
   }
