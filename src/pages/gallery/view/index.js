@@ -21,7 +21,6 @@ import {
 import "assets/styles/gallery.css";
 import Loader from "react-loader-spinner";
 import "assets/styles/gallerygrid.css";
-
 // Constants
 const photo = require("./photos.json");
 
@@ -40,6 +39,8 @@ export default class Images extends Component {
       currentImage: 0,
       viewerIsOpen: false,
       load_status: true,
+      touchStart:0,
+      touchEnd:0,
     };
   }
   componentDidMount() {
@@ -96,7 +97,7 @@ export default class Images extends Component {
         // }
         this.setState({ data: photo });
         this.setState({ load_status: false });
-        console.log(this.state.data);
+        // console.log(this.state.data);
       })
       .catch((err) => {
         console.log(err);
@@ -107,6 +108,28 @@ export default class Images extends Component {
       this.showImage(photo,index);
       
   };
+  handleTouchStart(e) {
+    this.setState({touchStart: e.targetTouches[0].clientX});
+  };
+  handleTouchMove(e) {
+    this.setState({touchEnd: e.targetTouches[0].clientX});
+  }
+  handleTouchEnd(ind) {
+    if (this.state.touchStart - this.state.touchEnd > 40) {
+        // do your stuff here for left swipe
+
+        this.showPrev(ind);
+
+    }
+
+    if (this.state.touchStart - this.state.touchEnd < -40) {
+        // do your stuff here for right swipe
+
+        this.showNext(ind);
+
+
+    }
+  }
   closeLightbox = () => {
       this.setState({ currentImage: 0, viewerIsOpen: false })
   };
@@ -151,8 +174,15 @@ export default class Images extends Component {
 
         <h1 className="text-5xl font-bold text-center mt-16 sm:text-7xl md:text-8xl">{this.state.title}</h1>
         {this.state.FullImageCard && (
-            <div id="overlay">
-              <div
+            <div id="overlay" 
+           
+              // onTouchEnd={() => console.log('swipe end')}
+              onTouchMove={touchMoveEvent => this.handleTouchMove(touchMoveEvent)}
+              onTouchStart={touchStartEvent => this.handleTouchStart(touchStartEvent)}
+              onTouchEnd={() => this.handleTouchEnd(this.state.currentIndex)}
+
+            >
+              <div 
                 id="prevButton"
                 className={
                   this.state.currentIndex == 0 ? "gallery-disabled" : ""
@@ -161,7 +191,7 @@ export default class Images extends Component {
               >
                 <FontAwesomeIcon icon={faChevronLeft} />
               </div>
-              <img src={this.state.imageUrl} style={{ width: '70%'}}/>
+              <img src={this.state.imageUrl}  className="gallery-lightbox-view-image"   />
               <div
                 id="nextButton"
                 className={

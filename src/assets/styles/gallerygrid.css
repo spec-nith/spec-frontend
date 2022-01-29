@@ -29,3 +29,20 @@
 .gallery-item:hover:after {
   opacity: 0;
 }
+.gallery-lightbox-view-image{
+  width: 70%;
+}
+@media screen and (max-width: 520px) {
+  .gallery-lightbox-view-image{
+    width: 100%;
+    margin-top:20px;
+  }
+  #prevButton{
+    display: none;
+  }
+  #nextButton{
+    display: none;
+  }
+}
+
+
