@@ -4,7 +4,7 @@ import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
 // import Gallery from "react-photo-gallery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { galleryURL } from "../../../components/Routes";
+import { galleryURL } from "assets/utils/Routes";
 import {
   faChevronRight,
   faChevronLeft,

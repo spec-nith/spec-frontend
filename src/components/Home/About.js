@@ -21,42 +21,30 @@ const writeup = <p className="mt-4 text-justify lg:col-span-3"><span className="
 const About = () => {
   return (
     <React.Fragment>
-      <div className="font-monty flex flex-col lg:grid lg:grid-cols-6 lg:grid-rows-6 max-w-5xl lg:max-w-full">
-        <div className="lg:col-start-3 lg:col-span-4 lg:row-start-1 row-end-6 shadow lg:backdrop-filter lg:backdrop-blur-lg section-content rounded-2xl">
-          <h1
-            className="z-10 text-5xl py-6 text-white font-outfit text-center justify-center"
-            id="head"
-          >
-            Who <span className="text-rose-500">WE</span> are?
-          </h1>
-          <div className="mx-auto pt-3 border-b-2 border-gray-300 opacity-25 w-4/5"></div>
-        </div>
-        {/* <div className="lg:col-start-4 lg:col-span-3 row-start-1 row-end-3 bg-white">
-          <h1 className="z-10 text-5xl py-8 text-black font-abrilface text-center" id="head">WHO WE ARE?</h1>
-        </div> */}
-        <div className="lg:col-start-5 lg:col-span-2 lg:row-start-2 row-end-6 bg-white text-gray-300 z-1 px-8 pb-10 bg-opacity-0 lg:backdrop-blur-lg lg:backdrop-blur-none text-md lg:text-xl lg:text-base leading-loose lg:leading:normal">
+      <div className="font-monty max-w-5xl lg:max-w-full h-full relative">
+        <div className="top-8 w-full shadow lg:backdrop-filter lg:backdrop-blur-lg section-content">
+        <div className="relative md:left-2/3 left-3 pr-8 pl-2 pb-6 md:w-1/3 text-gray-300 text-md lg:text-xl lg:text-base leading-loose lg:leading:normal">
             {writeup}
+          </div>
         </div>
-        <div className="lg:col-start-1 lg:row-start-2 lg:row-end-7 lg:col-span-4 mt-12 mr-4 z-1">
-          <Swiper
-            modules={[Pagination, Navigation, Autoplay]}
-            pagination={{ dynamicBullets: true, clickable: true }}
-            navigation={true}
-            loop={true}
-            autoplay={{ delay: 2500 }}
-            spaceBetween={0}
-            slidesPerView={1}
-            onSlideChange={() => console.log("slide change")}
-            onSwiper={(swiper) => console.log(swiper)}
-          >
-            {data.map((image, index) => {
-              return (
-                <SwiperSlide>
-                  <img src={image} key={index} className="" alt="carousel img" />
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+        <div className="md:absolute z-10 md:left-6 mt-8 md:mt-0 md:w-10/16 md:-top-0">
+            <Swiper
+              modules={[Pagination, Navigation, Autoplay]}
+              pagination={{ dynamicBullets: true, clickable: true }}
+              navigation={true}
+              loop={true}
+              autoplay={{ delay: 2500 }}
+              spaceBetween={0}
+              slidesPerView={1}
+            >
+              {data.map((image, index) => {
+                return (
+                  <SwiperSlide key={index+Math.random()}>
+                    <img src={image} className="" alt="carousel img" />
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
         </div>
       </div>
     </React.Fragment>

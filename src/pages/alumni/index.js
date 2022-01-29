@@ -3,10 +3,11 @@ import Cards from "components/UI/Card/AlumniCard";
 import axios from "axios";
 import "assets/styles/alumni.css";
 import Layout from "components/UI/Layout/Layout";
-import { alumniURL } from "components/Routes";
+import { alumniURL } from "assets/utils/Routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import Loader from "react-loader-spinner";
+import Head from "assets/utils/helmet";
 
 class Alumni extends Component {
   constructor() {
@@ -55,6 +56,8 @@ class Alumni extends Component {
 
     if (this.state.wait) {
       return (
+        <>
+      <Head title="Alumni" />
         <Layout>
           <div className="flex h-90v justify-center items-center">
             <Loader
@@ -66,12 +69,13 @@ class Alumni extends Component {
             />
           </div>
         </Layout>
-
+       </>
       )
     }
     else {
       return (
-
+        <>
+      <Head title="Alumni" />
         <Layout>
           <div className="alumni_bg px-auto">
             <header className="head">
@@ -114,7 +118,7 @@ class Alumni extends Component {
                       <div
                         className="hide"
                         id={obj}
-                        style={{ display: "flex", margin: "0 8vw 30px 8vw" }}
+                        style={{ display: "flex", margin: "0 4vw 30px 4vw" }}
                       >
                         <section
                           className="carousel_cards_container"
@@ -139,7 +143,7 @@ class Alumni extends Component {
                     <div
                       className="hide"
                       id={obj}
-                      style={{ display: "flex", margin: "0 8vw 10px 8vw" }}
+                      style={{ display: "flex", margin: "0 4vw 10px 4vw" }}
                       style={{ display: "none" }}
                     >
                       <section className="container_outside_cards">
@@ -199,6 +203,7 @@ class Alumni extends Component {
             </div>
           </div>
         </Layout>
+        </>
       );
     }
   }

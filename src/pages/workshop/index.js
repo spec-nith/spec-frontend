@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { worskhopURL } from "components/Routes";
+import { worskhopURL } from "assets/utils/Routes";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
 import WorkshopCard from "../../components/UI/Card/WorkshopCard";
@@ -7,6 +7,7 @@ import "react-tabs/style/react-tabs.css";
 import "assets/styles/workshopcard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import Head from "assets/utils/helmet";
 
 class Workshop extends Component {
   constructor() {
@@ -37,6 +38,8 @@ class Workshop extends Component {
     const year_of_grad = [2021, 2020, 2019, 2018];
 
     return (
+      <>
+      <Head title="Workshop" />
       <Layout>
         <div className="">
           <header className="head my-5">
@@ -117,6 +120,7 @@ class Workshop extends Component {
           </div>
         </div>
       </Layout>
+      </>
     );
   }
 }
