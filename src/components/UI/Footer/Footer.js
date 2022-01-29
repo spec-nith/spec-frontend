@@ -11,6 +11,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 const Footer = () => {
   const [state, handleSubmit] = useForm("mzbodbrg");
   let formInput=(
+
     <form onSubmit={handleSubmit}>
       <div className="justify-center mt-6 rounded-md">
 
@@ -29,6 +30,7 @@ const Footer = () => {
 if (state.succeeded) {
  formInput=(<div className="justify-center mt-6 rounded-md">
 
+
   <div className="max-w-screen-xl pr-4 md:pr-8 grid gap-x-24 gap-y-8 grid-cols-1 mx-auto">
     <h1 className="text-4xl lg:text-5xl text-gray-200 m-auto">Thank you !!</h1>
   </div>
@@ -38,6 +40,7 @@ if (state.succeeded) {
 
 return(
   <footer className="pl-4 mt-24 divide-y bg-zinc-900 text-white">
+
     <div className="container flex flex-col justify-around py-10 mx-auto space-y-8 lg:flex-row lg:space-y-0">
       <div className="flex-1 lg:w-1/3 flex flex-col justify-center items-center">
         <img className="w-1/3" src="images/logo.png" alt="spec_logo" />

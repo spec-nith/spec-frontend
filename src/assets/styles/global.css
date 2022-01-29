@@ -34,3 +34,8 @@
   background-color: #130f40;
   background-image: linear-gradient(315deg, #0d0933 0%, #000 74%);
 }
+
+#demo path{
+  stroke-dasharray: 41700;
+  stroke-dashoffset: 0;
+}
