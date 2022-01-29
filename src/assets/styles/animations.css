@@ -1,0 +1,76 @@
+/*Hero Logo animation */
+#demo path{
+    stroke-dasharray: 41700;
+    stroke-dashoffset: 0;
+  }
+  
+/* Projects section circuit animation */
+  @keyframes draw5 {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  @keyframes fill {
+    from {
+      fill-opacity: 0;
+    }
+    to {
+      fill-opacity: 1;
+    }
+  }
+  @keyframes drawPath {
+    to {
+      stroke-dashoffset: -100;
+    }
+  }
+  @keyframes dash {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+.project-circuit-no-fill {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    stroke-width: 2px;
+    stroke-miterlimit: 10;
+    animation-delay: 2s;
+    animation-direction: alternate;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-name: dash;
+    animation-timing-function: ease-in-out;
+  }
+
+/* logo animation part2 */
+  
+  .ml5 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.1em;
+    padding-right: 0.05em;
+    padding-bottom: 0.15em;
+    line-height: 1em;
+  }
+  
+  .ml5 .line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 3px;
+    width: 100%;
+    transform-origin: 0.5 0;
+  }
+  .ml5 .vertical-line {
+    width: 1em;
+    margin-right: -0.1em;
+    margin-left: -0.1em;
+  }
+  
+  .ml5 .letters {
+    display: inline-block;
+    opacity: 0;
+  }

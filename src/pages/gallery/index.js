@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Layout from "components/UI/Layout/Layout";
 import { Link } from "gatsby";
 import "assets/styles/gallery.css";
+import Head from "assets/utils/helmet";
 
 export default class GallerySecondary extends Component {
   constructor(props) {
@@ -11,6 +12,8 @@ export default class GallerySecondary extends Component {
 
   render() {
     return (
+      <>
+      <Head title="Gallery" />
       <Layout>
         <h1 className="text-5xl font-bold text-center mt-16 sm:text-7xl md:text-8xl">
           Gallery
@@ -69,6 +72,7 @@ export default class GallerySecondary extends Component {
           <div className="mt-10"></div>
         </div>
       </Layout>
+      </>
     );
   }
 }

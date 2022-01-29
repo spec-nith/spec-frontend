@@ -5,14 +5,14 @@ import Particles from "react-tsparticles";
 
 const Layout = (props) => {
   const particlesInit = (main) => {
-    console.log(main);
+    
   };
 
   const particlesLoaded = (container) => {
-    console.log(container);
+    
   };
   return (
-    <div className="bg-gradient">
+    <div className="bg-gradient overflow-hidden">
       <Particles
       id="tsparticles"
       init={particlesInit}
@@ -67,7 +67,7 @@ const Layout = (props) => {
               enable: true,
               area: 800,
             },
-            value: 50,
+            value: 30,
           },
           opacity: {
             value: 0.3,
@@ -84,7 +84,7 @@ const Layout = (props) => {
       }}
     />
       <Navbar curLocation={props.curLocation} />
-      <div className=" text-white pt-14">{props.children}</div>
+      <div className="max-w-7xl mx-auto md:px-6 lg:px-8 text-white">{props.children}</div>
       <Footer />
     </div>
   );

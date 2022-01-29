@@ -1,12 +1,13 @@
 // Import Components
 import TeamCard from "components/UI/Card/Teamcard";
 import React, { Component, useState } from "react";
-import { teamURL } from "components/Routes";
+import { teamURL } from "assets/utils/Routes";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import Loader from "react-loader-spinner";
+import Head from "assets/utils/helmet";
 
 // Import Styles
 import "assets/styles/teampage.css";
@@ -52,6 +53,8 @@ class TeamPage extends Component {
   render() {
     if (this.state.wait){
       return(
+        <>
+      <Head title="Team" />
         <Layout>
         <div className="flex h-90v justify-center items-center">
           <Loader
@@ -63,13 +66,15 @@ class TeamPage extends Component {
           />
         </div>
         </Layout>
-
+       </>
       )
     }
     else{
       return (
+        <>
+      <Head title="Team" />
           <Layout>
-            <div className="min-h-90v">
+            <div className="min-h-90v mx-12">
  <div className="flex mt-5  justify-center xl:justify-end xl:mr-16">
             <span className="mt-16 ml-2 mr-2 ">
               <FontAwesomeIcon icon={faFilter} size="1x" />
@@ -177,6 +182,7 @@ class TeamPage extends Component {
             )}{" "}
             </div>
           </Layout>
+          </>
       );
     }
   }
