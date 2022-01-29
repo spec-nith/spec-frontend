@@ -2,6 +2,13 @@
 import React, { Component } from "react";
 import Layout from "components/UI/Layout/Layout";
 import axios from "axios";
+
+// Swiper
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Autoplay } from "swiper";
+import 'swiper/css';
+import 'swiper/css/pagination';
+import { Navigation, Scrollbar, A11y } from 'swiper';
 // import Gallery from "react-photo-gallery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { galleryURL } from "../../../components/Routes";
@@ -41,6 +48,7 @@ export default class Images extends Component {
       load_status: true,
       touchStart:0,
       touchEnd:0,
+      imageClick: false,
     };
   }
   componentDidMount() {
@@ -103,36 +111,18 @@ export default class Images extends Component {
         console.log(err);
       });
   }
+  closeLightbox = () => {
+    this.setState({ FullImageCard: false });
+    console.log('called');
+  };
+
   openLightbox = (photo, index ) => {
-      this.setState({ currentImage: index, viewerIsOpen: true })
+      this.setState({ currentImage: index,currentIndex:index, viewerIsOpen: true })
       this.showImage(photo,index);
       
   };
-  handleTouchStart(e) {
-    this.setState({touchStart: e.targetTouches[0].clientX});
-  };
-  handleTouchMove(e) {
-    this.setState({touchEnd: e.targetTouches[0].clientX});
-  }
-  handleTouchEnd(ind) {
-    if (this.state.touchStart - this.state.touchEnd > 40) {
-        // do your stuff here for left swipe
-
-        this.showPrev(ind);
-
-    }
-
-    if (this.state.touchStart - this.state.touchEnd < -40) {
-        // do your stuff here for right swipe
-
-        this.showNext(ind);
 
 
-    }
-  }
-  closeLightbox = () => {
-      this.setState({ currentImage: 0, viewerIsOpen: false })
-  };
   showImage = (img, ind) => {
       let url = this.state.data[ind].image_url;
       this.setState({
@@ -141,27 +131,8 @@ export default class Images extends Component {
           currentIndex: ind,
       });
   }
-  showPrev = (ind) => {
-      if (ind > 0) {
-          let url = this.state.data[ind - 1].image_url;
-          this.setState({
-              FullImageCard: true,
-              imageUrl: url,
-              currentIndex: ind - 1,
-          });
-      }
-  }
-  showNext = (ind) => {
-      if (ind < this.state.data.length - 1) {
-          let url = this.state.data[ind + 1].image_url;
-          this.setState({
-              FullImageCard: true,
-              imageUrl: url,
-              currentIndex: ind + 1,
-          });
-      }
-  }
   exitButton = () => {
+    console.log('exit');
       this.setState({ FullImageCard: false });
   }
   onInit = () => {
@@ -174,38 +145,41 @@ export default class Images extends Component {
 
         <h1 className="text-5xl font-bold text-center mt-16 sm:text-7xl md:text-8xl">{this.state.title}</h1>
         {this.state.FullImageCard && (
-            <div id="overlay" 
-           
-              // onTouchEnd={() => console.log('swipe end')}
-              onTouchMove={touchMoveEvent => this.handleTouchMove(touchMoveEvent)}
-              onTouchStart={touchStartEvent => this.handleTouchStart(touchStartEvent)}
-              onTouchEnd={() => this.handleTouchEnd(this.state.currentIndex)}
+            <div 
+            id="overlay" 
+        
+              className="lg:px-16"
 
             >
-              <div 
-                id="prevButton"
-                className={
-                  this.state.currentIndex == 0 ? "gallery-disabled" : ""
-                }
-                onClick={() => this.showPrev(this.state.currentIndex)}
-              >
-                <FontAwesomeIcon icon={faChevronLeft} />
-              </div>
-              <img src={this.state.imageUrl}  className="gallery-lightbox-view-image"   />
-              <div
-                id="nextButton"
-                className={
-                  this.state.currentIndex === this.state.data.length - 1
-                    ? "gallery-disabled"
-                    : "nextButton"
-                }
-                onClick={() => this.showNext(this.state.currentIndex)}
-              >
-                <FontAwesomeIcon icon={faChevronRight} />
-              </div>
-              <div id="exitButton" onClick={() => this.exitButton()}>
+            <div id="exitButton" onClick={() => this.exitButton()}>
                 <FontAwesomeIcon icon={faTimes} />
               </div>
+              <Swiper
+          modules={[Pagination, Autoplay,Navigation]}
+          pagination={{ dynamicBullets: true, clickable: true }}
+          loop={true}
+          // autoplay={{ delay: 4000, disableOnInteraction: false }}
+          spaceBetween={0}
+          slidesPerView={1}
+          navigation={true}
+          initialSlide={this.state.currentIndex}>
+          {this.state.data.map((image, index) => {
+            return (
+              <SwiperSlide key={index} >
+                <div
+                  key={index}
+                >
+                  <img
+                    src={image.image_url}
+                    alt={image.event}
+                    className="m-auto p-2"
+             
+                  />
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
             </div>
           )}
 
