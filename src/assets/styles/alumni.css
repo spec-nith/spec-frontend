@@ -16,14 +16,9 @@
   background: #555;
 }
 .batch {
-  text-align: left;
-  margin-left: 8.5vw;
   margin-bottom: 10px;
-  font-size: 30px;
-  
   color: white;
   font-weight: bold;
- 
 }
 .alumni_icon {
   position: relative;
@@ -31,23 +26,20 @@
   top: -4rem;
   color: rgb(255, 255, 255);
 }
-.alumni_icon:hover{
-  color: rgb(46, 224, 154) ;
+.alumni_icon:hover {
+  color: rgb(46, 224, 154);
 }
 .alumni_batch {
   position: relative;
   top: 0.2rem;
-  
 }
 .our_alumni {
   font-size: 45px;
 }
 .bottom_text {
   color: rgb(161, 159, 158);
- 
 }
 .card_bg {
- 
   background: #383838;
 }
 
@@ -55,11 +47,11 @@
   padding: 5px;
   text-align: center;
   font-size: 16px;
-  
+
   font-weight: 500;
   border-radius: 20px;
   margin: 1rem 10.5vw 1rem 0;
-  
+
   color: white;
   border: 1px solid white; /* Green */
   cursor: pointer;

@@ -4,13 +4,11 @@ import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 function spec({ person }) {
   return (
-    <div className="card bg-opacity-100">
+    <div className="card z-50">
       <div className="font-monty">
-        <div className="card_bg rounded-2xl overflow-hidden shadow-lg w-72 h-96">
+        <div className="card_bg rounded-2xl overflow-hidden shadow-lg w-72 h-96 ">
           <img
             src={person.profile_pic_url}
-            src="https://image.oppo.com/content/dam/oppo/product-asset-library/a/a93/v1/sec-4-img-3.jpg"
-            // src="https://image.freepik.com/free-photo/handsome-young-man-with-new-stylish-haircut_176420-19637.jpg"
             className="w-80 h-72 object-fill"
             alt="img"
           />
