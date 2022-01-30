@@ -26,12 +26,12 @@ class Alumni extends Component {
       .then((response) => {
         this.setState({
           dummy: response.data,
-          wait: false
+          wait: false,
         });
       })
       .catch((err) => {
         console.log(err);
-        this.setState({ error: true })
+        this.setState({ error: true });
       });
   }
   Selected_Year = (e) => {
@@ -57,152 +57,151 @@ class Alumni extends Component {
     if (this.state.wait) {
       return (
         <>
-      <Head title="Alumni" />
-        <Layout>
-          <div className="flex h-90v justify-center items-center">
-            <Loader
-              type="Puff"
-              color="#00BFFF"
-              height={100}
-              width={100}
-              timeout={100000} // 10 secs wait until error message shows
-            />
-          </div>
-        </Layout>
-       </>
-      )
-    }
-    else {
+          <Head title="Alumni" />
+          <Layout>
+            <div className="flex h-90v justify-center items-center">
+              <Loader
+                type="Puff"
+                color="#00BFFF"
+                height={100}
+                width={100}
+                timeout={100000} // 10 secs wait until error message shows
+              />
+            </div>
+          </Layout>
+        </>
+      );
+    } else {
       return (
         <>
-      <Head title="Alumni" />
-        <Layout>
-          <div className="alumni_bg px-auto">
-            <header className="head">
-              <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <div className="our_alumni text-6xl font-outfit text-white text-center">
-                  OUR ALUMNI
-                </div>
+          <Head title="Alumni" />
+          <Layout>
+            <div className="head">
+              <div className="text-5xl font-bold text-center mt-24 ">
+                OUR ALUMNI
               </div>
-            </header>
-            <div className="flex mt-5 mr-20 justify-end">
-              <span className="mt-14 ml-2 mr-2 ">
-                <FontAwesomeIcon icon={faFilter} size="1x" />
-              </span>
-              <select
-                className="h-10 text-white bg-zinc-800  rounded-lg p-2 font-monty "
-                onChange={this.Selected_Year}
+
+              <div className="flex mt-5 sm:mr-12 justify-center sm:justify-end">
+                <span className="mt-16 mx-2 ">
+                  <FontAwesomeIcon icon={faFilter} size="1x" />
+                </span>
+                <select
+                  className="h-10 text-white bg-zinc-800 rounded-lg p-2 font-monty"
+                  onChange={this.Selected_Year}
+                >
+                  <option value={0}>All Year</option>
+                  {year_of_grad_options.map((obj) => (
+                    <option value={obj}>{obj}</option>
+                  ))}
+                </select>
+              </div>
+              <div
+                className={
+                  this.state.selected_year == 0
+                    ? "flex flex-col"
+                    : "flex justify-center"
+                }
+                style={{ padding: "auto" }}
               >
-                <option value={0}>All Year</option>
                 {year_of_grad_options.map((obj) => (
-                  <option value={obj}>{obj}</option>
-                ))}
-              </select>
-            </div>
-            <div
-              className={
-                this.state.selected_year == 0
-                  ? "flex flex-col"
-                  : "flex justify-center"
-              }
-              style={{ padding: "auto" }}
-            >
-              {year_of_grad_options.map((obj) => (
-                <React.Fragment key={obj}>
-                  {this.state.selected_year == 0 ? (
-                    <>
-                      <div className="batch text-white text-4xl font-monty">
-                        Batch{" "}
-                        <span style={{ color: "rgb(46, 224, 154)" }}>{obj}</span>
-                      </div>
+                  <React.Fragment key={obj}>
+                    {this.state.selected_year == 0 ? (
+                      <>
+                        <div className="batch text-white text-4xl font-monty flex justify-center">
+                          <div className="pr-2">Batch </div>
+                          <span style={{ color: "rgb(46, 224, 154)" }}>
+                            {obj}
+                          </span>
+                        </div>
+                        <div
+                          className="hide"
+                          id={obj}
+                          style={{ display: "flex", margin: "0 4vw 30px 4vw" }}
+                        >
+                          <section
+                            className="carousel_cards_container"
+                            style={checking}
+                          >
+                            <div
+                              className="card_block gap-4 mb-4 "
+                              style={{ display: "flex" }}
+                            >
+                              {this.state.dummy.map((test) =>
+                                test.batch === obj ? (
+                                  <Cards person={test} key={test.id} />
+                                ) : obj == "Before 2018" &&
+                                  test.batch < 2018 ? (
+                                  <Cards person={test} key={test.id} />
+                                ) : null
+                              )}
+                            </div>
+                          </section>
+                        </div>
+                      </>
+                    ) : obj != this.state.selected_year ? (
                       <div
                         className="hide"
                         id={obj}
-                        style={{ display: "flex", margin: "0 4vw 30px 4vw" }}
+                        style={{ display: "flex", margin: "0 4vw 10px 4vw" }}
+                        style={{ display: "none" }}
                       >
-                        <section
-                          className="carousel_cards_container"
-                          style={checking}
-                        >
-                          <div
-                            className="card_block gap-4 mb-4 "
-                            style={{ display: "flex" }}
-                          >
-                            {this.state.dummy.map((test) =>
-                              test.batch === obj ? (
-                                <Cards person={test} key={test.id} />
-                              ) : obj == "Before 2018" && test.batch < 2018 ? (
-                                <Cards person={test} key={test.id} />
-                              ) : null
+                        <section className="container_outside_cards">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {this.state.dummy.map(
+                              (test) =>
+                                test.batch < 2018 && (
+                                  <Cards person={test} key={test.id} />
+                                )
                             )}
                           </div>
                         </section>
                       </div>
-                    </>
-                  ) : obj != this.state.selected_year ? (
-                    <div
-                      className="hide"
-                      id={obj}
-                      style={{ display: "flex", margin: "0 4vw 10px 4vw" }}
-                      style={{ display: "none" }}
-                    >
-                      <section className="container_outside_cards">
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                          {this.state.dummy.map(
-                            (test) =>
-                              test.batch < 2018 && (
-                                <Cards person={test} key={test.id} />
-                              )
-                          )}
-                        </div>
-                      </section>
-                    </div>
-                  ) : this.state.selected_year == "Before 2018" ? (
-                    <div
-                      className="hide"
-                      id={obj}
-                      style={{ display: "flex", margin: "0 4vw 10px 4vw" }}
-                    >
-                      <section
-                        className="container_outside_cards"
-                        style={checking}
+                    ) : this.state.selected_year == "Before 2018" ? (
+                      <div
+                        className="hide"
+                        id={obj}
+                        style={{ display: "flex", margin: "0 4vw 10px 4vw" }}
                       >
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                          {this.state.dummy.map(
-                            (test) =>
-                              test.batch < 2018 && (
-                                <Cards person={test} key={test.id} />
-                              )
-                          )}
-                        </div>
-                      </section>{" "}
-                    </div>
-                  ) : (
-                    <div
-                      className="hide"
-                      id={obj}
-                      style={{ display: "flex", margin: "0 4vw 10px 4vw" }}
-                    >
-                      <section
-                        className="container_outside_cards"
-                        style={checking}
+                        <section
+                          className="container_outside_cards"
+                          style={checking}
+                        >
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {this.state.dummy.map(
+                              (test) =>
+                                test.batch < 2018 && (
+                                  <Cards person={test} key={test.id} />
+                                )
+                            )}
+                          </div>
+                        </section>{" "}
+                      </div>
+                    ) : (
+                      <div
+                        className="hide"
+                        id={obj}
+                        style={{ display: "flex", margin: "0 4vw 10px 4vw" }}
                       >
-                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                          {this.state.dummy.map(
-                            (test) =>
-                              test.batch === obj && (
-                                <Cards person={test} key={test.id} />
-                              )
-                          )}
-                        </div>
-                      </section>
-                    </div>
-                  )}
-                </React.Fragment>
-              ))}
+                        <section
+                          className="container_outside_cards"
+                          style={checking}
+                        >
+                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {this.state.dummy.map(
+                              (test) =>
+                                test.batch === obj && (
+                                  <Cards person={test} key={test.id} />
+                                )
+                            )}
+                          </div>
+                        </section>
+                      </div>
+                    )}
+                  </React.Fragment>
+                ))}
+              </div>
             </div>
-          </div>
-        </Layout>
+          </Layout>
         </>
       );
     }
