@@ -13,14 +13,6 @@ const SEO = () => {
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:type" content="website" />
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Roboto:100,400,700"
-      ></link>
-      <link
-        rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Muli&display=swap"
-      ></link>
       <title>{title}</title>
     </Helmet>
   );
