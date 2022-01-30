@@ -12,7 +12,7 @@ export default function WorkshopCard({ shop }) {
       <section className="workshop-card-section">
         <div
           className="workshop-card relative flex items-end overflow-hidden p-4 text-center border-black-700 border-2 rounded-lg "
-          style={{ backgroundImage: `url("${shop.cover_url}")` }}
+          style={{ backgroundImage: `url("${shop.cover_url}")` }}         //./images/spec_workshop11.jpg
         >
           <div className="workshop-content relative flex flex-col items-center w-full p-4">
             <h2 className="workshop-title text-xl font-bold text-white">
@@ -32,9 +32,9 @@ export default function WorkshopCard({ shop }) {
           <>
             <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
               <div className="relative w-auto my-6 mx-auto max-w-3xl">
-                <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-gray-700 outline-none focus:outline-none">
+                <div className="rounded-lg relative flex flex-col w-full shadow backdrop-filter backdrop-blur-xl outline-none focus:outline-none border-2 border-teal-400">
                   <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t text-center">
-                    <h3 className="text-3xl font-semibold text-black">
+                    <h3 className="text-3xl font-semibold text-white">
                       {shop.title}
                     </h3>
                     <button
@@ -53,7 +53,7 @@ export default function WorkshopCard({ shop }) {
                   </div>
                   <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                     <button
-                      className="text-black background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                      className="text-white background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                       type="button"
                       onClick={() => setShowModal(false)}
                     >
