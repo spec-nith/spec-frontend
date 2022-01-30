@@ -5,11 +5,9 @@ import axios from "axios";
 
 // Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Autoplay } from "swiper";
+import { Pagination, Autoplay,Navigation } from "swiper";
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Navigation, Scrollbar, A11y } from 'swiper';
-// import Gallery from "react-photo-gallery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { galleryURL } from "assets/utils/Routes";
 import {
@@ -17,22 +15,14 @@ import {
   faChevronLeft,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
-// import LightGallery from 'lightgallery/react';
-// import lgThumbnail from 'lightgallery/plugins/thumbnail';
-// import lgZoom from 'lightgallery/plugins/zoom';
+import Loader from "react-loader-spinner";
 
 //CSS
-// import 'lightgallery/css/lightgallery.css';
-// import 'lightgallery/css/lg-zoom.css';
-// import 'lightgallery/css/lg-thumbnail.css';
 import "assets/styles/gallery.css";
-import Loader from "react-loader-spinner";
 import "assets/styles/gallerygrid.css";
 // Constants
-const photo = require("./photos.json");
+// const photo = require("./photos.json");
 
-// console.log(lightgallery)
-// console.log(gallery)
 export default class Images extends Component {
   constructor(props) {
     super(props);
@@ -42,7 +32,6 @@ export default class Images extends Component {
       currentIndex: 0,
       data: [],
       title: this.props.location.search.slice(6),
-      // tt: this.props.location,
       currentImage: 0,
       viewerIsOpen: false,
       load_status: true,
@@ -58,7 +47,6 @@ export default class Images extends Component {
   componentDidMount() {
     window.addEventListener("resize", this.handleResize);
     let url = "/?event=" + this.state.title;
-    // console.log(this.state.tt)
     if (this.state.title === "Random") {
       url = "";
     }
@@ -92,13 +80,10 @@ export default class Images extends Component {
     this.setState({ FullImageCard: false });
     console.log('called');
   };
-
   openLightbox = (photo, index ) => {
       this.setState({ currentImage: index,currentIndex:index, viewerIsOpen: true })
       this.showImage(photo,index);   
   };
-
-
   showImage = (img, ind) => {
       let url = this.state.data[ind].image_url;
       this.setState({
@@ -111,7 +96,6 @@ export default class Images extends Component {
     console.log('exit');
       this.setState({ FullImageCard: false });
   }
-  
   render() {
     const { windowWidth } = this.state; 
     return (
@@ -121,11 +105,7 @@ export default class Images extends Component {
         <h1 className="text-5xl font-bold text-center mt-16 sm:text-7xl md:text-8xl">{this.state.title}</h1>
         {this.state.FullImageCard && (
             <div 
-            id="overlay" 
-        
-              className="lg:px-16"
-
-            >
+            id="overlay" className="lg:px-16">
             <div id="exitButton" onClick={() => this.exitButton()}>
                 <FontAwesomeIcon icon={faTimes} />
               </div>
@@ -158,7 +138,6 @@ export default class Images extends Component {
             </div>
           )}
 
-        {/* <div className="mx-8 lg:mx-16 2xl:mx-32 mt-16 pb-32"> */}
         <section class="mx-16 py-8 gallery-section">
         <div className="grid gap-8 grid-flow-row-dense gallery-grid">
           {this.state.data.map((img_data,ind) => {
