@@ -159,7 +159,7 @@ export default class Images extends Component {
           )}
 
         {/* <div className="mx-8 lg:mx-16 2xl:mx-32 mt-16 pb-32"> */}
-        <section class="p-8 lg:p-16 gallery-section">
+        <section class="mx-16 py-8 gallery-section">
         <div className="grid gap-8 grid-flow-row-dense gallery-grid">
           {this.state.data.map((img_data,ind) => {
             return (

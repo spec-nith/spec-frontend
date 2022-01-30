@@ -19,7 +19,7 @@ export default class GallerySecondary extends Component {
           Gallery
         </h1>
 
-        <div className="mx-10 mt-28 xl:mx-28 grid gap-4 xl:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-2xl font-bold xl:text-3xl">
+        <div className="mx-16 mt-28 grid gap-4 xl:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-2xl font-bold xl:text-3xl">
           <div
             className="w-58 h-120 lg:h-120 lg:row-span-2 bg-gray-400 object-center gallery-main-boxes"
             style={{ backgroundImage: `url('images/gallery/specfest.jpg')` }}
