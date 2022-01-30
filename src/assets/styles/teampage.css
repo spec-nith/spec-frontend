@@ -1,6 +1,12 @@
 
 .team_icons {
-  left: 87%;
+  left: 90%;
+}
+.team_members{
+  font-size: 1.1rem;
+}
+.team_post{
+  font-size: 0.9rem;
 }
 .team-card {
   padding-bottom: calc(100% - 16px);
