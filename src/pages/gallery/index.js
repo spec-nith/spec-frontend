@@ -24,50 +24,52 @@ export default class GallerySecondary extends Component {
             className="w-58 h-120 lg:h-120 lg:row-span-2 bg-gray-400 object-center gallery-main-boxes"
             style={{ backgroundImage: `url('images/gallery/specfest.jpg')` }}
           >
+        <Link to="/gallery/view/?page=SpecFest" className="w-1/1 h-1/1 flex gallery-link k justify-center items-center hover:bg-gray-100 hover:bg-opacity-20">
             <div className="gallay-mainpage-inner">
-              <Link to="/gallery/view/?page=SpecFest">
-                <button className="text-2xl font-bold xl:text-3xl hover:bg-gray-100 hover:bg-opacity-20 text-white font-bold py-2 px-4 rounded">
+              
+                <button className="text-2xl font-bold xl:text-3xl  text-white font-bold py-2 px-4 rounded">
                   <h3>SPECFEST</h3>
                 </button>
-              </Link>
+              
             </div>
+          </Link>
           </div>
 
           <div
             className="w-58 h-60 bg-gray-400 object-scale-down gallery-main-boxes"
             style={{ backgroundImage: `url('images/gallery/electrothon.jpg')` }}
           >
+              <Link to="/gallery/view/?page=Electrothon" className="w-1/1 h-1/1 flex gallery-link k justify-center items-center hover:bg-gray-100 hover:bg-opacity-20">
             <div className="gallay-mainpage-inner">
-              <Link to="/gallery/view/?page=Electrothon">
-                <button className="text-2xl font-bold xl:text-3xl hover:bg-gray-100 hover:bg-opacity-20 text-white font-bold py-2 px-4 rounded">
+                <button className="text-2xl font-bold xl:text-3xl  text-white font-bold py-2 px-4 rounded">
                   <h3>ELECTROTHON</h3>
                 </button>
-              </Link>
             </div>
+              </Link>
           </div>
           <div
             className="w-58 h-60 lg:col-span-2 bg-gray-400 object-cover gallery-main-boxes"
             style={{ backgroundImage: `url('images/gallery/workshop.jpg')` }}
           >
+              <Link to="/gallery/view/?page=Workshop" className="w-1/1 h-1/1 flex gallery-link justify-center items-center hover:bg-gray-100 hover:bg-opacity-20 hover:">
             <div className="gallay-mainpage-inner">
-              <Link to="/gallery/view/?page=Workshop">
-                <button className="text-2xl font-bold xl:text-3xl hover:bg-gray-100 hover:bg-opacity-20 text-white font-bold py-2 px-4 rounded">
+                <button className="text-2xl font-bold xl:text-3xl  text-white font-bold py-2 px-4 rounded">
                   <h3>WORKSHOP</h3>
                 </button>
-              </Link>
             </div>
+              </Link>
           </div>
           <div
             className="w-58 h-60 lg:col-span-3 bg-gray-400  object-cover gallery-main-boxes"
             style={{ backgroundImage: `url('images/gallery/random.jpg')` }}
           >
+              <Link to="/gallery/view/?page=Random" className="w-1/1 h-1/1 flex gallery-link k justify-center items-center hover:bg-gray-100 hover:bg-opacity-20">
             <div className="gallay-mainpage-inner">
-              <Link to="/gallery/view/?page=Random">
-                <button className="text-2xl font-bold xl:text-3xl hover:bg-gray-100 hover:bg-opacity-20 text-white font-bold py-2 px-4 rounded">
+                <button className="text-2xl font-bold xl:text-3xl  text-white font-bold py-2 px-4 rounded">
                   <h3>RANDOM</h3>
                 </button>
-              </Link>
             </div>
+              </Link>
           </div>
           <div className="mt-10"></div>
         </div>
