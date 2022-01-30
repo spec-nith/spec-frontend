@@ -29,3 +29,10 @@
 .gallery-item:hover:after {
   opacity: 0;
 }
+.gallery-lightbox-view-image{
+  max-width: 70%;
+}
+
+
+
+
