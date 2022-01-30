@@ -8,7 +8,7 @@ function spec({ person }) {
       <div className="font-monty">
         <div className="card_bg rounded-2xl overflow-hidden shadow-lg w-72 h-96 ">
           <img
-            src={person.profile_pic_url}
+            src={person.profile_pic_webp_url}
             className="w-80 h-72 object-fill"
             alt="img"
           />
