@@ -9,14 +9,14 @@ import {
 function TeamCard(props) {
   return (
     <>
-      <div className="font-monty overflow-hidden flex flex-col justify-center items-center w-full sticky  transition duration-500 transform hover:scale-105 mb-20 ">
+      <div className="font-monty  overflow-hidden flex flex-col justify-center w-64  sticky  transition duration-500 transform hover:scale-105 mb-20">
         <div className="col-md-4 col-sm-6 col-xs-12 ">
           <article className="team-card Red relative h-0 mb-14 text-lg m-0 leading-6  ">
-            <h2 className="absolute left-0 w-full pt-2 pb-2">
-              <span className="text-lg text-white px-4 block">
+            <h2 className="absolute left-0 w-full pt-2 pb-1">
+              <span className="team_members text-white px-4 block">
                 {props.data.name}
               </span>
-              <strong className=" text-gray-400 font-normal text-base team_post px-4 block pt-1 pb-3">
+              <strong className=" text-gray-400 font-normal  team_post px-4 block pt-1 pb-3">
                 {props.data.title == "Coordinator" ? (
                   <a className="text-white">
                     {" "}
