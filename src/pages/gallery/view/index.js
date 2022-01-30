@@ -49,14 +49,20 @@ export default class Images extends Component {
       touchStart:0,
       touchEnd:0,
       imageClick: false,
+      windowWidth: window.innerWidth,
     };
   }
+  handleResize = (e) => {
+    this.setState({ windowWidth: window.innerWidth });
+   };
   componentDidMount() {
+    window.addEventListener("resize", this.handleResize);
     let url = "/?event=" + this.state.title;
     // console.log(this.state.tt)
     if (this.state.title === "Random") {
       url = "";
     }
+    
     console.log(this.state.url);
     axios
       .get(galleryURL + url)
@@ -79,6 +85,9 @@ export default class Images extends Component {
         console.log(err);
       });
   }
+  componentWillUnmount() {
+    window.addEventListener("resize", this.handleResize);
+   } 
   closeLightbox = () => {
     this.setState({ FullImageCard: false });
     console.log('called');
@@ -102,12 +111,13 @@ export default class Images extends Component {
     console.log('exit');
       this.setState({ FullImageCard: false });
   }
-
+  
   render() {
+    const { windowWidth } = this.state; 
     return (
       <Layout>
         <React.Fragment>
-
+        {/* <h1>{ windowWidth } </h1> */}
         <h1 className="text-5xl font-bold text-center mt-16 sm:text-7xl md:text-8xl">{this.state.title}</h1>
         {this.state.FullImageCard && (
             <div 
@@ -126,7 +136,7 @@ export default class Images extends Component {
           // autoplay={{ delay: 4000, disableOnInteraction: false }}
           spaceBetween={0}
           slidesPerView={1}
-          navigation={true}
+          navigation={ windowWidth>1000? true : false}
           initialSlide={this.state.currentIndex}>
           {this.state.data.map((image, index) => {
             return (
@@ -137,7 +147,7 @@ export default class Images extends Component {
                   <img
                     src={image.image_url}
                     alt={image.event}
-                    className="m-auto p-2 md:w-9/12"
+                    className="m-auto p-2 lg:max-w-[70%] max-w-[90%]"
              
                   />
                 </div>
@@ -154,7 +164,6 @@ export default class Images extends Component {
           {this.state.data.map((img_data,ind) => {
             return (
               <div class="flex flex-col bg-cover bg-center cursor-pointer relative justify-end col-auto box-border rounded gallery-item"
-              // onClick={() => console.log('hello ',img_data,ind)}
               onClick={() => this.openLightbox(img_data,ind)}
 
                style={{backgroundImage:`url(${img_data.thumb_image_url})`}}>
