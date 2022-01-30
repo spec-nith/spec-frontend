@@ -24,7 +24,7 @@
   border: 1px solid black;
 }
 .gallery-main-boxes:hover {
-  outline: 0.875rem solid rgba(0, 0, 0, 0.6);
+  /* outline: 0.875rem solid rgba(0, 0, 0, 0.6); */
   opacity: 0.9;
   transition: 300ms;
 }
@@ -69,4 +69,8 @@
 }
 #exitButton:hover {
   opacity: 0.2;
+}
+.gallery-link{
+  width: 100% !important;
+  height: 100% !important;
 }

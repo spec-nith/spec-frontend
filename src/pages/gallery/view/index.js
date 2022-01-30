@@ -71,39 +71,7 @@ export default class Images extends Component {
             }
         }
         photos.sort(select);
-       
-        // console.log(rs);
-        // const photos = rs;
-        // for (let i = 0; i < response.data.length; i++) {
-        //     rs[i].src = response.data[i].image_url;
-        //     rs[i].width = 3;
-        //     rs[i].height = 4;
-        //     if (i % 3 === 0) {
-        //         rs[i].width = 4;
-        //         rs[i].height = 3;
-        //     }
-        //     if (i % 2 === 1) {
-        //         rs[i].width = 3;
-        //         rs[i].height = 2;
-        //     }
-        //     else if (i % 2 === 0) {
-        //         rs[i].width = 4;
-        //         rs[i].height = 3;
-        //     }
-        //     if (i % 7 === 0) {
-        //         rs[i].width = 3;
-        //         rs[i].height = 4;
-        //     }
-        //     if (i % 5 === 0) {
-        //         rs[i].width = 6;
-        //         rs[i].height = 5;
-        //     }
-        //     if (i % 4 === 0) {
-        //         rs[i].width = 4;
-        //         rs[i].height = 2;
-        //     }
-        // }
-        this.setState({ data: photo });
+        this.setState({ data: photos });
         this.setState({ load_status: false });
         // console.log(this.state.data);
       })
@@ -118,8 +86,7 @@ export default class Images extends Component {
 
   openLightbox = (photo, index ) => {
       this.setState({ currentImage: index,currentIndex:index, viewerIsOpen: true })
-      this.showImage(photo,index);
-      
+      this.showImage(photo,index);   
   };
 
 
@@ -135,9 +102,7 @@ export default class Images extends Component {
     console.log('exit');
       this.setState({ FullImageCard: false });
   }
-  onInit = () => {
 
-  };
   render() {
     return (
       <Layout>
@@ -172,7 +137,7 @@ export default class Images extends Component {
                   <img
                     src={image.image_url}
                     alt={image.event}
-                    className="m-auto p-2"
+                    className="m-auto p-2 md:w-9/12"
              
                   />
                 </div>
@@ -188,13 +153,13 @@ export default class Images extends Component {
         <div className="grid gap-8 grid-flow-row-dense gallery-grid">
           {this.state.data.map((img_data,ind) => {
             return (
-              <div class="flex flex-col bg-cover bg-center cursor-pointer relative justify-end col-auto box-border  gallery-item"
+              <div class="flex flex-col bg-cover bg-center cursor-pointer relative justify-end col-auto box-border rounded gallery-item"
               // onClick={() => console.log('hello ',img_data,ind)}
               onClick={() => this.openLightbox(img_data,ind)}
 
                style={{backgroundImage:`url(${img_data.thumb_image_url})`}}>
-              <div class=" font-semibold p-4 bg-white text-black">
-                <span className="font-extrabold">{ind}</span> {img_data.event} {img_data.year} {img_data.sub_event}
+              <div class=" font-semibold p-4 bg-white text-black rounded">
+                <div className="font-extrabold text-lg">{img_data.event} {img_data.year}</div>   {img_data.sub_event}
               </div>
             </div>
               
@@ -202,23 +167,6 @@ export default class Images extends Component {
           })}
         </div>
         </section>
-        {/* <LightGallery
-                onInit={this.onInit}
-                speed={500}
-                plugins={[lgThumbnail, lgZoom]}
-            >
-                {
-                    this.state.data.map((img_data) => {
-                        return(
-                            <a data-src={img_data.thumb_image_url} key={img_data.id} className="gallery-item">
-                                <img src={img_data.thumb_image_url} className="img-responsive"/>
-                            </a>
-                        )
-                    })
-                }
-            </LightGallery> */}
-        {/* <div className="mt-10"></div> */}
-        {/* </div> */}
         </React.Fragment>
       </Layout>
     );
