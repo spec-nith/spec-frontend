@@ -8,7 +8,9 @@ const Head = ({ title}) => {
         defaultTitle="SPEC NITH"
         title={title}
         titleTemplate="%s | SPEC"
-      />
+      >
+        <link rel="icon" href="favicon.png" />
+      </Helmet>
     </>
   )
 }

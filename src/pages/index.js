@@ -50,9 +50,9 @@ class Home extends React.Component {
     return (
       <>
       <Head title="Home" />
+      <Hero/>
       <Layout curLocation={this.state.pathName}>
         <div className="relative">
-          <Hero/>
           <div className="mt-24">
             <div className="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
               <h1 className="text-5xl font-outfit text-center">Who <span className="text-rose-500">WE</span> are?</h1>
@@ -71,7 +71,7 @@ class Home extends React.Component {
                       <ProjectCard key={index+Math.random()} project={element} />
                     ))}
                   </div>
-                  {/* <CircuitAnimation /> */}
+                  <CircuitAnimation />
               </div>
           </div>
           <div className="mt-24">
