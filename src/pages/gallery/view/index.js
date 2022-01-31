@@ -33,20 +33,17 @@ export default class Images extends Component {
       title: this.props.location.search.slice(6),
       currentImage: 0,
       viewerIsOpen: false,
-      load_status: true,
+      load_status:true,
       touchStart: 0,
       touchEnd: 0,
       imageClick: false,
-      windowWidth: window.innerWidth,
+      // windowWidth: window.innerWidth,
     };
   }
-  handleResize = (e) => {
-    this.setState({ windowWidth: window.innerWidth });
-  };
+
   componentDidMount() {
-    window.addEventListener("resize", this.handleResize);
     let url = "/?event=" + this.state.title;
-    if (this.state.title === "Random") {
+    if (this.state.title === "SPEC") {
       url = "";
     }
 
@@ -71,9 +68,6 @@ export default class Images extends Component {
       .catch((err) => {
         console.log(err);
       });
-  }
-  componentWillUnmount() {
-    window.addEventListener("resize", this.handleResize);
   }
   closeLightbox = () => {
     this.setState({ FullImageCard: false });
@@ -118,8 +112,6 @@ export default class Images extends Component {
       return (
         <Layout>
           <React.Fragment>
-
-            {/* <h1>{ windowWidth } </h1> */}
             <h1 className="text-5xl font-bold text-center mt-16 sm:text-7xl md:text-8xl">{this.state.title}</h1>
             {this.state.FullImageCard && (
               <div
@@ -134,7 +126,7 @@ export default class Images extends Component {
                   // autoplay={{ delay: 4000, disableOnInteraction: false }}
                   spaceBetween={0}
                   slidesPerView={1}
-                  navigation={windowWidth > 1000 ? true : false}
+                  navigation={true}
                   initialSlide={this.state.currentIndex}>
                   {this.state.data.map((image, index) => {
                     return (
@@ -145,7 +137,7 @@ export default class Images extends Component {
                           <img
                             src={image.image_url}
                             alt={image.event}
-                            className="m-auto p-2 lg:max-w-[70%] max-w-[90%]"
+                            className="m-auto p-2 lg:max-w-[70%] max-w-[90%]" loading="lazy"
 
                           />
                         </div>
@@ -162,7 +154,7 @@ export default class Images extends Component {
                   return (
                     <div class="flex flex-col bg-cover bg-center cursor-pointer relative justify-end col-auto box-border rounded gallery-item"
                       onClick={() => this.openLightbox(img_data, ind)}
-
+                      loading="lazy"
                       style={{ backgroundImage: `url(${img_data.thumb_image_url})` }}>
                       <div class=" font-semibold p-4 bg-white text-black rounded">
                         <div className="font-extrabold text-lg">{img_data.event} {img_data.year}</div>   {img_data.sub_event}
