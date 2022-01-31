@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Layout from "components/UI/Layout/Layout";
+import Layout from "components/Layout/Layout";
 
 // Swiper
 import { Swiper, SwiperSlide } from "swiper/react";

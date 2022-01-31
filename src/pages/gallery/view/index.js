@@ -1,24 +1,22 @@
-// Import Components
+// Components
 import React, { Component } from "react";
-import Layout from "components/UI/Layout/Layout";
+import Layout from "components/Layout/Layout";
 import axios from "axios";
-import Head from "assets/utils/helmet";
-
-// Swiper
+import Head from "utils/helmet";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Navigation } from "swiper";
-import "swiper/css";
-import "swiper/css/pagination";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { galleryURL } from "assets/utils/Routes";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Loader from "react-loader-spinner";
 
-//CSS
-import "assets/styles/gallery.css";
-import "assets/styles/gallerygrid.css";
-// Constants
-// const photo = require("./photos.json");
+// Icons and Styles
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import "swiper/css";
+import "swiper/css/pagination";
+import "../gallery.css";
+import "./gallerygrid.css";
+
+//Constans, JSONs and Assests
+import { galleryURL } from "utils/Routes";
 
 export default class Images extends Component {
   constructor(props) {

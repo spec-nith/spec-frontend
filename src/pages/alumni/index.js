@@ -1,18 +1,63 @@
+// Components
 import React, { PureComponent } from "react";
-import Cards from "components/UI/Card/AlumniCard";
 import axios from "axios";
-import Layout from "components/UI/Layout/Layout";
-import { alumniURL } from "assets/utils/Routes";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import Layout from "components/Layout/Layout";
 import Loader from "react-loader-spinner";
-import Head from "assets/utils/helmet";
+import Head from "utils/helmet";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Scrollbar } from "swiper";
-import "assets/styles/alumni.css";
+import { Navigation, Scrollbar } from "swiper";
+
+// Icons and Styles
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faFilter } from "@fortawesome/free-solid-svg-icons";
+import "./alumni.css";
 import "swiper/css";
 import "swiper/css/scrollbar";
-import "assets/styles/alumnicarousel.css";
+import "./alumnicarousel.css";
+
+//Constants, JSONs and Assests
+import { alumniURL } from "utils/Routes";
+
+
+const Cards = ({ person }) => {
+  return (
+    <div className="card z-10">
+      <div className="font-monty">
+        <div className="card_bg rounded-2xl overflow-hidden shadow-lg w-72 h-96 ">
+          <img
+            src={person.profile_pic_webp_url}
+            className="w-80 h-72 object-fill"
+            alt="img"
+          />
+          <div className=" bottom_text px-4 pt-1 w-auto ">
+            <div className="text-left text-md">
+              <ul className="">
+                <div className="alumni_batch text-sm font-normal pb-2 text-gray-200">
+                  {person.batch}
+                </div>
+                <li className="uppercase text-white font-bold">
+                  {person.name}
+                </li>
+                <li className="uppercase font-normal text-xs text-gray-200">
+                  {person.company}
+                </li>
+                <a
+                  className="alumni_icon"
+                  href={person.linkedin_id}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  <FontAwesomeIcon icon={faLinkedin} size="2x" />
+                </a>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 class Alumni extends PureComponent {
   constructor() {

@@ -1,10 +1,15 @@
+// Components
 import React, { Component } from "react";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import NavItem from "./NavItem";
 import NavbarItems from "./Items";
 import { Location } from "@reach/router";
-import "assets/styles/nav.css";
+
+// Icons and Styles
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./nav.css";
+// Constants, JSONs and Assests
+
 
 class Navbar extends Component {
   state = {

@@ -1,8 +1,13 @@
+// Components
 import React, { Component } from "react";
-import Layout from "components/UI/Layout/Layout";
+import Layout from "components/Layout/Layout";
 import { Link } from "gatsby";
-import "assets/styles/gallery.css";
-import Head from "assets/utils/helmet";
+import Head from "utils/helmet";
+
+// Icons and Styles
+import "./gallery.css";
+
+// Constants, JSONs, and Assets
 
 export default class GallerySecondary extends Component {
   constructor(props) {

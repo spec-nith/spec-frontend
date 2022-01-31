@@ -1,5 +1,7 @@
+// Components
 import React from "react";
 import { useForm } from "@formspree/react";
+// Icons and Styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFacebookF,
@@ -8,6 +10,8 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
+
+// Constants, JSONs and Assests
 
 const Footer = () => {
   const [state, handleSubmit] = useForm("xgedaoke");
