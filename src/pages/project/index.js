@@ -27,7 +27,7 @@ export default class index extends Component {
           modules={[Pagination, Autoplay,Navigation]}
           pagination={{ dynamicBullets: true, clickable: true }}
           loop={true}
-        //   autoplay={{ delay: 4000, disableOnInteraction: false }}
+          autoplay={{ delay: 4000, disableOnInteraction: false }}
           spaceBetween={0}
           slidesPerView={1}
           navigation={true}>
@@ -48,6 +48,26 @@ export default class index extends Component {
             );
           })}
         </Swiper>
+        <div className="flex">
+          {this.state.data.map((data,index)=>{
+            return (
+              <div class="w-96 rounded shadow-lg" key={index}>
+  <img class="w-full" src={data.image_url} alt={data.event} />
+  <div class="px-6 py-4">
+    <div class="font-bold text-xl mb-2">The Coldest Sunset</div>
+    <p class="text-gray-700 text-base">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+    </p>
+  </div>
+  <div class="px-6 pt-4 pb-2">
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
+    <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+  </div>
+</div>
+            )
+          })}
+        </div>
     </div>
     </React.Fragment></Layout>
     ;
