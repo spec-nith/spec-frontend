@@ -4,7 +4,7 @@ import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 function spec({ person }) {
   return (
-    <div className="card z-50">
+    <div className="card z-10">
       <div className="font-monty">
         <div className="card_bg rounded-2xl overflow-hidden shadow-lg w-72 h-96 ">
           <img

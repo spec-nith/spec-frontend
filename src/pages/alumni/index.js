@@ -1,15 +1,20 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Cards from "components/UI/Card/AlumniCard";
 import axios from "axios";
-import "assets/styles/alumni.css";
 import Layout from "components/UI/Layout/Layout";
 import { alumniURL } from "assets/utils/Routes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import Loader from "react-loader-spinner";
 import Head from "assets/utils/helmet";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination, Navigation, Scrollbar } from "swiper";
+import "assets/styles/alumni.css";
+import "swiper/css";
+import "swiper/css/scrollbar";
+import "assets/styles/alumniCarousel.css";
 
-class Alumni extends Component {
+class Alumni extends PureComponent {
   constructor() {
     super();
     this.state = {
@@ -77,11 +82,11 @@ class Alumni extends Component {
           <Head title="Alumni" />
           <Layout>
             <div className="head">
-              <div className="text-5xl font-bold text-center mt-24 ">
+              <div className="text-5xl font-bold text-center mt-24 mb-20 sm:mb-0">
                 OUR ALUMNI
               </div>
 
-              <div className="flex mt-5 sm:mr-12 justify-center sm:justify-end">
+              <div className="flex mt-5 mr-2 sm:mr-12 justify-end sm:justify-end fixed left-40 top-1 sm:l-0 sm:static z-50 ">
                 <span className="mt-16 mx-2 ">
                   <FontAwesomeIcon icon={faFilter} size="1x" />
                 </span>
@@ -118,24 +123,40 @@ class Alumni extends Component {
                           id={obj}
                           style={{ display: "flex", margin: "0 4vw 30px 4vw" }}
                         >
-                          <section
-                            className="carousel_cards_container"
-                            style={checking}
+                          <Swiper
+                            modules={[Navigation, Scrollbar]}
+                            pagination={{ clickable: true }}
+                            spaceBetween={1}
+                            scrollbar={{ hide: false }}
+                            navigation={true}
+                            slidesPerView={1}
+                            breakpoints={{
+                              640: {
+                                slidesPerView: 2,
+                              },
+                              1024: {
+                                slidesPerView: 3,
+                              },
+                            }}
                           >
-                            <div
-                              className="card_block gap-4 mb-4 "
-                              style={{ display: "flex" }}
-                            >
-                              {this.state.dummy.map((test) =>
-                                test.batch === obj ? (
-                                  <Cards person={test} key={test.id} />
-                                ) : obj == "Before 2018" &&
-                                  test.batch < 2018 ? (
-                                  <Cards person={test} key={test.id} />
-                                ) : null
-                              )}
-                            </div>
-                          </section>
+                            {this.state.dummy.map((test) =>
+                              test.batch === obj ? (
+                                <SwiperSlide
+                                  key={test.id}
+                                  className="flex md:w-1/2 lg:w-1/3 justify-center px-10 py-10"
+                                >
+                                  <Cards person={test} />
+                                </SwiperSlide>
+                              ) : obj == "Before 2018" && test.batch < 2018 ? (
+                                <SwiperSlide
+                                  key={test.id}
+                                  className="flex justify-center py-6"
+                                >
+                                  <Cards person={test} />
+                                </SwiperSlide>
+                              ) : null
+                            )}
+                          </Swiper>
                         </div>
                       </>
                     ) : obj != this.state.selected_year ? (
@@ -146,7 +167,7 @@ class Alumni extends Component {
                         style={{ display: "none" }}
                       >
                         <section className="container_outside_cards">
-                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          <div className="flex flex-row flex-wrap justify-center gap-10">
                             {this.state.dummy.map(
                               (test) =>
                                 test.batch < 2018 && (
@@ -166,7 +187,7 @@ class Alumni extends Component {
                           className="container_outside_cards"
                           style={checking}
                         >
-                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          <div className="flex flex-row flex-wrap justify-center gap-10">
                             {this.state.dummy.map(
                               (test) =>
                                 test.batch < 2018 && (
@@ -186,7 +207,7 @@ class Alumni extends Component {
                           className="container_outside_cards"
                           style={checking}
                         >
-                          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                          <div className="flex flex-row flex-wrap justify-center gap-10">
                             {this.state.dummy.map(
                               (test) =>
                                 test.batch === obj && (
