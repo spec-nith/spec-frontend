@@ -10,10 +10,18 @@ const ProjectCard2 = ({ project }) => {
             <span className="text-md px-2 md:px-4 mb-8 block font-semibold">
               {project.content}
             </span>
-            <span className="p-2 px-4 border-2 border-gray-500 rounded-md text-base hover:bg-gray-200 hover:border-gray-200 cursor-pointer hover:text-black">
+            {/* <span className="p-2 px-4 border-2 border-gray-500 rounded-md text-base hover:bg-gray-200 hover:border-gray-200 cursor-pointer hover:text-black">
               Explore
-            </span>
-            <img className={"h-36 absolute "+(project.class)} src={project.image} alt="project-vector"/>          
+            </span> */}
+            {/* <img className={"h-36 absolute "+(project.class)} src={project.image} alt="project-vector"/>           */}
+            <picture>
+                        <source srcSet={project.webp} type="image/webp" />
+                        <img
+                          className={"h-36 absolute "+(project.class)}
+                          src={project.image}
+                          alt="project-vector"
+                        />
+            </picture>
           </div>
     </div>
   );

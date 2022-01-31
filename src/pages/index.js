@@ -54,24 +54,22 @@ class Home extends React.Component {
       <Layout curLocation={this.state.pathName}>
         <div className="relative">
           <div className="mt-24">
-            <div className="max-w-7xl mx-auto pb-12 px-4 sm:px-6 lg:px-8">
-              <h1 className="text-5xl font-outfit text-center">Who <span className="text-rose-500">WE</span> are?</h1>
-            </div>
             <div className="max-w-6xl mx-auto pt-6 sm:px-6 lg:px-8">
               <About />
             </div>
           </div>
-          <div className="mt-24">
+          <div className="mt-40 relative">
+            <CircuitAnimation />
             <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
               <h1 className="text-5xl font-outfit text-center">What <span className="text-rose-500">WE</span> do?</h1>
             </div>
-              <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 flex justify-center relative">
-                  <div className="px-4 py-6 sm:px-0 rounded-lg h-auto grid gap-x-12 lg:gap-x-80 gap-y-24 sm:grid-cols-1 md:grid-cols-2 justify-center">
+              <div className="max-w-6xl mx-auto py-6 sm:px-6 lg:px-8 flex justify-center">
+                  <div className="px-4 py-6 sm:px-0 rounded-lg h-auto grid gap-x-12 lg:gap-x-12 gap-y-24 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center">
                     {projects.map((element,index) => (
                       <ProjectCard key={index+Math.random()} project={element} />
                     ))}
                   </div>
-                  <CircuitAnimation />
+                  
               </div>
           </div>
           <div className="mt-24">

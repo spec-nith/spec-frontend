@@ -9,7 +9,7 @@ const Head = ({ title}) => {
         title={title}
         titleTemplate="%s | SPEC"
       >
-        <link rel="icon" href="favicon.png" />
+        <link rel="icon" href="/favicon.png" />
       </Helmet>
     </>
   )

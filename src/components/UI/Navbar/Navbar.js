@@ -1,56 +1,37 @@
 import React, { Component } from "react";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import logo from "assets/images/logo.ico";
 import NavItem from "./NavItem";
 import NavbarItems from "./Items";
 import { Location } from "@reach/router";
-import { debounce } from "assets/utils/helpers";
 import "assets/styles/nav.css";
 
 class Navbar extends Component {
   state = {
     isOpen: false,
-    visible:true,
-    scrollPosition:0,
-    isBg:false
+    isBg:false,
+    show: true,
+    scrollPos: 0
   };
 
   componentDidMount() {
-    window.addEventListener("scroll", this.handleScroll);
-    var scrollComponent = this;
-    this._isMounted = true;
-    document.addEventListener("scroll", function (e) {
-      scrollComponent.toggleBg();
-    });
+  window.addEventListener("scroll", this.handleScroll);
   }
-  toggleBg() {
-    if (this._isMounted === true) {
-      if (window.pageYOffset > 100) {
-        this.setState({
-          isBg: true,
-        });
-      } else {
-        this.setState({
-          isBg: false,
-        });
-      }
-    }
-  }
-
-  handleScroll = debounce(() => {
-    const currentScrollPos = window.pageYOffset;
-    const prevScrollPos = this.state.scrollPosition;
+  handleScroll = () => {
     this.setState({
-      visible:
-        (prevScrollPos >= currentScrollPos &&
-          prevScrollPos - currentScrollPos > 70) ||
-        currentScrollPos < 10
-          ? true
-          : false,
-      scrollPosition: currentScrollPos,
+      scrollPos: document.body.getBoundingClientRect().top,
+      show: document.body.getBoundingClientRect().top > this.state.scrollPos
     });
-  }, 100);
+    if (window.pageYOffset > 100) {
+      this.setState({
+        isBg: true,
+      });
+    } else {
+      this.setState({
+        isBg: false,
+      });
+    }
+  };
   
   drawerHandler = () => {
     this.setState({
@@ -63,8 +44,8 @@ class Navbar extends Component {
       <React.Fragment>
         <nav className="hidden md:block fixed w-full h-16 text-gray-200 z-50 opacity-90 top-0">
           {/* Desktop View starts */}
-          <div className={"hidden md:flex justify-between w-full "+ (!this.state.visible ? "scrolled-down" : "scrolled-up")+(this.state.isBg ? " bg-zinc-900" : null)}>
-            <img src={logo} alt="Logo" className="ml-6 md:mt-4 h-10 w-10" />
+          <div className={"hidden md:flex justify-between w-full navbar-testing " +(this.state.show ? "scrolled-up" : "scrolled-down")+(this.state.isBg ? " bg-zinc-900" : null)}>
+            <img src="/images/logo.png" alt="Logo" className="ml-6 md:mt-2 h-14" />
             <div className="flex ">
             {NavbarItems.map((element,index) => (
               <NavItem item={element} key={index+Math.random()} clicked={this.drawerHandler} icons={false}/>
@@ -107,7 +88,7 @@ class Navbar extends Component {
               role="button" tabIndex="0" aria-label="menu-btn"
               className="flex w-full items-center p-4 border-b"
             >
-              <img src={logo} alt="Logo" className="h-16 w-16 mx-auto" />
+              <img src="/images/logo.png" alt="Logo" className="h-20 mx-auto" />
             </span>
             {NavbarItems.map((element,index) => (
               <NavItem item={element} key={index+Math.random()} clicked={this.drawerHandler} icons={true} />
