@@ -40,19 +40,20 @@ export default class Gallery extends Component {
     } else {
       return (
         <section class="gallery-section">
-        <div className="gallery-grid">
-          {this.state.data.map((img_data) => {
-            return (
-              <div class="gallery-item item--medium"
-               style={{backgroundImage:`url(${img_data.thumb_image_url})`}}>
-              <div class="item__details">
-                sesame snaps chocolate
-              </div>
-            </div>
-              
-            );
-          })}
-        </div>
+          <div className="gallery-grid">
+            {this.state.data.map((img_data) => {
+              return (
+                <div
+                  class="gallery-item item--medium"
+                  style={{
+                    backgroundImage: `url(${img_data.thumb_image_url})`,
+                  }}
+                >
+                  <div class="item__details">sesame snaps chocolate</div>
+                </div>
+              );
+            })}
+          </div>
         </section>
       );
     }
@@ -60,12 +61,7 @@ export default class Gallery extends Component {
 
   renderLightbox = () => {
     if (this.state.lightbox) {
-      return (
-        <div>
-          
-          {this.state.lightbox_index}
-        </div>
-      );
+      return <div>{this.state.lightbox_index}</div>;
     }
   };
 

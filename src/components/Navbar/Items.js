@@ -39,7 +39,8 @@ const navItems = [
   },
   {
     name: "Notes",
-    route: "https://drive.google.com/drive/folders/1_R5x_sAkFsrC4RRgPOygdzydzDhtHBOQ?usp=sharing",
+    route:
+      "https://drive.google.com/drive/folders/1_R5x_sAkFsrC4RRgPOygdzydzDhtHBOQ?usp=sharing",
     icon: faStickyNote,
     external: true,
   },

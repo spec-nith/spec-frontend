@@ -13,7 +13,7 @@ export const visionData = [
     content:
       "In the process, the establishment of team SPEC is indeed a challenging prospect with high hopes and big aspirations. A progressive and positive momentum is imparted by the targeted Vision and Mission of SPEC. The motto that we uphold is Service and Excellence. Our approach is interactive, innovative and quintessentially holistic.",
     image: "/images/vision/dsy.jpg",
-   },
+  },
   {
     name: "MR. YUVRAJ KADALE",
     post: "PRESIDENT, SPEC",
@@ -26,5 +26,5 @@ export const visionData = [
     content:
       "The change in the vision and development of technical activities with high hopes and aspirations is quite fast. In tune with these changes SPEC has also been transforming itself to adopt and provide the best possible learning experience to prepare young minds to solve the complex problems.",
     image: "/images/vision/yash.jpg",
-   },
+  },
 ];

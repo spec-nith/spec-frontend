@@ -14,15 +14,13 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop -H 0.0.0.0",
-    "build": "gatsby build",
+    "build": "gatsby build --prefix-paths",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public -b gh-pages",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
+    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,md}\""
   },
   "dependencies": {
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
     "@formspree/react": "^2.2.4",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
@@ -31,7 +29,6 @@
     "@headlessui/react": "^1.4.2",
     "@mdx-js/mdx": "^1.6.22",
     "@mdx-js/react": "^1.6.22",
-    "@mui/material": "^5.2.6",
     "axios": "^0.24.0",
     "gatsby": "^4.4.0",
     "gatsby-plugin-fontawesome-css": "^1.2.0",
@@ -46,7 +43,6 @@
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-loader-spinner": "^4.0.0",
-    "react-tabs": "^3.2.3",
     "swiper": "^7.4.1"
   },
   "devDependencies": {
@@ -56,7 +52,6 @@
     "postcss": "^8.4.5",
     "postcss-cli": "^9.1.0",
     "prettier": "^2.5.1",
-    "react-tsparticles": "^1.39.0",
     "tailwindcss": "^3.0.7"
   },
   "homepage": "http://spec-nith.github.io/spec-frontend"

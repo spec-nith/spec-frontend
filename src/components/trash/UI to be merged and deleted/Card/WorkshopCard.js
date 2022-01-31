@@ -12,7 +12,7 @@ export default function WorkshopCard({ shop }) {
       <section className="workshop-card-section">
         <div
           className="workshop-card relative flex items-end overflow-hidden p-4 text-center border-black-700 border-2 rounded-lg "
-          style={{ backgroundImage: `url("${shop.cover_webp_url}")` }}         //./images/spec_workshop11.jpg
+          style={{ backgroundImage: `url("${shop.cover_webp_url}")` }} //./images/spec_workshop11.jpg
         >
           <div className="workshop-content relative flex flex-col items-center w-full p-4">
             <h2 className="workshop-title text-xl font-bold text-white">

@@ -70,7 +70,10 @@ function TeamCard(props) {
             </h2>
             <div className="absolute top-0 right-0 bottom-4 left-4">
               <div className="overflow-hidden absolute top-0 left-0 w-full h-full">
-                <img src={props.data.profile_pic_webp_url} alt={props.data.name} />
+                <img
+                  src={props.data.profile_pic_webp_url}
+                  alt={props.data.name}
+                />
               </div>
             </div>
             <div>
