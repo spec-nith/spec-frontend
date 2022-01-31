@@ -12,7 +12,7 @@ import { Pagination, Navigation, Scrollbar } from "swiper";
 import "assets/styles/alumni.css";
 import "swiper/css";
 import "swiper/css/scrollbar";
-import "assets/styles/alumniCarousel.css";
+import "assets/styles/alumnicarousel.css";
 
 class Alumni extends PureComponent {
   constructor() {

@@ -4,7 +4,7 @@ export const visionData = [
     post: "HOD, ECE",
     content:
       "Over the past years, NIT Hamirpur had witnessed changes in the dynamic thoughts and concrete ideas of the young aspiring engineers. Team Spec has always played a great role in connecting young with the experienced. They not only provide knowledge to the students but also instill passion in them so that they may bring more advancements in their field.",
-    image: "/images/vision/hod.png",
+    image: "/images/vision/hod.jpg",
     webp: "/images/vision/webp/hod.webp",
   },
   {
