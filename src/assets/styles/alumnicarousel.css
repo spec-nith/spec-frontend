@@ -1,0 +1,10 @@
+.swiper-scrollbar {
+  height: 10px !important;
+  background-color: wheat;
+}
+.swiper-button-next {
+  right: -0.15rem !important;
+}
+.swiper-button-prev {
+  left: -0.15rem !important;
+}
