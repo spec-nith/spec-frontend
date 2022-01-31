@@ -2,7 +2,7 @@ import React from "react";
 import 'assets/styles/animations.css';
 
  const circuitAnimate=()=>{
-     return (<section className="absolute hidden md:block w-40 top-24">
+     return (<section className="absolute hidden lg:block w-28 top-1/4 -left-20">
          <svg version="1.1" className="project-circuit-no-fill" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              viewBox="0 0 96.3 457.3" style={{ enableBackground: "new 0 0 96.3 457.3" }} xmlSpace="preserve">
              <g id="circuit-left" transform="translate(92.128906, 524.812500)">

@@ -29,11 +29,20 @@ const card = ({ vision }) => {
         </div>
       </div>
       <div className="w-full lg:w-2/5">
-        <img
+        {/* <img
           src={vision.image}
           alt="pic"
           className="rounded-none object-cover h-80 lg:rounded-lg shadow-2xl hidden lg:block"
-        />
+        /> */}
+        <picture className="">
+                <source srcSet={vision.webp} type="image/webp" />
+                <img
+                  src={vision.image}
+                  className="rounded-none object-cover h-80 lg:rounded-lg shadow-2xl hidden lg:block"
+                  alt="Electrothon Logo"
+                />
+        </picture>
+        
       </div>
     </div>
   );
