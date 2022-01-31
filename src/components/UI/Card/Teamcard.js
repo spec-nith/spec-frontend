@@ -7,14 +7,13 @@ import {
   faUserTie,
 } from "@fortawesome/free-solid-svg-icons";
 function TeamCard(props) {
-
   return (
     <>
-      <div className="font-monty  overflow-hidden flex flex-col justify-center w-64  sticky  transition duration-500 transform hover:scale-105 mb-20">
+      <div className="font-monty  overflow-hidden flex flex-col justify-center w-72 lg:w-64  sticky  transition duration-500 transform hover:scale-105 mb-20">
         <div className="col-md-4 col-sm-6 col-xs-12 ">
           <article className="team-card Red relative h-0 mb-14 text-lg m-0 leading-6  ">
             <h2 className="absolute left-0 w-full pt-2 pb-1">
-              <span className="team_members text-white px-4 block">
+              <span className="text-base text-white px-4 block">
                 {props.data.name}
               </span>
               <strong className=" text-gray-400 font-normal  team_post px-4 block pt-1 pb-3">
@@ -72,7 +71,6 @@ function TeamCard(props) {
             <div className="absolute top-0 right-0 bottom-4 left-4">
               <div className="overflow-hidden absolute top-0 left-0 w-full h-full">
                 <img src={props.data.profile_pic_webp_url} alt={props.data.name} />
- 
               </div>
             </div>
             <div>
