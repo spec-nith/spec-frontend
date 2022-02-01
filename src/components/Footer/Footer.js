@@ -76,7 +76,7 @@ const Footer = () => {
                   className="uppercase text-sm text-white font-bold"
                   htmlFor="Name"
                 ></label>
-                <div clasName="flex flex-col gap-4 px-0 py-4">
+                <div className="flex flex-col gap-4 px-0 py-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="font-medium text-2xl text-gray-600 absolute p-2.5 px-3 w-11"
@@ -84,9 +84,9 @@ const Footer = () => {
                     fill="gray"
                   >
                     <path
-                      fill-rule="evenodd"
+                      fillRule="evenodd"
                       d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                      clip-rule="evenodd"
+                      clipRule="evenodd"
                     />
                   </svg>
                   <input
@@ -103,7 +103,7 @@ const Footer = () => {
                   className="uppercase text-sm text-gray-100 font-bold"
                   htmlFor="Sender"
                 ></label>
-                <div clasName="flex flex-col gap-4 px-0 py-4">
+                <div className="flex flex-col gap-4 px-0 py-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="font-medium text-2xl text-gray-400 absolute p-2.5 px-3 w-11"
@@ -112,9 +112,9 @@ const Footer = () => {
                     stroke="currentColor"
                   >
                     <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
                       d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
                     />
                   </svg>

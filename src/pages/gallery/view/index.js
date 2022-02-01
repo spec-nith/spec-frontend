@@ -16,7 +16,7 @@ import "../gallery.css";
 import "./gallerygrid.css";
 
 //Constans, JSONs and Assests
-import { galleryURL } from "utils/Routes";
+import { galleryURL } from "utils/routes";
 
 export default class Images extends Component {
   constructor(props) {

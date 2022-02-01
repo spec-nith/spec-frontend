@@ -9,11 +9,16 @@ import Head from "utils/helmet";
 // Icons and Styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
-import { faUserFriends, faUsers, faUserTie, faFilter } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUserFriends,
+  faUsers,
+  faUserTie,
+  faFilter,
+} from "@fortawesome/free-solid-svg-icons";
 import "./teampage.css";
 
 // Constants, JSONs and Assets
-import { teamURL } from "utils/Routes";
+import { teamURL } from "utils/routes";
 const FinalYear = [
   "President",
   "Vice President",
@@ -25,7 +30,7 @@ const FinalYear = [
 const team_posts = ["Final Year", "Coordinator", "Executive", "Volunteer"];
 const juniorPosts = ["Coordinator", "Executive", "Volunteer"];
 
-const TeamCard = (props) =>{
+const TeamCard = (props) => {
   return (
     <>
       <div className="font-monty  overflow-hidden flex flex-col justify-center w-72 lg:w-64  sticky  transition duration-500 transform hover:scale-105 mb-20">
@@ -106,7 +111,7 @@ const TeamCard = (props) =>{
       </div>
     </>
   );
-}
+};
 
 class TeamPage extends Component {
   constructor() {

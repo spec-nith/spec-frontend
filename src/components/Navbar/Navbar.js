@@ -10,7 +10,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./nav.css";
 // Constants, JSONs and Assests
 
-
 class Navbar extends Component {
   state = {
     isOpen: false,

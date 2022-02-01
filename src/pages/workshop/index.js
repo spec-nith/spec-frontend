@@ -10,10 +10,9 @@ import { faFilter } from "@fortawesome/free-solid-svg-icons";
 import "./workshopcard.css";
 
 // Constants, JSONs, and Styles
-import { worskhopURL } from "utils/Routes";
+import { worskhopURL } from "utils/routes";
 
-
-const WorkshopCard = ({ shop }) =>{
+const WorkshopCard = ({ shop }) => {
   console.log(shop);
 
   const [showModal, setShowModal] = useState(false);
@@ -79,8 +78,7 @@ const WorkshopCard = ({ shop }) =>{
       </section>
     </>
   );
-}
-
+};
 
 class Workshop extends Component {
   constructor() {
