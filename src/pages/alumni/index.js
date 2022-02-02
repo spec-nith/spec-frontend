@@ -84,7 +84,12 @@ const AlumniSwiper = (props) => {
 // <------------- Funtional Component ------------->
 const MainBody = ({ data }) => {
   const [selected_year, setYear] = useState("0");
-  const year_of_grad_options = [2021, 2020, 2019, "Before 2019"];
+  const year_mapping = {
+    " 2021": [2021],
+    " 2020": [2020],
+    " 2019": [2019],
+    " Before 2019": [2018, 2017, 2016, 2015, 2014],
+  };
   const select_year = (e) => setYear(e.target.value);
   return (
     <React.Fragment>
@@ -95,7 +100,7 @@ const MainBody = ({ data }) => {
           onChange={select_year}
         >
           <option value={0}>All Year</option>
-          {year_of_grad_options.map((year) => (
+          {Object.keys(year_mapping).map((year) => (
             <option value={year} key={year}>
               {year}
             </option>
@@ -103,60 +108,30 @@ const MainBody = ({ data }) => {
         </select>
 
         <div className="px-8">
-          {year_of_grad_options.map((year, index) => (
+          {Object.keys(year_mapping).map((year) => (
             <div
-              className="batch text-white text-4xl font-monty text-center transition-all"
+              className={
+                "batch text-white text-4xl font-monty text-center transition-all overflow-hidden " +
+                (year === selected_year || selected_year === "0"
+                  ? "h-auto"
+                  : "h-0")
+              }
               key={year}
             >
-              {year !== "Before 2019" ? (
-                // Title of Swiper Section
-                <div
-                  className={
-                    (String(year) === selected_year || selected_year === "0"
-                      ? "h-auto"
-                      : "h-0") + " transition-all overflow-hidden"
-                  }
-                >
-                  Batch{" "}
-                  <span style={{ color: "rgb(46, 224, 154)" }}>{year}</span>
-                  <AlumniSwiper>
-                    {data
-                      .filter((user) => user.batch === year)
-                      .map((user) => (
-                        <SwiperSlide
-                          className="flex justify-center"
-                          key={user.name}
-                        >
-                          <AlumniCard person={user} />
-                        </SwiperSlide>
-                      ))}
-                  </AlumniSwiper>
-                </div>
-              ) : (
-                <div
-                  className={
-                    (String(year) === selected_year || selected_year === "0"
-                      ? "h-auto"
-                      : "h-0") + " transition-all overflow-hidden"
-                  }
-                >
-                  {" "}
-                  Batch before
-                  <span style={{ color: "rgb(46, 224, 154)" }}> 2019 </span>
-                  <AlumniSwiper>
-                    {data
-                      .filter((user) => user.batch < 2019)
-                      .map((user) => (
-                        <SwiperSlide
-                          className="flex justify-center"
-                          key={user.name}
-                        >
-                          <AlumniCard person={user} />
-                        </SwiperSlide>
-                      ))}
-                  </AlumniSwiper>
-                </div>
-              )}
+              Batch
+              <span style={{ color: "rgb(46, 224, 154)" }}>{year}</span>
+              <AlumniSwiper>
+                {data
+                  .filter((user) => year_mapping[year].includes(user.batch))
+                  .map((user) => (
+                    <SwiperSlide
+                      className="flex justify-center"
+                      key={user.name}
+                    >
+                      <AlumniCard person={user} />
+                    </SwiperSlide>
+                  ))}
+              </AlumniSwiper>
             </div>
           ))}
         </div>
@@ -236,7 +211,7 @@ class Alumni extends React.Component {
   render() {
     return (
       <Layout>
-        <Head title="PAGE TITLE GOES HERE" />
+        <Head title="Alumni" />
         {this.renderLoader()}
         {this.renderError()}
         {this.state.wait || this.state.error ? (
