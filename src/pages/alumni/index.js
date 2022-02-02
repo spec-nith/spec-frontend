@@ -94,7 +94,7 @@ const Alumni = () => {
       setData(() => ({ ...alumni, data: response.data, wait: false }));
     };
     fetchData();
-  }, []);
+  });
 
   const year_of_grad_options = [2021, 2020, 2019, "Before 2019"];
   const select_year = (e) => {

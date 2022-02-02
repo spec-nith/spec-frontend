@@ -3,6 +3,8 @@ import React, { Component, useState } from "react";
 import Layout from "components/Layout/Layout";
 import axios from "axios";
 import Loader from "react-loader-spinner";
+import Head from "utils/helmet";
+
 
 // Icons and Styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -80,25 +82,16 @@ const WorkshopCard = ({ shop }) => {
   );
 };
 
-class Workshop extends Component {
-  constructor() {
-    super();
+
+class MainBody extends React.Component{
+  constructor(props){
+    super(props)
     this.state = {
-      selected_year: 0,
-      wait: true,
-      dummy: [],
-    };
+      data: this.props.data,
+      selected_year: 0
+    }
   }
-  componentDidMount() {
-    axios
-      .get(worskhopURL)
-      .then((response) => {
-        this.setState({ dummy: response.data, wait: false });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+
   Selected_Year = (e) => {
     this.setState({ selected_year: e.target.value });
   };
@@ -108,23 +101,7 @@ class Workshop extends Component {
   };
   render() {
     const year_of_grad = [2021, 2020, 2019, 2018];
-    if (this.state.wait) {
       return (
-        <Layout>
-          <div className="flex h-90v justify-center items-center">
-            <Loader
-              type="Puff"
-              color="#00BFFF"
-              height={100}
-              width={100}
-              timeout={100000} // 10 secs wait until error message shows
-            />
-          </div>
-        </Layout>
-      );
-    } else {
-      return (
-        <Layout>
           <div className="">
             <header className="head my-5">
               <div className="text-5xl font-bold text-center my-16 sm:text-7xl md:text-8xl">
@@ -174,7 +151,7 @@ class Workshop extends Component {
                         </span>
                       </div>
                       <div className="workshop-page-content grid p-4">
-                        {this.state.dummy.map(
+                        {this.state.data.map(
                           (element) =>
                             this.datTimeHandler(element.event_date) === obj && (
                               <WorkshopCard
@@ -197,7 +174,7 @@ class Workshop extends Component {
                         </span>
                       </div>
                       <div className="workshop-page-content grid p-4">
-                        {this.state.dummy.map(
+                        {this.state.data.map(
                           (element) =>
                             this.datTimeHandler(element.event_date) === obj && (
                               <WorkshopCard
@@ -213,10 +190,76 @@ class Workshop extends Component {
               ))}
             </div>
           </div>
-        </Layout>
       );
     }
   }
+
+
+class Workshop extends Component {
+  constructor() {
+    super();
+    this.state = {
+      wait: true,
+      data: [],
+      error:false,
+      errorData:[]
+    };
+  }
+  componentDidMount() {
+    axios
+      .get(worskhopURL)
+      .then((response) => {
+        this.setState({ data: response.data, wait: false });
+      })
+      .catch((err) => {
+        console.log(err.response);
+        this.setState({error: true, errorData: err.response, wait: false})
+      });
+  }
+
+  renderLoader() {
+      if (this.state.wait) {
+          return (
+              <div className="flex h-90v justify-center items-center">
+                <Loader
+                  type="Puff"
+                  color="#00BFFF"
+                  height={100}
+                  width={100}
+                  timeout={100000} // 10 secs wait until error message shows
+                />
+              </div>
+          );
+        }
+  }
+
+  renderError() {
+      if (this.state.error){
+          return(
+              <div className="flex flex-wrap h-90v">
+                <div className="flex items-center justify-end w-full md:w-1/2">
+                  <img src="error.webp"/>
+                </div>
+                <div className="flex items-center justify-start w-full md:w-1/2 text-white p-4">
+                  <h1>YO YO this is fucked</h1>
+                  <h1>{this.state.errorData.status}</h1>
+                  <h1>{this.state.errorData.statusText}</h1>
+                </div>
+              </div>
+          )
+        }
+  }
+  render() {
+      return(
+           <Layout>
+               <Head title="workshop" />
+               { this.renderLoader() }
+               { this.renderError() }
+               {(this.state.wait || this.state.error) ? "" : <MainBody data={this.state.data}/>}
+           </Layout>
+      )
+  }
 }
+  
 
 export default Workshop;
