@@ -36,11 +36,12 @@ class GenericPage extends React.Component {
       data: [],
       error: false,
       errorData: [],
+      url: "",
     };
   }
   componentDidMount() {
     axios
-      .get("API URL goes here", { timeout: 10000 })
+      .get(this.state.url, { timeout: 10000 })
       .then((response) => {
         this.setState({ data: response.data, wait: false });
       })
@@ -59,7 +60,6 @@ class GenericPage extends React.Component {
         this.setState({ error: true, errorMsg: msg, wait: false });
       });
   }
-
   renderLoader() {
     if (this.state.wait) {
       return (
@@ -75,7 +75,6 @@ class GenericPage extends React.Component {
       );
     }
   }
-
   renderError() {
     if (this.state.error) {
       return (
