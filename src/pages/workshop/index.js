@@ -5,7 +5,6 @@ import axios from "axios";
 import Loader from "react-loader-spinner";
 import Head from "utils/helmet";
 
-
 // Icons and Styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter } from "@fortawesome/free-solid-svg-icons";
@@ -82,14 +81,13 @@ const WorkshopCard = ({ shop }) => {
   );
 };
 
-
-class MainBody extends React.Component{
-  constructor(props){
-    super(props)
+class MainBody extends React.Component {
+  constructor(props) {
+    super(props);
     this.state = {
       data: this.props.data,
-      selected_year: 0
-    }
+      selected_year: 0,
+    };
   }
 
   Selected_Year = (e) => {
@@ -101,99 +99,88 @@ class MainBody extends React.Component{
   };
   render() {
     const year_of_grad = [2021, 2020, 2019, 2018];
-      return (
-          <div className="">
-            <header className="head my-5">
-              <div className="text-5xl font-bold text-center my-16 sm:text-7xl md:text-8xl">
-                WORKSHOPS
-              </div>
+    return (
+      <div className="">
+        <header className="head my-5">
+          <div className="text-5xl font-bold text-center my-16 sm:text-7xl md:text-8xl">
+            WORKSHOPS
+          </div>
 
-              <div className="flex flex-row flex-wrap justify-center">
-                <img
-                  alt="arduino_pic"
-                  className="sm:rounded-l-lg w-64 border-2 border-y-teal-400 border-l-teal-400"
-                  src="./images/20944391.jpg"
-                />
+          <div className="flex flex-row flex-wrap justify-center">
+            <img
+              alt="arduino_pic"
+              className="sm:rounded-l-lg w-64 border-2 border-y-teal-400 border-l-teal-400"
+              src="./images/20944391.jpg"
+            />
 
-                <div className="border-y-teal-400 border-r-teal-400 border-2 w-64 p-6 text-center align-middle text-lg self-center text-monty shadow backdrop-filter backdrop-blur-lg section-content sm:rounded-r-lg lg:w-1/3 sm:w-1/2">
-                  {" "}
-                  SPEC provides students to keep a beady eye with the ever
-                  changing technology by holding workshops on many fascinating
-                  topics. For instance, many workshops on Arduino, Photoshop,
-                  IOT, Integrated circuits are held which ignites the passion
-                  for electronics and technology among students.
-                </div>
-              </div>
-            </header>
-            <div className="flex mt-5 mr-16 justify-center sm:justify-end">
-              <span className="mt-14 ml-2 mr-2 ">
-                <FontAwesomeIcon icon={faFilter} size="1x" />
-              </span>
-              <select
-                className="h-10 text-white font-bold bg-zinc-800  rounded-lg p-2 font-monty "
-                onChange={this.Selected_Year}
-              >
-                <option value={0}>All Year</option>
-                {year_of_grad.map((obj) => (
-                  <option value={obj}>{obj}</option>
-                ))}
-              </select>
-            </div>
-            <div className="mx-auto" style={{ padding: "auto" }}>
-              {year_of_grad.map((obj) => (
-                <React.Fragment key={obj}>
-                  {this.state.selected_year === 0 ? (
-                    <div>
-                      <div className="text-white  text-center text-4xl py-8 font-outfit">
-                        YEAR{" "}
-                        <span style={{ color: "rgb(46, 224, 154)" }}>
-                          {obj}
-                        </span>
-                      </div>
-                      <div className="workshop-page-content grid p-4">
-                        {this.state.data.map(
-                          (element) =>
-                            this.datTimeHandler(element.event_date) === obj && (
-                              <WorkshopCard
-                                key={element.title}
-                                shop={element}
-                              />
-                            )
-                        )}
-                      </div>
-                    </div>
-                  ) : obj === this.state.selected_year ? (
-                    <div>
-                      <div
-                        className="text-white text-center text-4xl py-8 font-outfit"
-                        style={{ fontSize: "40px" }}
-                      >
-                        YEAR{" "}
-                        <span style={{ color: "rgb(46, 224, 154)" }}>
-                          {obj}
-                        </span>
-                      </div>
-                      <div className="workshop-page-content grid p-4">
-                        {this.state.data.map(
-                          (element) =>
-                            this.datTimeHandler(element.event_date) === obj && (
-                              <WorkshopCard
-                                key={element.title}
-                                shop={element}
-                              />
-                            )
-                        )}
-                      </div>
-                    </div>
-                  ) : null}
-                </React.Fragment>
-              ))}
+            <div className="border-y-teal-400 border-r-teal-400 border-2 w-64 p-6 text-center align-middle text-lg self-center text-monty shadow backdrop-filter backdrop-blur-lg section-content sm:rounded-r-lg lg:w-1/3 sm:w-1/2">
+              {" "}
+              SPEC provides students to keep a beady eye with the ever changing
+              technology by holding workshops on many fascinating topics. For
+              instance, many workshops on Arduino, Photoshop, IOT, Integrated
+              circuits are held which ignites the passion for electronics and
+              technology among students.
             </div>
           </div>
-      );
-    }
+        </header>
+        <div className="flex mt-5 mr-16 justify-center sm:justify-end">
+          <span className="mt-14 ml-2 mr-2 ">
+            <FontAwesomeIcon icon={faFilter} size="1x" />
+          </span>
+          <select
+            className="h-10 text-white font-bold bg-zinc-800  rounded-lg p-2 font-monty "
+            onChange={this.Selected_Year}
+          >
+            <option value={0}>All Year</option>
+            {year_of_grad.map((obj) => (
+              <option value={obj}>{obj}</option>
+            ))}
+          </select>
+        </div>
+        <div className="mx-auto" style={{ padding: "auto" }}>
+          {year_of_grad.map((obj) => (
+            <React.Fragment key={obj}>
+              {this.state.selected_year === 0 ? (
+                <div>
+                  <div className="text-white  text-center text-4xl py-8 font-outfit">
+                    YEAR{" "}
+                    <span style={{ color: "rgb(46, 224, 154)" }}>{obj}</span>
+                  </div>
+                  <div className="workshop-page-content grid p-4">
+                    {this.state.data.map(
+                      (element) =>
+                        this.datTimeHandler(element.event_date) === obj && (
+                          <WorkshopCard key={element.title} shop={element} />
+                        )
+                    )}
+                  </div>
+                </div>
+              ) : obj === this.state.selected_year ? (
+                <div>
+                  <div
+                    className="text-white text-center text-4xl py-8 font-outfit"
+                    style={{ fontSize: "40px" }}
+                  >
+                    YEAR{" "}
+                    <span style={{ color: "rgb(46, 224, 154)" }}>{obj}</span>
+                  </div>
+                  <div className="workshop-page-content grid p-4">
+                    {this.state.data.map(
+                      (element) =>
+                        this.datTimeHandler(element.event_date) === obj && (
+                          <WorkshopCard key={element.title} shop={element} />
+                        )
+                    )}
+                  </div>
+                </div>
+              ) : null}
+            </React.Fragment>
+          ))}
+        </div>
+      </div>
+    );
   }
-
+}
 
 class Workshop extends Component {
   constructor() {
@@ -201,65 +188,82 @@ class Workshop extends Component {
     this.state = {
       wait: true,
       data: [],
-      error:false,
-      errorData:[]
+      error: false,
+      errorMsg: [],
     };
   }
   componentDidMount() {
     axios
-      .get(worskhopURL)
+      .get(worskhopURL + "awda", { timeout: 10000 })
       .then((response) => {
         this.setState({ data: response.data, wait: false });
       })
       .catch((err) => {
         console.log(err.response);
-        this.setState({error: true, errorData: err.response, wait: false})
+        let msg = "Request Timed Out";
+        if (err.response) {
+          msg =
+            err.response.status && err.response.statusText
+              ? "API Error: " +
+                err.response.status +
+                " " +
+                err.response.statusText
+              : "API request failed";
+        }
+        this.setState({ error: true, errorMsg: msg, wait: false });
       });
   }
 
   renderLoader() {
-      if (this.state.wait) {
-          return (
-              <div className="flex h-90v justify-center items-center">
-                <Loader
-                  type="Puff"
-                  color="#00BFFF"
-                  height={100}
-                  width={100}
-                  timeout={100000} // 10 secs wait until error message shows
-                />
-              </div>
-          );
-        }
+    if (this.state.wait) {
+      return (
+        <div className="flex h-90v justify-center items-center">
+          <Loader
+            type="Puff"
+            color="#00BFFF"
+            height={100}
+            width={100}
+            timeout={10000} // 10 secs wait until error message shows
+          />
+        </div>
+      );
+    }
   }
 
   renderError() {
-      if (this.state.error){
-          return(
-              <div className="flex flex-wrap h-90v">
-                <div className="flex items-center justify-end w-full md:w-1/2">
-                  <img src="error.webp"/>
-                </div>
-                <div className="flex items-center justify-start w-full md:w-1/2 text-white p-4">
-                  <h1>YO YO this is fucked</h1>
-                  <h1>{this.state.errorData.status}</h1>
-                  <h1>{this.state.errorData.statusText}</h1>
-                </div>
-              </div>
-          )
-        }
+    if (this.state.error) {
+      return (
+        <div className="flex flex-wrap h-90v">
+          <div className="flex items-end md:items-center justify-end w-full md:w-1/2">
+            <picture className="flex justify-center md:justify-end px-8">
+              <source srcSet="error.webp" type="image/webp" />
+              <img src="error.webp" className="w-1/2" alt="error_image" />
+            </picture>
+          </div>
+          <div className="flex flex-col items-center justify-center w-full md:w-1/2 text-white p-4 text-4xl">
+            <p className="w-full text-red-500">{this.state.errorMsg}</p>
+            <p className="w-full text-xl">
+              Ah Snap! Something was broken. We're trying to fix this
+            </p>
+          </div>
+        </div>
+      );
+    }
   }
   render() {
-      return(
-           <Layout>
-               <Head title="workshop" />
-               { this.renderLoader() }
-               { this.renderError() }
-               {(this.state.wait || this.state.error) ? "" : <MainBody data={this.state.data}/>}
-           </Layout>
-      )
+    return (
+      <Layout>
+        <Head title="workshop" />
+        {this.renderLoader()}
+        {this.renderError()}
+        {this.state.wait || this.state.error ? (
+          ""
+        ) : (
+          <MainBody data={this.state.data} />
+        )}
+      </Layout>
+    );
   }
 }
-  
 
 export default Workshop;
