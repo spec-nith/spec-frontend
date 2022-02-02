@@ -1,8 +1,6 @@
 // Components
 import React, { useState } from "react";
-import axios from "axios";
 import Layout from "components/Layout/Layout";
-import Loader from "react-loader-spinner";
 import Head from "utils/helmet";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination } from "swiper";
@@ -16,6 +14,7 @@ import "swiper/css/scrollbar";
 
 //Constants, JSONs and Assests
 import { alumniURL } from "utils/routes";
+import GenericPage from "../../pageBoiler";
 
 const AlumniCard = ({ person }) => {
   return (
@@ -140,73 +139,10 @@ const MainBody = ({ data }) => {
   );
 };
 
-class Alumni extends React.Component {
+class Alumni extends GenericPage {
   constructor() {
     super();
-    this.state = {
-      wait: true,
-      data: [],
-      error: false,
-      errorData: [],
-    };
-  }
-  componentDidMount() {
-    axios
-      .get(alumniURL, { timeout: 10000 })
-      .then((response) => {
-        this.setState({ data: response.data, wait: false });
-      })
-      .catch((err) => {
-        console.log(err.response);
-        let msg = "Request Timed Out";
-        if (err.response) {
-          msg =
-            err.response.status && err.response.statusText
-              ? "API Error: " +
-                err.response.status +
-                " " +
-                err.response.statusText
-              : "API request failed";
-        }
-        this.setState({ error: true, errorMsg: msg, wait: false });
-      });
-  }
-
-  renderLoader() {
-    if (this.state.wait) {
-      return (
-        <div className="flex h-90v justify-center items-center">
-          <Loader
-            type="Puff"
-            color="#00BFFF"
-            height={100}
-            width={100}
-            timeout={10000} // 10 secs wait until error message shows
-          />
-        </div>
-      );
-    }
-  }
-
-  renderError() {
-    if (this.state.error) {
-      return (
-        <div className="flex flex-wrap h-90v">
-          <div className="flex items-end md:items-center justify-end w-full md:w-1/2">
-            <picture className="flex justify-center md:justify-end px-8">
-              <source srcSet="error.webp" type="image/webp" />
-              <img src="error.webp" className="w-1/2" alt="error_image" />
-            </picture>
-          </div>
-          <div className="flex flex-col items-center justify-center w-full md:w-1/2 text-white p-4 text-4xl">
-            <p className="w-full text-red-500">{this.state.errorMsg}</p>
-            <p className="w-full text-xl">
-              Ah Snap! Something was broken. We're trying to fix this
-            </p>
-          </div>
-        </div>
-      );
-    }
+    this.state.url = alumniURL;
   }
   render() {
     return (
