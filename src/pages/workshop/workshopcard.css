@@ -1,145 +1,33 @@
-@import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
-:root {
-  --d: 700ms;
-  --e: cubic-bezier(0.19, 1, 0.22, 1);
-  --font-sans: "Rubik", sans-serif;
-  --font-serif: "Cardo", serif;
-}
-.workshop-card-section {
+.workshop-card-container{
+  position: relative;
   display: grid;
   place-items: center;
-  box-sizing: border-box;
+  place-content: center;
+  overflow: hidden;
 }
-.workshop-page-content {
-  margin: auto;
-  font-family: var(--font-sans);
-  width: 100%;
+
+.workshop-card-container > *{
+  grid-area: 1 / 1;
 }
-.workshop-card {
-  background-repeat: no-repeat;
-  background-size: 222px 324px;
-  width: 14rem;
-    height: 20rem;
-}
-@media (min-width: 1328px) {
-  .workshop-page-content {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-@media (max-width: 1328px) {
-  .workshop-page-content {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1rem;
-  }
-}
-@media (max-width: 650px) {
-  .workshop-page-content {
-    grid-template-columns: repeat(1, 1fr);
-  }
-  .workshop-card {
-    margin: auto;
-  }
-}
-.workshop-card:before {
-  content: "";
+
+.card-overlay::before{
+  content: '';
   position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
   top: 0;
   left: 0;
-  width: 100%;
-  height: 110%;
-  background-size: cover;
-  background-position: 0 0;
-  transition: transform calc(var(--d) * 1.5) var(--e);
-  pointer-events: none;
+  z-index: -99;
 }
-.workshop-card:after {
-  content: "";
-  display: block;
-  position: absolute;
+
+
+.contain{
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.6);
   top: 0;
   left: 0;
-  width: 100%;
-  height: 200%;
-  pointer-events: none;
-  background-image: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.009) 11.7%,
-    rgba(0, 0, 0, 0.034) 22.1%,
-    rgba(0, 0, 0, 0.072) 31.2%,
-    rgba(0, 0, 0, 0.123) 39.4%,
-    rgba(0, 0, 0, 0.182) 46.6%,
-    rgba(0, 0, 0, 0.249) 53.1%,
-    rgba(0, 0, 0, 0.32) 58.9%,
-    rgba(0, 0, 0, 0.394) 64.3%,
-    rgba(0, 0, 0, 0.468) 69.3%,
-    rgba(0, 0, 0, 0.54) 74.1%,
-    rgba(0, 0, 0, 0.607) 78.8%,
-    rgba(0, 0, 0, 0.668) 83.6%,
-    rgba(0, 0, 0, 0.721) 88.7%,
-    rgba(0, 0, 0, 0.762) 94.1%,
-    rgba(0, 0, 0, 0.79) 100%
-  );
-  transform: translateY(-50%);
-  transition: transform calc(var(--d) * 2) var(--e);
-}
-.workshop-content {
-  transition: transform var(--d) var(--e);
-  z-index: 1;
-}
-.workshop-content > * + * {
-  margin-top: 1rem;
-}
-.workshop-btn {
-  padding: 0.75rem 1.5rem;
-  letter-spacing: 0.025rem;
-  border: none;
-}
-.workshop-btn:hover {
-  background-color: #0d0d0d;
-}
-.workshop-btn:focus {
-  outline: 1px dashed yellow;
-  outline-offset: 3px;
-}
-@media (hover: hover) and (min-width: 600px) {
-  .workshop-card:after {
-    transform: translateY(0);
-  }
-  .workshop-content {
-    transform: translateY(calc(100% - 4.5rem));
-  }
-  .workshop-content > *:not(.workshop-title) {
-    opacity: 0;
-    transform: translateY(1rem);
-    transition: transform var(--d) var(--e), opacity var(--d) var(--e);
-  }
-  .workshop-card:hover,
-  .workshop-card:focus-within {
-    align-items: center;
-  }
-  .workshop-card:hover:before,
-  .workshop-card:focus-within:before {
-    transform: translateY(-4%);
-  }
-  .workshop-card:hover:after,
-  .workshop-card:focus-within:after {
-    transform: translateY(-50%);
-  }
-  .workshop-card:hover .workshop-content,
-  .workshop-card:focus-within .workshop-content {
-    transform: translateY(0);
-  }
-  .workshop-card:hover .workshop-content > *:not(.workshop-title),
-  .workshop-card:focus-within .workshop-content > *:not(.workshop-title) {
-    opacity: 1;
-    transform: translateY(0);
-    transition-delay: calc(var(--d) / 8);
-  }
-  .workshop-card:focus-within:before,
-  .workshop-card:focus-within:after,
-  .workshop-card:focus-within .workshop-content,
-  .workshop-card:focus-within .workshop-content > *:not(.workshop-title) {
-    transition-duration: 0s;
-  }
+  z-index: -99;
+  position: absolute;
 }
