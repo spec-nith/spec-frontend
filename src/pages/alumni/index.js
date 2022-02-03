@@ -110,10 +110,10 @@ const MainBody = ({ data }) => {
           {Object.keys(year_mapping).map((year) => (
             <div
               className={
-                "batch text-white text-4xl font-monty text-center transition-all overflow-hidden " +
+                "batch text-white text-4xl font-monty text-center duration-500 transition-all overflow-hidden " +
                 (year === selected_year || selected_year === "0"
-                  ? "h-auto"
-                  : "h-0")
+                  ? "max-h-100v"
+                  : "max-h-0")
               }
               key={year}
             >

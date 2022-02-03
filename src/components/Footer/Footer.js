@@ -50,7 +50,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="mt-24 divide-y bg-transparent text-white ">
+    <footer className="divide-y bg-transparent text-white ">
       <div className="bg-zinc-800">
         <div className="max-w-screen-xl md:mt-4 px-8 grid gap-x-24 gap-y-8 grid-cols-1 md:grid-cols-2 md:px-12  md:py-16 mx-auto ">
           <div className="flex flex-col justify-center items-center">
