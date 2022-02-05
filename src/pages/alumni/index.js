@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Layout from "components/Layout/Layout";
 import Head from "utils/helmet";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay, Pagination } from "swiper";
+import { Navigation, Autoplay, Pagination, Lazy } from "swiper";
 
 // Icons and Styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,23 +18,23 @@ import GenericPage from "../../pageBoiler";
 
 const AlumniCard = ({ person }) => {
   return (
-    <div className="max-w-sm rounded-2xl w-full overflow-hidden shadow-lg text-left">
+    <div className="max-w-sm rounded-xl w-full overflow-hidden shadow-lg text-left">
       <div
-        className="h-0 relative bg-gray-300"
+        className="h-0 relative bg-gray-300 overflow-hidden"
         style={{ paddingBottom: "111%" }}
       >
         <picture>
           <source srcSet={person.profile_pic_webp_url} type="image/webp" />
           <img
-            className="w-full h-full block absolute"
+            className="w-full h-full block absolute md:hover:scale-110 transition-all duration-400"
             src={person.profile_pic_url}
             alt={person.name + "_pic"}
           />
         </picture>
       </div>
-      <div className="px-6 py-4" style={{ backgroundColor: "#353638" }}>
-        <div className="grid grid-cols-2 grid-rows-1">
-          <div className="text-base">{person.batch}</div>
+      <div className="pt-4" style={{ backgroundColor: "rgb(14,15,18)" }}>
+        <div className="px-6 flex justify-between pb-2">
+          <div className="text-xl" style={{ fontWeight: "700" }}>{person.name}</div>
           <div className="text-right">
             <a
               className="hover:text-blue-500 transition-all"
@@ -46,13 +46,8 @@ const AlumniCard = ({ person }) => {
             </a>
           </div>
         </div>
-        <div>
-          <div className="font-bold text-xl mb-2">{person.name}</div>
-        </div>
-        <div>
-          <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-            {person.company}
-          </span>
+        <div className="bg-gray-200 pl-6 py-2 text-base font-bold text-gray-700">
+          {person.company}
         </div>
       </div>
     </div>
@@ -62,10 +57,12 @@ const AlumniCard = ({ person }) => {
 const AlumniSwiper = (props) => {
   return (
     <Swiper
-      className="alumni-swiper"
-      modules={[Pagination, Navigation, Autoplay]}
+      className="alumni-swiper pt-8"
+      modules={[Pagination, Navigation, Autoplay, Lazy]}
       pagination={{ dynamicBullets: true, clickable: true }}
       navigation={true}
+      preloadImages={false}
+      lazy={true}
       // loop={true}
       // autoplay={{ delay: 100, disableOnInteraction: false }}
       loopAdditionalSlides={30}
@@ -93,7 +90,6 @@ const MainBody = ({ data }) => {
   return (
     <React.Fragment>
       <div className="lg:m-12 lg:p-8">
-        {/* Filter for selecting year to view */}
         <select
           className="h-10 text-white bg-zinc-800 rounded-lg p-2 font-monty"
           onChange={select_year}
@@ -110,7 +106,7 @@ const MainBody = ({ data }) => {
           {Object.keys(year_mapping).map((year) => (
             <div
               className={
-                "batch text-white text-4xl font-monty text-center duration-500 transition-all overflow-hidden " +
+                "batch text-white text-4xl font-monty text-center duration-500 transition-all overflow-hidden py-10 md:py-0" +
                 (year === selected_year || selected_year === "0"
                   ? "max-h-100v"
                   : "max-h-0")
