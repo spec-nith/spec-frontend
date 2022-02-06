@@ -1,85 +1,169 @@
-import React, { Component } from "react";
+// Components
+import React, { Component, useEffect, useState, useRef } from "react";
+import GenericPage from "pageBoiler";
 import Layout from "components/Layout/Layout";
-
-// Swiper
+import Head from "utils/helmet";
+import Filter from "utils/filters";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, Navigation } from "swiper";
+import { Pagination, Autoplay } from "swiper";
+
+// Icons and Styles
 import "swiper/css";
 import "swiper/css/pagination";
-import {} from "swiper";
-const photos = require("./photos.json");
 
-export default class index extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-    };
+// Constants, JSONs
+import { projectURL } from "utils/routes";
+const photos = require("./photos.json");
+const range = (n) => [...Array(n).keys()];
+
+const Carousel = () => {
+  return (
+    <Swiper
+      modules={[Pagination, Autoplay]}
+      pagination={{ dynamicBullets: true, clickable: true }}
+      loop={true}
+      autoplay={{ delay: 8000, disableOnInteraction: false }}
+      spaceBetween={0}
+      slidesPerView={1}
+    >
+      {photos.map((image, index) => {
+        return (
+          <SwiperSlide key={index}>
+            <div key={index}>
+              <img
+                src={image.image_url}
+                alt={image.event}
+                className="w-screen h-80v object-cover"
+              />
+            </div>
+          </SwiperSlide>
+        );
+      })}
+    </Swiper>
+  );
+};
+
+const ProjectCard = ({ project }) => {
+  return (
+    <div class="max-w-sm w-full lg:max-w-full lg:flex">
+      <div
+        class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+        style={{ backgroundImage: `url(${project.cover_webp_url})` }}
+        title="Woman holding a mug"
+      ></div>
+      <div class="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
+        <div class="mb-8">
+          <div class="text-gray-900 font-bold text-xl mb-2">{project.name}</div>
+          <p class="text-gray-700 text-base">
+            {project.description.slice(0, 130) + "..."}
+          </p>
+        </div>
+        <div class="flex items-center">
+          <div class="text-sm">
+            <p class="text-gray-900 leading-none">{project.domain}</p>
+            <p class="text-gray-600">{project.year}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const MainBody = (props) => {
+  let filter = {
+    "Augmented Reality": ["Augmented Reality"],
+    "Machine Learning": ["Machine Learning"],
+    "Embedded System": ["Embedded System"],
+    "App Development": ["App Development"],
+    "Internet of Things": ["Internet of Things"],
+    "Web Development": ["Web Development"],
+    "All Categories": [
+      "Augmented Reality",
+      "Machine Learning",
+      "Embedded System",
+      "App Development",
+      "Internet of Things",
+      "Web Development",
+    ],
+  };
+  let filter_keys = Object.keys(filter);
+  let [displayChoice, setDisplayChoice] = useState("All Categories");
+  let [pageChoice, setPageChoice] = useState(0);
+  let [displayData, setDisplayData] = useState(props.data);
+  let [totalPages, setTotalPages] = useState(
+    range(Math.floor(props.data.length / 6))
+  );
+
+  useEffect(() => {
+    let filteredData = props.data.filter((project) =>
+      filter[displayChoice].includes(project.domain)
+    );
+    setDisplayData(() => filteredData);
+    setPageChoice(() => 0);
+    setTotalPages(() => range(Math.floor(filteredData.length / 6)));
+  }, [displayChoice]);
+
+  return (
+    <React.Fragment>
+      <Carousel />
+      <Filter
+        filter_keys={filter_keys}
+        displayChoice={displayChoice}
+        setDisplayChoice={setDisplayChoice}
+      />
+      <div className="flex flex-wrap justify-center mx-4 lg:mx-8 xl:mx-12 2xl:mx-16">
+        {displayData
+          .slice(parseInt(pageChoice) * 6, 6 * (parseInt(pageChoice) + 1))
+          .map((project) => (
+            <div className="flex w-full lg:w-1/2 xl:w-1/3 p-4" key={project.id}>
+              <ProjectCard project={project} className="" />
+            </div>
+          ))}
+      </div>
+      <div className="flex justify-center w-full">
+        {totalPages.map((pageNo) => {
+          return (
+            <div className="w-max">
+              <button
+                className="p-3 bg-blue-600"
+                data-page={pageNo}
+                onClick={(e) =>
+                  setPageChoice(parseInt(e.target.getAttribute("data-page")))
+                }
+              >
+                {parseInt(pageNo) + 1}
+              </button>
+            </div>
+          );
+        })}
+      </div>
+    </React.Fragment>
+  );
+};
+
+class Projects extends GenericPage {
+  constructor() {
+    super();
+    this.state.url = projectURL;
   }
-  componentDidMount() {
-    this.setState({ data: photos });
-  }
+
   render() {
+    let data = this.state.data;
+    const sortedData = data.sort((a, b) => a.year < b.year);
+    this.state.data = sortedData;
     return (
       <Layout>
-        <React.Fragment>
-          <div>
-            <Swiper
-              modules={[Pagination, Autoplay, Navigation]}
-              pagination={{ dynamicBullets: true, clickable: true }}
-              loop={true}
-              autoplay={{ delay: 4000, disableOnInteraction: false }}
-              spaceBetween={0}
-              slidesPerView={1}
-              navigation={true}
-            >
-              {this.state.data.map((image, index) => {
-                return (
-                  <SwiperSlide key={index}>
-                    <div key={index}>
-                      <img
-                        src={image.image_url}
-                        alt={image.event}
-                        className="m-auto p-2"
-                      />
-                    </div>
-                  </SwiperSlide>
-                );
-              })}
-            </Swiper>
-            <div className="flex">
-              {this.state.data.map((data, index) => {
-                return (
-                  <div class="w-96 rounded shadow-lg" key={index}>
-                    <img class="w-full" src={data.image_url} alt={data.event} />
-                    <div class="px-6 py-4">
-                      <div class="font-bold text-xl mb-2">
-                        The Coldest Sunset
-                      </div>
-                      <p class="text-gray-700 text-base">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Voluptatibus quia, nulla! Maiores et perferendis
-                        eaque, exercitationem praesentium nihil.
-                      </p>
-                    </div>
-                    <div class="px-6 pt-4 pb-2">
-                      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                        #photography
-                      </span>
-                      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                        #travel
-                      </span>
-                      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-                        #winter
-                      </span>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </React.Fragment>
+        <Head title="Projects" />
+        {this.renderLoader()}
+        {this.renderError()}
+        {this.state.wait || this.state.error ? (
+          ""
+        ) : (
+          <MainBody data={this.state.data} />
+        )}
       </Layout>
     );
   }
 }
+
+export default Projects;

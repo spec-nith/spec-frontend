@@ -14,6 +14,12 @@ const navItems = [
     external: false,
   },
   {
+    name: "Projects",
+    route: "project",
+    icon: faHome,
+    external: false,
+  },
+  {
     name: "Gallery",
     route: "gallery",
     icon: faImages,

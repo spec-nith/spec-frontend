@@ -4,6 +4,7 @@ import Layout from "components/Layout/Layout";
 import Head from "utils/helmet";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay, Pagination, Lazy } from "swiper";
+import Filter from "utils/filters";
 
 // Icons and Styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,7 +35,9 @@ const AlumniCard = ({ person }) => {
       </div>
       <div className="pt-4" style={{ backgroundColor: "rgb(14,15,18)" }}>
         <div className="px-6 flex justify-between pb-2">
-          <div className="text-xl" style={{ fontWeight: "700" }}>{person.name}</div>
+          <div className="text-xl" style={{ fontWeight: "700" }}>
+            {person.name}
+          </div>
           <div className="text-right">
             <a
               className="hover:text-blue-500 transition-all"
@@ -79,8 +82,9 @@ const AlumniSwiper = (props) => {
 
 // <------------- Funtional Component ------------->
 const MainBody = ({ data }) => {
-  const [selected_year, setYear] = useState("0");
+  const [selected_year, setYear] = useState("All Batches");
   const year_mapping = {
+    "All Batches": [2021, 2020, 2019, 2018, 2017],
     " 2021": [2021],
     " 2020": [2020],
     " 2019": [2019],
@@ -90,45 +94,41 @@ const MainBody = ({ data }) => {
   return (
     <React.Fragment>
       <div className="lg:m-12 lg:p-8">
-        <select
-          className="h-10 text-white bg-zinc-800 rounded-lg p-2 font-monty"
-          onChange={select_year}
-        >
-          <option value={0}>All Year</option>
-          {Object.keys(year_mapping).map((year) => (
-            <option value={year} key={year}>
-              {year}
-            </option>
-          ))}
-        </select>
+        <Filter
+          filter_keys={Object.keys(year_mapping)}
+          displayChoice={selected_year}
+          setDisplayChoice={setYear}
+        />
 
         <div className="px-8">
-          {Object.keys(year_mapping).map((year) => (
-            <div
-              className={
-                "batch text-white text-4xl font-monty text-center duration-500 transition-all overflow-hidden py-10 md:py-0" +
-                (year === selected_year || selected_year === "0"
-                  ? "max-h-100v"
-                  : "max-h-0")
-              }
-              key={year}
-            >
-              Batch
-              <span style={{ color: "rgb(46, 224, 154)" }}>{year}</span>
-              <AlumniSwiper>
-                {data
-                  .filter((user) => year_mapping[year].includes(user.batch))
-                  .map((user) => (
-                    <SwiperSlide
-                      className="flex justify-center"
-                      key={user.name}
-                    >
-                      <AlumniCard person={user} />
-                    </SwiperSlide>
-                  ))}
-              </AlumniSwiper>
-            </div>
-          ))}
+          {Object.keys(year_mapping)
+            .slice(1)
+            .map((year) => (
+              <div
+                className={
+                  "batch text-white text-4xl font-monty text-center duration-500 transition-all overflow-hidden py-10 md:py-0 " +
+                  (year === selected_year || selected_year === "All Batches"
+                    ? "max-h-100v"
+                    : "max-h-0")
+                }
+                key={year}
+              >
+                Batch
+                <span style={{ color: "rgb(46, 224, 154)" }}>{year}</span>
+                <AlumniSwiper>
+                  {data
+                    .filter((user) => year_mapping[year].includes(user.batch))
+                    .map((user) => (
+                      <SwiperSlide
+                        className="flex justify-center"
+                        key={user.name}
+                      >
+                        <AlumniCard person={user} />
+                      </SwiperSlide>
+                    ))}
+                </AlumniSwiper>
+              </div>
+            ))}
         </div>
       </div>
     </React.Fragment>

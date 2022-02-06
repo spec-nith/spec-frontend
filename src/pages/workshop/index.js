@@ -1,31 +1,22 @@
 // Components
-import React, { Component, useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import GenericPage from "pageBoiler";
 import Layout from "components/Layout/Layout";
 import Head from "utils/helmet";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay, Pagination } from "swiper";
+import Filter from "utils/filters";
 
 // Icons and Styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faFilter,
   faCalendarAlt,
   faMapMarkerAlt,
-  faTimes
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import "./workshopcard.css";
 
 // Constants, JSONs, and Styles
 import { worskhopURL } from "utils/routes";
-import { data } from "autoprefixer";
-import "swiper/css";
-import "swiper/css/scrollbar";
-
-// Drop Down Filter List
-const MediaIcons = (props) => {
-  return <React.Fragment></React.Fragment>;
-};
+let range = (n) => [...Array(n).keys()];
 
 const WorkshopCard = ({ shop }) => {
   let [toggle, setToggle] = useState(true);
@@ -43,159 +34,147 @@ const WorkshopCard = ({ shop }) => {
   }, [toggle]);
   return (
     <React.Fragment>
-    <div className={"contain z-40" + (toggle ? " hidden" : " block")}>
-      <div className="z-50 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white text-black text-justify w-1/2 h-1/2 p-4" ref={ref}>
-        <div className="flex w-full justify-end">
-          <button onClick={() => {setToggle((prevState) => !prevState);}}>
-            <FontAwesomeIcon icon={faTimes} />
-          </button>
+      <div className={"contain z-40" + (toggle ? " hidden" : " block")}>
+        <div
+          className="z-50 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-justify w-3/4 h-3/4 p-4 bg-transparent border-4 rounded-md text-2xl"
+          ref={ref}
+        >
+          <div className="flex w-full justify-end ">
+            <button
+              onClick={() => {
+                setToggle((prevState) => !prevState);
+              }}
+            >
+              <FontAwesomeIcon icon={faTimes} size="2x" />
+            </button>
+          </div>
+          <div className="flex w-full">
+            <div className="flex w-1/3">
+              <img
+                className=""
+                src={shop.cover_url}
+                alt={shop.title + "_pic"}
+              />
+            </div>
+            <div className="flex w-2/3">{shop.description}</div>
+          </div>
         </div>
-        {shop.description}
       </div>
-    </div>
-    <div className="workshop-card-container border-4">
-      <div className="">
-        <picture className="object-cover max-h-full w-full">
-          <source srcSet={shop.cover_webp_url} type="image/webp" />
-          <img src={shop.cover_url} alt={shop.title + "_pic"} />
-        </picture>
-      </div>
-      <div className="z-10 flex flex-wrap text-white card-overlay w-full h-full justify-center pt-8">
-        <span className="block self-start text-center text-2xl">
-          {shop.title}
-        </span>
-        <span className="flex flex-wrap w-full text-center self-center">
-          <a className="w-full p-4 pointer-events-none" href="#" target="_blank" rel="noopener noreferrer">Register Now</a>
-          <button className="w-full p-4"  onClick={() => {setToggle((prevState) => !prevState);}}>Read More</button>
-        </span>
-        <span className="flex flex-wrap w-full text-right self-end pb-4 pr-2">
-          <span className="block w-full">
-            <FontAwesomeIcon icon={faCalendarAlt} />
-            {" " + shop.event_date.toDateString()}
+      <div className="workshop-card-container ">
+        <div className="">
+          <picture className="card">
+            <source srcSet={shop.cover_webp_url} type="image/webp" />
+            <img
+              className="card"
+              src={shop.cover_url}
+              alt={shop.title + "_pic"}
+            />
+          </picture>
+        </div>
+        <div className="z-10 flex flex-wrap text-white card-overlay w-full h-full justify-center pt-8">
+          <span className="block self-start text-center text-2xl font-semibold border-2 p-2">
+            {shop.title.toUpperCase()}
           </span>
-          <span className="block w-full">
-            <FontAwesomeIcon icon={faMapMarkerAlt} />
-            {" " + shop.venue }
+          <span className="flex flex-wrap w-full text-center self-center">
+            <span className="flex justify-center w-full mb-2">
+              <a
+                className="p-3 pointer-events-none block w-7/12 bg-blue-600"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Register Now
+              </a>
+            </span>
+            <span className="flex justify-center w-full mt-2">
+              <button
+                className="p-3 w-7/12 block bg-blue-600"
+                onClick={() => {
+                  setToggle((prevState) => !prevState);
+                }}
+              >
+                Read More
+              </button>
+            </span>
           </span>
-        </span>
+          <span className="flex flex-wrap w-full text-right self-end pb-4 pr-2">
+            <span className="block w-full">
+              <FontAwesomeIcon icon={faCalendarAlt} />
+              {" " + shop.event_date.toDateString()}
+            </span>
+            <span className="block w-full">
+              <FontAwesomeIcon icon={faMapMarkerAlt} />
+              {" " + shop.venue}
+            </span>
+          </span>
+        </div>
       </div>
-    </div>
     </React.Fragment>
   );
 };
 
 const MainBody = (props) => {
+  let filter = {
+    "All Years": [2021, 2020, 2019, 2018],
+    2021: [2021],
+    2020: [2020],
+    2019: [2019],
+    2018: [2018],
+  };
+  let filter_keys = Object.keys(filter);
+  filter_keys.reverse();
+  let [displayChoice, setDisplayChoice] = useState(filter_keys[0]);
+  let [pageChoice, setPageChoice] = useState(0);
   let [displayData, setDisplayData] = useState(props.data);
-  let [toggle, setToggle] = useState(true);
-  let filter = [2021, 2020, 2019, 2018];
-  const ref = useRef();
+  let [totalPages, setTotalPages] = useState(
+    range(Math.floor(props.data.length / 8))
+  );
+
   useEffect(() => {
-    const checkIfClickedOutside = (e) => {
-      if (!toggle && ref.current && !ref.current.contains(e.target)) {
-        setToggle(true);
-      }
-    };
-    document.addEventListener("mousedown", checkIfClickedOutside);
-    return () => {
-      document.removeEventListener("mousedown", checkIfClickedOutside);
-    };
-  }, [toggle]);
+    let filteredData = props.data.filter((shop) =>
+      filter[displayChoice].includes(shop.event_date.getFullYear())
+    );
+    setDisplayData(() => filteredData);
+    setPageChoice(() => 0);
+    setTotalPages(() => range(Math.floor(filteredData.length / 8)));
+  }, [displayChoice]);
+
   return (
     <React.Fragment>
-      <div className="flex justify-end">
-        <div className="fixed md:relative right-0 top-0 md:mr-8 text-white z-20" ref={ref}>
-        <button
-            className="flex items-center justify-center h-16 w-16"
-            aria-label="Social Media"
-            onClick={() => {
-              setToggle((prevState) => !prevState);
-            }}
-          >
-            <FontAwesomeIcon className="text-2xl" icon={faFilter} />
-          </button>
-          <div
-            className={
-              "relative h-full w-full" +
-              (toggle ? " hidden" : " block")
-            }
-          >
-              <ul className="absolute bg-gray-600 right-8 list-none list-outside w-max">
-              <li
-                className="p-4 text-center"
-              >
-                <a
-                  className="bg-transparent hover:bg-blue-700 text-white font-bold text-lg text-center"
-                  aria-label="Filter for show all"
-                  href="#"
-                  data-filter="All Years"
-                  onClick={(e) => {
-                    setToggle((prevState) => !prevState);
-                    setDisplayData(() => props.data);
-                  }}
-                >
-                  All Years
-                </a>
-              </li>
-              {filter.map((year, index) => (
-                <li
-                  className="p-4 text-center"
-                  key={index}
-                >
-                  <a
-                    className="bg-transparent hover:bg-blue-700 text-white font-bold text-lg"
-                    aria-label={`Filter for Year ${year}`}
-                    href="#"
-                    data-filter={year}
-                    onClick={(e) => {
-                      setToggle((prevState) => !prevState);
-                      setDisplayData(() => {
-                        return props.data.filter(
-                          (element) =>
-                            element.event_date.getFullYear() ==
-                            e.target.getAttribute("data-filter")
-                        );
-                      });
-                    }}
-                  >
-                    {year}
-                  </a>
-                </li>
-              ))}
-              </ul>
-          </div>
-        </div>
+      <Filter
+        filter_keys={filter_keys}
+        displayChoice={displayChoice}
+        setDisplayChoice={setDisplayChoice}
+      />
+      <div className="flex flex-wrap justify-center mx-4 lg:mx-8 xl:mx-12 2xl:mx-16">
+        {displayData
+          .slice(parseInt(pageChoice) * 8, 8 * (parseInt(pageChoice) + 1))
+          .map((shoop) => (
+            <div
+              className="flex w-full md:w-1/2 xl:w-1/4 2xl:w-1/5 p-4"
+              key={shoop.id}
+            >
+              <WorkshopCard shop={shoop} className="" />
+            </div>
+          ))}
       </div>
-      <Swiper
-      className="alumni-swiper"
-      modules={[Pagination, Navigation, Autoplay]}
-      pagination={{ dynamicBullets: true, clickable: true }}
-      navigation={true}
-      // loop={true}
-      // autoplay={{ delay: 100, disableOnInteraction: false }}
-      loopAdditionalSlides={30}
-      breakpoints={{
-        640: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
-        1280: { slidesPerView: 4 },
-      }}
-    >
-     {displayData.map((shop) => {
+      <div className="flex justify-center w-full">
+        {totalPages.map((pageNo) => {
           return (
-            <SwiperSlide>
-              <WorkshopCard shop={shop} key={shop.id} />
-              </SwiperSlide>
-          );
-        })} 
-    </Swiper>
-      {/* <div className="flex flex-wrap">
-        {displayData.map((shop) => {
-          return (
-            <div className="flex w-full md:w-1/2 lg:w-1/4 xl:w-1/6 p-4">
-              <WorkshopCard shop={shop} key={shop.id} />
+            <div className="w-max">
+              <button
+                className="p-3 bg-blue-600"
+                data-page={pageNo}
+                onClick={(e) =>
+                  setPageChoice(parseInt(e.target.getAttribute("data-page")))
+                }
+              >
+                {parseInt(pageNo) + 1}
+              </button>
             </div>
           );
         })}
-      </div> */}
+      </div>
     </React.Fragment>
   );
 };

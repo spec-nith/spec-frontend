@@ -29,5 +29,48 @@
   top: 0;
   left: 0;
   z-index: -99;
-  position: absolute;
+  position: fixed;
 }
+
+.card{
+  object-fit: cover;
+  filter: blur(1.5px);
+  height: 32rem;
+  width: 24rem;
+}
+
+
+/* Smart Phones */
+@media (min-width: 640px) { 
+  .card{
+    height: 32rem;
+    width: 24rem;
+  }
+ }
+
+/* Ipad Air and small tablets */
+@media (min-width: 768px) { 
+  .card{
+    height: 26rem;
+    width: 24rem
+  }
+ }
+
+/* Ipad Pro and large Tablets */
+@media (min-width: 1024px) { 
+  .card{
+    height: 28rem;
+    width: 24rem;
+  }
+ }
+
+ /* 720p Monitors */
+@media (min-width: 1280px) { 
+  .card{
+    height: 26rem;
+    width: 24rem;
+  }
+ }
+
+ /* 1080p and above Monitors */
+@media (min-width: 1536px) { }
