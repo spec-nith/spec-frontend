@@ -1,272 +1,142 @@
 // Components
-
-import React, { Component } from "react";
+import React, { useState } from "react";
 import Layout from "components/Layout/Layout";
-import axios from "axios";
-import Loader from "react-loader-spinner";
 import Head from "utils/helmet";
+import Filter from "utils/filters";
 
 // Icons and Styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons";
-import {
-  faUserFriends,
-  faUsers,
-  faUserTie,
-  faFilter,
-} from "@fortawesome/free-solid-svg-icons";
 import "./teampage.css";
+import GenericPage from "../../pageBoiler";
 
 // Constants, JSONs and Assets
 import { teamURL } from "utils/routes";
-const FinalYear = [
-  "President",
-  "Vice President",
-  "Technical Lead",
-  "Web Development Head",
-  "Public Relation Head",
-  "Finance Head",
-];
-const team_posts = ["Final Year", "Coordinator", "Executive", "Volunteer"];
-const juniorPosts = ["Coordinator", "Executive", "Volunteer"];
 
-const TeamCard = (props) => {
+const TeamCard = ({ data }) => {
+  return (
+    <div className="mx-4 w-full">
+      <div className="w-full profile-backdrop md:bg-slate-900 relative flex items-center justify-center md:justify-start flex-col md:flex-row">
+        <div className="max-h-56 w-3/5 md:max-w-2/5 overflow-hidden border-2 shadow-lg shadow-indigo-500/50 rounded-full md:rounded-none profile-pic relative bg-gray-300 mt-8 md:my-0">
+          <picture>
+            <source srcSet={data.profile_pic_webp_url} type="image/webp" />
+            <img
+              src={data.profile_pic_url}
+              alt={data.name + "_pic"}
+              className="w-full block"
+            />
+          </picture>
+        </div>
+        <div className="h-full w-full md:w-3/5 pt-4 pb-2 md:pt-0 bg-white md:bg-inherit text-black md:text-white">
+          <span className="text-xl block">{data.name}</span>
+          <span className="text-lg block">{data.title}</span>
+        </div>
+      </div>
+      <div className="w-full bg-white text-black px-4 flex justify-end text-2xl">
+        <span className="px-2 py-2">
+          <a href={data.linkedin_id} rel="noopener noreferrer" target="_blank">
+            <FontAwesomeIcon
+              icon={faLinkedinIn}
+              className="text-blue-400 hover:text-blue-700 transition-all"
+            />
+          </a>
+        </span>
+        <span className="px-2 py-2">
+          <a href={data.github_id} rel="noopener noreferrer" target="_blank">
+            <FontAwesomeIcon
+              icon={faGithub}
+              className="text-gray-500 hover:text-black transition-all"
+            />
+          </a>
+        </span>
+      </div>
+    </div>
+  );
+};
+
+const MainBody = ({ data }) => {
+  const [s_post, setPost] = useState("Team SPEC");
+  const post_mapping = {
+    "Team SPEC": [],
+    "Final Year": [
+      "President",
+      "Vice President",
+      "Technical Lead",
+      "Web Development Head",
+      "Public Relation Head",
+      "Finance Head",
+    ],
+    Coordinators: ["Coordinator"],
+    Executives: ["Executive"],
+    Volunteers: ["Volunteer"],
+  };
+
   return (
     <>
-      <div className="font-monty  overflow-hidden flex flex-col justify-center w-72 lg:w-64  sticky  transition duration-500 transform hover:scale-105 mb-20">
-        <div className="col-md-4 col-sm-6 col-xs-12 ">
-          <article className="team-card Red relative h-0 mb-14 text-lg m-0 leading-6  ">
-            <h2 className="absolute left-0 w-full pt-2 pb-1">
-              <span className="text-base text-white px-4 block">
-                {props.data.name}
-              </span>
-              <strong className=" text-gray-400 font-normal  team_post px-4 block pt-1 pb-3">
-                {props.data.title == "Coordinator" ? (
-                  <a className="text-white">
-                    {" "}
-                    <FontAwesomeIcon icon={faUsers} size="1x" />
-                  </a>
-                ) : props.data.title == "Executive" ? (
-                  <a className="text-white">
-                    {" "}
-                    <FontAwesomeIcon icon={faUserFriends} size="1x" />
-                  </a>
-                ) : (
-                  <a className="text-white">
-                    {" "}
-                    <FontAwesomeIcon icon={faUserTie} size="1x" />
-                  </a>
-                )}{" "}
-                {props.data.title}
-              </strong>
-              <div className="team_socials">
-                <div className="team_icons relative -top-20 pt-3 ">
-                  <div>
-                    {" "}
-                    {props.data.github_id && (
-                      <a
-                        href={props.data.github_id}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                      >
-                        {" "}
-                        <div className="text-white hover:text-black hover:opacity-50 pb-3">
-                          {" "}
-                          <FontAwesomeIcon icon={faGithub} size="1x" />
+      <div className="lg:m-12 lg:p-8">
+        <Filter
+          filter_keys={Object.keys(post_mapping)}
+          displayChoice={s_post}
+          setDisplayChoice={setPost}
+          toShow={5}
+        />
+        <div className="px-8">
+          {Object.keys(post_mapping)
+            .slice(1)
+            .map((post) => (
+              <div
+                className={
+                  "text-white text-4xl font-monty text-center transition-all duration-500 overflow-hidden h-fit " +
+                  (post === s_post || s_post === "Team SPEC"
+                    ? "h-auto md:max-h-inf"
+                    : "max-h-0")
+                }
+                key={post}
+              >
+                <span style={{ color: "rgb(46, 224, 154)" }}>{post}</span>
+                <div className="my-10 flex justify-center flex-wrap">
+                  {post_mapping[post].map((post_name) => {
+                    return data
+                      .filter((person) => person.title === post_name)
+                      .map((person) => (
+                        <div
+                          className="w-full md:w-1/2 lg:w-1/3 flex justify-center my-8"
+                          key={person.name + "_pic"}
+                        >
+                          <TeamCard data={person} />
                         </div>
-                      </a>
-                    )}
-                  </div>
-                  {props.data.linkedin_id && (
-                    <a
-                      href={props.data.linkedin_id}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                    >
-                      <div className="text-white hover:text-black hover:opacity-50">
-                        {" "}
-                        <FontAwesomeIcon icon={faLinkedinIn} size="1x" />
-                      </div>
-                    </a>
-                  )}
+                      ));
+                  })}
                 </div>
               </div>
-            </h2>
-            <div className="absolute top-0 right-0 bottom-4 left-4">
-              <div className="overflow-hidden absolute top-0 left-0 w-full h-full">
-                <img
-                  src={props.data.profile_pic_webp_url}
-                  alt={props.data.name}
-                />
-              </div>
-            </div>
-            <div>
-              <a className="block relative float-left w-20 h-20"></a>
-              <a className="block relative float-left w-20 h-20"></a>
-              <a className="block relative float-left w-20 h-20"></a>
-              <a className="block relative float-left w-20 h-20"></a>
-            </div>
-          </article>
+            ))}
         </div>
       </div>
     </>
   );
 };
 
-class TeamPage extends Component {
+class TeamPage extends GenericPage {
   constructor() {
     super();
-    this.state = {
-      error: false,
-      wait: true,
-      data: [],
-      selected_post: 0,
-    };
+    this.state.url = teamURL;
   }
-  componentDidMount() {
-    axios
-      .get(teamURL)
-      .then((response) => {
-        this.setState({
-          data: response.data.sort((a, b) => a.name.localeCompare(b.name)),
-          wait: false,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        this.setState({ error: true });
-      });
-  }
-  Selected_Post = (e) => {
-    this.setState({ selected_post: e.target.value });
-  };
-
+  com;
   render() {
-    if (this.state.wait) {
-      return (
-        <>
-          <Head title="Team" />
-          <Layout>
-            <div className="flex h-90v justify-center items-center">
-              <Loader
-                type="Puff"
-                color="#00BFFF"
-                height={100}
-                width={100}
-                timeout={100000} // 10 secs wait until error message shows
-              />
-            </div>
-          </Layout>
-        </>
-      );
-    } else {
-      return (
-        <>
-          <Head title="Team" />
-          <Layout>
-            <div className="flex m-4  md:mt-20 justify-end px-auto  z-10 ">
-              <span className="mt-14 ml-2 mr-2 ">
-                <FontAwesomeIcon icon={faFilter} size="1x" />
-              </span>
-              <select
-                className="h-10 text-white bg-zinc-800  rounded-lg p-2 font-monty "
-                onChange={this.Selected_Post}
-              >
-                <option value={0}>Team SPEC</option>
-                {team_posts.map((obj) => (
-                  <option value={obj}>{obj}</option>
-                ))}
-              </select>
-            </div>
-            <>
-              <div
-                className={
-                  this.state.selected_post == 0 ||
-                  this.state.selected_post == "Final Year"
-                    ? "block"
-                    : "hidden"
-                }
-              >
-                {this.state.data.find((e) => FinalYear.includes(e.title)) ? (
-                  <h1 className="font-monty text-white text-4xl text-center m-3 mb-16">
-                    Final Year Members
-                  </h1>
-                ) : null}
-                <section className=" pb-12 flex justify-center">
-                  <div className="flex flex-row flex-wrap justify-center gap-4 ">
-                    {FinalYear.map((obj) => (
-                      <>
-                        {this.state.data.map(
-                          (element, index) =>
-                            element.title === obj && (
-                              <TeamCard data={element} key={element.id} />
-                            )
-                        )}
-                      </>
-                    ))}
-                  </div>
-                </section>
-              </div>
-              <div
-                className={this.state.selected_post == 0 ? "block" : "hidden"}
-              >
-                {juniorPosts.map((obj) => (
-                  <div>
-                    {this.state.data.find((e) => e.title === obj) ? (
-                      <h1 className="font-monty text-white text-4xl text-center m-3 mb-16">
-                        {obj + "s"}
-                      </h1>
-                    ) : null}
-                    <h1 className="font-monty text-white text-4xl text-center m-3 mb-16"></h1>
-                    <section className="pb-12 flex justify-center">
-                      <div className="flex flex-row flex-wrap justify-center gap-4 ">
-                        {this.state.data.map(
-                          (element, index) =>
-                            element.title === obj && (
-                              <TeamCard data={element} key={element.id} />
-                            )
-                        )}
-                      </div>
-                    </section>
-                  </div>
-                ))}
-              </div>
-
-              <div
-                className={
-                  this.state.selected_post == "Coordinator" ||
-                  this.state.selected_post == "Executive" ||
-                  this.state.selected_post == "Volunteer"
-                    ? "block"
-                    : "hidden"
-                }
-              >
-                <div>
-                  {this.state.data.find(
-                    (e) => e.title === this.state.selected_post
-                  ) ? (
-                    <h1 className="font-monty text-white text-4xl text-center m-3 mb-16">
-                      {this.state.selected_post + "s"}
-                    </h1>
-                  ) : null}
-                  <h1 className="font-monty text-white text-4xl text-center m-3 mb-16"></h1>
-                  <section className="pb-12 flex justify-center">
-                    <div className="flex flex-row flex-wrap justify-center gap-4 ">
-                      {this.state.data.map(
-                        (element, index) =>
-                          element.title === this.state.selected_post && (
-                            <TeamCard data={element} key={element.id} />
-                          )
-                      )}
-                    </div>
-                  </section>
-                </div>
-              </div>
-            </>{" "}
-          </Layout>
-        </>
-      );
-    }
+    this.state.data.sort((a, b) => a.name.localeCompare(b.name));
+    return (
+      <Layout>
+        <Head title="Team" />
+        {this.renderLoader()}
+        {this.renderError()}
+        {this.state.wait || this.state.error ? (
+          ""
+        ) : (
+          <MainBody data={this.state.data} />
+        )}
+      </Layout>
+    );
   }
 }
+
 export default TeamPage;

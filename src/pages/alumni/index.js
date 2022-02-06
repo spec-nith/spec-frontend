@@ -90,7 +90,7 @@ const MainBody = ({ data }) => {
     " 2019": [2019],
     " Before 2019": [2018, 2017, 2016, 2015, 2014],
   };
-  const select_year = (e) => setYear(e.target.value);
+
   return (
     <React.Fragment>
       <div className="lg:m-12 lg:p-8">
@@ -109,7 +109,7 @@ const MainBody = ({ data }) => {
                   "batch text-white text-4xl font-monty text-center duration-500 transition-all overflow-hidden py-10 md:py-0 " +
                   (year === selected_year || selected_year === "All Batches"
                     ? "max-h-100v"
-                    : "max-h-0")
+                    : "hidden max-h-0 md:block")
                 }
                 key={year}
               >

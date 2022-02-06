@@ -130,14 +130,15 @@ const MainBody = (props) => {
     range(Math.floor(props.data.length / 8))
   );
 
-  useEffect(() => {
-    let filteredData = props.data.filter((shop) =>
-      filter[displayChoice].includes(shop.event_date.getFullYear())
-    );
-    setDisplayData(() => filteredData);
-    setPageChoice(() => 0);
-    setTotalPages(() => range(Math.floor(filteredData.length / 8)));
-  }, [displayChoice]);
+  // useEffect(() => {
+  //   let filteredData = props.data.filter((shop) =>
+  //     filter[displayChoice].includes(shop.event_date.getFullYear())
+  //   );
+  //   setDisplayData(() => filteredData);
+  //   setPageChoice(() => 0);
+  //   setTotalPages(() => range(Math.floor(filteredData.length / 8)));
+  //   console.log(displayChoice)
+  // }, [displayChoice, filter]);
 
   return (
     <React.Fragment>
@@ -194,7 +195,7 @@ class Workshop extends GenericPage {
     this.state.data = sortedData;
     return (
       <Layout>
-        <Head title="workshop" />
+        <Head title="Workshop" />
         {this.renderLoader()}
         {this.renderError()}
         {this.state.wait || this.state.error ? (

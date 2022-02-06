@@ -1,16 +1,24 @@
 import React from "react";
+import "./filters.css";
 
-const Filter = ({ filter_keys, displayChoice, setDisplayChoice }) => {
-  let overflow = filter_keys.slice(3);
+const Filter = ({ filter_keys, displayChoice, setDisplayChoice, toShow }) => {
+  let overflow = filter_keys.slice(toShow);
+
   return (
-    <div className="flex justify-center">
-      <div className="flex fixed w-full bottom-0 xl:mx-12 xl:relative xl:w-auto flex-row z-30">
-        {filter_keys.slice(0, 3).map((choice, index) => {
+    <div className="flex fixed bottom-0 justify-center w-full md:mb-10 md:relative z-30">
+      <div className="flex flex-row w-full md:w-auto flex-wrap">
+        {filter_keys.slice(0, toShow).map((choice, index) => {
           return (
             <button
               className={
-                "px-4 py-2 text-white border-2  hover:scale-110" +
-                (displayChoice == choice ? " bg-blue-600" : " bg-blue-400")
+                "px-4 md:px-6 py-2 text-white transition-all duration-300 hover:bg-black outline-0 grow md:grow-0 " +
+                (displayChoice === choice
+                  ? "active-filter-button "
+                  : "filter-button ") +
+                (index === 0 ? "md:rounded-l-full " : "border-x-2 -ml-2 ") +
+                (index === toShow - 1 && overflow.length === 0
+                  ? "md:rounded-r-full md:border-r-0 "
+                  : "")
               }
               onClick={() => {
                 setDisplayChoice(() => {
@@ -23,28 +31,37 @@ const Filter = ({ filter_keys, displayChoice, setDisplayChoice }) => {
             </button>
           );
         })}
-        <select
-          className="px-4 py-2 bg-blue-600 text-white border-2 hover:scale-110"
-          value={overflow.includes(displayChoice) ? displayChoice : "0"}
-        >
-          <option disabled hidden selected value="0">
-            Show More
-          </option>
-          {overflow.map((choice) => {
-            return (
-              <option
-                value={choice}
-                key={choice}
-                onClick={(e) => setDisplayChoice(e.target.value)}
-              >
-                {choice}
-              </option>
-            );
-          })}
-        </select>
+        {overflow.length > 0 ? (
+          <select
+            className={
+              "p-2 text-white md:rounded-r-full transition-all duration-300 hover:bg-black outline-0 " +
+              (overflow.includes(displayChoice)
+                ? "active-filter-button "
+                : "filter-button ")
+            }
+            value={overflow.includes(displayChoice) ? displayChoice : "0"}
+            onChange={(e) => setDisplayChoice(e.target.value)}
+          >
+            <option disabled hidden value="0">
+              Show More
+            </option>
+            {overflow.map((choice) => {
+              return (
+                <option value={choice} key={choice}>
+                  {choice}
+                </option>
+              );
+            })}
+          </select>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
 };
 
+Filter.defaultProps = {
+  toShow: 3,
+};
 export default Filter;

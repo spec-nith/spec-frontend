@@ -1,58 +1,12 @@
-.team_icons {
-  left: 90%;
+@media only screen and (min-width: 768px) {
+  .profile-pic{
+    clip-path: polygon(0 0, 95% 0, 70% 100%, 0 100%);
+    shape-outside: polygon(0 0, 95% 0, 70% 100%, 0 100%);
+    border-right: 2px solid white;
+  }  
 }
-.team-card {
-  padding-bottom: calc(100% - 16px);
-}
-.team-card h2 {
-  top: calc(100% - 16px);
-  color: rgb(77, 77, 77);
-  background: #27272a;
-}
-.posts {
-  padding: 7px;
-  font-size: 19px;
-  border-radius: 8px;
-  margin: 1rem;
-  background-color: white;
-  color: black;
-  border: none;
-  cursor: pointer;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-.posts:hover,
-.posts:focus {
-  outline: none;
-
-  background: white;
-  color: black;
-}
-.select option {
-  background: #8186b1;
-
-  color: white;
-}
-
-.team-card h2:before,
-.team-card h2:after {
-  content: " ";
-  position: absolute;
-  left: 0;
-  top: -16px;
-  border: 8px solid;
-}
-.team-card h2:after {
-  top: auto;
-  bottom: 0;
-}
-.team-card.Red h2:before {
-  border-top-color: transparent;
-  border-left-color: transparent;
-}
-.dropdown:focus-within .dropdown-menu {
-  opacity: 1;
-  transform: translate(0) scale(1);
-  visibility: visible;
+@media only screen and (max-width: 768px) {
+  .profile-backdrop {
+    background: linear-gradient(0deg, #ffffff 50%, #0f1729 50%);  
+  }
 }
