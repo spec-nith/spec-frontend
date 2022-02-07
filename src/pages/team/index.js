@@ -78,7 +78,7 @@ const MainBody = ({ data }) => {
           filter_keys={Object.keys(post_mapping)}
           displayChoice={s_post}
           setDisplayChoice={setPost}
-          toShow={5}
+          visibleChoices={5}
         />
         <div className="px-8">
           {Object.keys(post_mapping)

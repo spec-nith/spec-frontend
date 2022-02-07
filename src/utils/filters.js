@@ -1,7 +1,64 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import "./filters.css";
+const defaultNO = 2;
 
-const Filter = ({ filter_keys, displayChoice, setDisplayChoice, toShow }) => {
+function getWindowDimensions() {
+  const { innerWidth: width } = window;
+  return {
+    width,
+  };
+}
+
+function useWindowDimensions() {
+  const [windowDimensions, setWindowDimensions] = useState(
+    getWindowDimensions()
+  );
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions(getWindowDimensions());
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return windowDimensions;
+}
+
+const Filter = ({
+  filter_keys,
+  displayChoice,
+  setDisplayChoice,
+  visibleChoices,
+}) => {
+  let [toShow, setToShow] = useState(
+    Math.min(visibleChoices, filter_keys.length)
+  );
+  let [toggle, setToggle] = useState(true);
+  const { width } = useWindowDimensions();
+  const ref = useRef();
+  useEffect(() => {
+    const checkIfClickedOutside = (e) => {
+      if (!toggle && ref.current && !ref.current.contains(e.target)) {
+        setToggle(true);
+      }
+    };
+    document.addEventListener("mousedown", checkIfClickedOutside);
+    return () => {
+      document.removeEventListener("mousedown", checkIfClickedOutside);
+    };
+  }, [toggle]);
+
+  useEffect(() => {
+    if (width < 768) {
+      setToShow(defaultNO);
+    } else {
+      setToShow(Math.min(visibleChoices, filter_keys.length));
+    }
+  }, [width, visibleChoices, filter_keys]);
   let overflow = filter_keys.slice(toShow);
 
   return (
@@ -32,27 +89,44 @@ const Filter = ({ filter_keys, displayChoice, setDisplayChoice, toShow }) => {
           );
         })}
         {overflow.length > 0 ? (
-          <select
-            className={
-              "p-2 text-white md:rounded-r-full transition-all duration-300 hover:bg-black outline-0 " +
-              (overflow.includes(displayChoice)
-                ? "active-filter-button "
-                : "filter-button ")
-            }
-            value={overflow.includes(displayChoice) ? displayChoice : "0"}
-            onChange={(e) => setDisplayChoice(e.target.value)}
-          >
-            <option disabled hidden value="0">
-              Show More
-            </option>
-            {overflow.map((choice) => {
-              return (
-                <option value={choice} key={choice}>
-                  {choice}
-                </option>
-              );
-            })}
-          </select>
+          <div ref={ref}>
+            <button
+              className={
+                "p-2 text-white md:rounded-r-full transition-all duration-300 hover:bg-black outline-0 " +
+                (overflow.includes(displayChoice)
+                  ? "active-filter-button "
+                  : "filter-button ")
+              }
+              onClick={() => setToggle((prev) => !prev)}
+            >
+              Show More{" "}
+              <FontAwesomeIcon icon={faChevronUp} className="lg:hidden" />
+            </button>
+            <div
+              className={
+                "z-50 absolute overflow-hidden -top-36 lg:top-auto" +
+                (toggle ? " max-h-0" : " max-h-96")
+              }
+            >
+              <ul className=" bg-blue-600 p-2 ">
+                {overflow.map((choice) => {
+                  return (
+                    <li key={choice}>
+                      <button
+                        data-choice={choice}
+                        onClick={(e) =>
+                          setDisplayChoice(e.target.getAttribute("data-choice"))
+                        }
+                        className="bg-blue-600 p-2"
+                      >
+                        {choice}
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </div>
         ) : (
           ""
         )}
@@ -62,6 +136,6 @@ const Filter = ({ filter_keys, displayChoice, setDisplayChoice, toShow }) => {
 };
 
 Filter.defaultProps = {
-  toShow: 3,
+  visibleChoices: defaultNO,
 };
 export default Filter;

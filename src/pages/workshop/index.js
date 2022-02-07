@@ -16,6 +16,13 @@ import "./workshopcard.css";
 
 // Constants, JSONs, and Styles
 import { worskhopURL } from "utils/routes";
+const filter = {
+  "All Years": [2021, 2020, 2019, 2018],
+  2021: [2021],
+  2020: [2020],
+  2019: [2019],
+  2018: [2018],
+};
 let range = (n) => [...Array(n).keys()];
 
 const WorkshopCard = ({ shop }) => {
@@ -79,7 +86,7 @@ const WorkshopCard = ({ shop }) => {
             <span className="flex justify-center w-full mb-2">
               <a
                 className="p-3 pointer-events-none block w-7/12 bg-blue-600"
-                href="#"
+                href="https://blank.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -114,13 +121,6 @@ const WorkshopCard = ({ shop }) => {
 };
 
 const MainBody = (props) => {
-  let filter = {
-    "All Years": [2021, 2020, 2019, 2018],
-    2021: [2021],
-    2020: [2020],
-    2019: [2019],
-    2018: [2018],
-  };
   let filter_keys = Object.keys(filter);
   filter_keys.reverse();
   let [displayChoice, setDisplayChoice] = useState(filter_keys[0]);
@@ -130,15 +130,15 @@ const MainBody = (props) => {
     range(Math.floor(props.data.length / 8))
   );
 
-  // useEffect(() => {
-  //   let filteredData = props.data.filter((shop) =>
-  //     filter[displayChoice].includes(shop.event_date.getFullYear())
-  //   );
-  //   setDisplayData(() => filteredData);
-  //   setPageChoice(() => 0);
-  //   setTotalPages(() => range(Math.floor(filteredData.length / 8)));
-  //   console.log(displayChoice)
-  // }, [displayChoice, filter]);
+  useEffect(() => {
+    let filteredData = props.data.filter((shop) =>
+      filter[displayChoice].includes(shop.event_date.getFullYear())
+    );
+    setDisplayData(() => filteredData);
+    setPageChoice(() => 0);
+    setTotalPages(() => range(Math.floor(filteredData.length / 8)));
+    console.log(displayChoice);
+  }, [displayChoice, props.data]);
 
   return (
     <React.Fragment>
@@ -162,7 +162,7 @@ const MainBody = (props) => {
       <div className="flex justify-center w-full">
         {totalPages.map((pageNo) => {
           return (
-            <div className="w-max">
+            <div className="w-max" key={pageNo}>
               <button
                 className="p-3 bg-blue-600"
                 data-page={pageNo}
