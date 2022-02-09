@@ -146,19 +146,19 @@ export default class Images extends Component {
               </div>
             )}
 
-            <section class="mx-16 py-8 gallery-section">
+            <section className="mx-16 py-8 gallery-section">
               <div className="grid gap-8 grid-flow-row-dense gallery-grid">
                 {this.state.data.map((img_data, ind) => {
                   return (
                     <div
-                      class="flex flex-col bg-cover bg-center cursor-pointer relative justify-end col-auto box-border rounded gallery-item"
+                      className="flex flex-col bg-cover bg-center cursor-pointer relative justify-end col-auto box-border rounded gallery-item"
                       onClick={() => this.openLightbox(img_data, ind)}
                       loading="lazy"
                       style={{
                         backgroundImage: `url(${img_data.thumb_image_url})`,
                       }}
                     >
-                      <div class=" font-semibold p-4 bg-white text-black rounded">
+                      <div className=" font-semibold p-4 bg-white text-black rounded">
                         <div className="font-extrabold text-lg">
                           {img_data.event} {img_data.year}
                         </div>{" "}

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import "./filters.css";
 const defaultNO = 2;
 
@@ -99,8 +99,14 @@ const Filter = ({
               }
               onClick={() => setToggle((prev) => !prev)}
             >
-              Show More{" "}
-              <FontAwesomeIcon icon={faChevronUp} className="lg:hidden" />
+              Show More
+              <span className="px-2">
+                <FontAwesomeIcon
+                  icon={faChevronDown}
+                  className="hidden lg:inline-block"
+                />
+                <FontAwesomeIcon icon={faChevronUp} className="lg:hidden" />
+              </span>
             </button>
             <div
               className={

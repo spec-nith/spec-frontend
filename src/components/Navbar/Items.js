@@ -26,7 +26,7 @@ const navItems = [
     external: false,
   },
   {
-    name: "Workshop",
+    name: "Events",
     route: "workshop",
     icon: faChalkboardTeacher,
     external: false,

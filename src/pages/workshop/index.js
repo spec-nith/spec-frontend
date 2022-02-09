@@ -43,30 +43,51 @@ const WorkshopCard = ({ shop }) => {
     <React.Fragment>
       <div className={"contain z-40" + (toggle ? " hidden" : " block")}>
         <div
-          className="z-50 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-justify w-3/4 h-3/4 p-4 bg-transparent border-4 rounded-md text-2xl"
+          className="z-50 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 min-h-1/2 border-2 flex flex-col md:flex-row text-white bg-black opacity-80"
           ref={ref}
         >
-          <div className="flex w-full justify-end ">
-            <button
-              onClick={() => {
-                setToggle((prevState) => !prevState);
-              }}
-            >
-              <FontAwesomeIcon icon={faTimes} size="2x" />
-            </button>
+          <button
+            className="absolute top-0 right-0 m-4 text-white"
+            onClick={() => {
+              setToggle((prevState) => !prevState);
+            }}
+          >
+            <FontAwesomeIcon icon={faTimes} size="lg" />
+          </button>
+          <div className="h-full w-full md:w-1/3 hidden md:block">
+            <picture>
+              <source srcSet={shop.cover_webp_url} type="image/webp" />
+              <img src={shop.cover_url} alt={shop.title + "_pic"} />
+            </picture>
           </div>
-          <div className="flex w-full">
-            <div className="flex w-1/3">
-              <img
-                className=""
-                src={shop.cover_url}
-                alt={shop.title + "_pic"}
-              />
+          <div className="px-4 py-4 md:px-12 md:py-8 w-full md:w-2/3">
+            <div className="text-xl md:text-4xl font-semibold">
+              {shop.title}
             </div>
-            <div className="flex w-2/3">{shop.description}</div>
+            <div className="my-1 md:my-4 text-xs">
+              <span>
+                <FontAwesomeIcon icon={faCalendarAlt} />
+                {" " + shop.event_date.toDateString()}
+              </span>
+              <span className="px-2 md:px-4">|</span>
+              <span>
+                <FontAwesomeIcon icon={faMapMarkerAlt} />
+                {" " + shop.venue}
+              </span>
+            </div>
+            <div className="mt-2 text-sm md:text-lg">{shop.description}</div>
+            <div className="mt-4 md:mt-10">
+              <button
+                className="text-sm md:text-lg border-2 rounded-xl py-2 px-4 cursor-not-allowed"
+                disabled
+              >
+                Event Complete
+              </button>
+            </div>
           </div>
         </div>
       </div>
+      {/* Main Body */}
       <div className="workshop-card-container ">
         <div className="">
           <picture className="card">
@@ -195,7 +216,7 @@ class Workshop extends GenericPage {
     this.state.data = sortedData;
     return (
       <Layout>
-        <Head title="Workshop" />
+        <Head title="Events" />
         {this.renderLoader()}
         {this.renderError()}
         {this.state.wait || this.state.error ? (
