@@ -1,12 +1,12 @@
 //Components
-import * as React from "react";
+import React from "react";
 import { useEffect } from "react";
 import Head from "utils/helmet";
 import Layout from "components/Layout/Layout";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay, Navigation } from "swiper";
 import axios from "axios";
-
+import Hero from "../components/HomePage/Hero";
 //Styles and Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
@@ -48,21 +48,21 @@ const writeup = (
   </p>
 );
 
-const Hero = () => {
-  return (
-    <div className="h-screen relative pb-20 overflow-hidden">
-      <video
-        className="h-screen absolute w-screen object-cover z-10"
-        autoPlay
-        loop
-        muted
-        poster="/images/bg2.png"
-      >
-        <source src="/bgvideo.m4v" type="video/mp4" />
-      </video>
-    </div>
-  );
-};
+// const Hero = () => {
+//   return (
+//     <div className="h-screen relative pb-20 overflow-hidden">
+//       <video
+//         className="h-screen absolute w-screen object-cover z-10"
+//         autoPlay
+//         loop
+//         muted
+//         poster="/images/bg2.png"
+//       >
+//         <source src="/bgvideo.m4v" type="video/mp4" />
+//       </video>
+//     </div>
+//   );
+// };
 
 const About = () => {
   return (

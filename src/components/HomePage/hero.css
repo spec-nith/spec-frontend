@@ -1,0 +1,10 @@
+.HeroText{
+    background: linear-gradient(30deg,  #9E5CFB 20%,
+    #B468FC 40%, #C58CFE 45%, #C394FE 70%,#9CD2FE 90%);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+}
+.gradientButton{
+    background: linear-gradient(180deg, #5C43F6 0%, #BC61F3 100%);
+
+}
