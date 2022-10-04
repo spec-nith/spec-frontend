@@ -1,15 +1,14 @@
 //Components
-import React from "react";
-import { useEffect } from "react";
+import * as React from "react";
 import Head from "utils/helmet";
 import Layout from "components/Layout/Layout";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, Navigation } from "swiper";
+import { Pagination, Autoplay,EffectCards } from "swiper";
 import axios from "axios";
-import Hero from "../components/HomePage/Hero";
+import Hero from "components/HomePage/Hero";
 //Styles and Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
+// import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookF,
   faInstagram,
@@ -18,8 +17,12 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import "swiper/css";
 import "swiper/css/pagination";
+import "swiper/css/effect-cards";
 import "swiper/css/navigation";
+import "swiper/css/effect-fade";
+import "swiper/css/effect-coverflow";
 import "./animations.css";
+
 
 // Constants, JSONs and Assests
 import { projectURL } from "utils/routes";
@@ -67,18 +70,18 @@ const writeup = (
 const About = () => {
   return (
     <React.Fragment>
-      <div className="font-monty max-w-5xl lg:max-w-full h-full relative">
-        <div className="top-8 w-full shadow lg:backdrop-filter lg:backdrop-blur-lg section-content relative">
-          <div className="relative lg:left-2/3 left-3 pr-8 pl-2 pb-6 lg:w-1/3 text-gray-300 text-md md:text-xl lg:text-base leading-loose md:leading:normal">
+      <div className="font-monty max-w-5xl xl:max-w-full h-full relative">
+        <div className="top-8 w-full shadow test-bg relative">
+          <div className="relative xl:left-2/3 left-3 pr-8 pl-6 pb-3 xl:w-1/3 text-gray-300 text-md md:text-xl xl:text-base leading-loose md:leading:normal">
             <div className="mx-auto p-6 text-center">
-              <h1 className="text-5xl font-outfit">
-                Who <span className="text-rose-500">WE</span> are
+              <h1 className="text-5xl font-outfit text-white">
+                Who <span className="">WE</span> are
               </h1>
               <div className="mx-auto pt-3 border-b-2 w-4/5 border-yellow-500 opacity-25"></div>
             </div>
             {writeup}
           </div>
-          <div className="lg:absolute w-2/3 flex justify-center bottom-8 space-x-2 md:space-x-4">
+          <div className="xl:w-2/3 flex justify-center pb-4 space-x-2 md:space-x-4 text-white">
             <a
               href="https://www.facebook.com/spec.ece/"
               rel="noreferrer noopenor"
@@ -113,15 +116,16 @@ const About = () => {
             </a>
           </div>
         </div>
-        <div className="lg:absolute z-10 lg:left-6 mt-8 lg:mt-0 lg:w-10/16 lg:-top-0">
+        <div className="w-full flex justify-center items-center xl:absolute z-10 xl:left-3 md:pl-6 lg:pl-16 pt-12 md:pt-20 xl:w-10/16 xl:-top-10">
+        <div className="w-full md:w-4/5">
           <Swiper
-            modules={[Pagination, Navigation, Autoplay]}
+            modules={[Pagination,EffectCards,Autoplay]}
             pagination={{ dynamicBullets: true, clickable: true }}
-            navigation={true}
             loop={true}
-            autoplay={{ delay: 2500 }}
+            autoplay={{ delay: 3500 }}
             spaceBetween={0}
             slidesPerView={1}
+            effect={"cards"}
           >
             {data.map((image, index) => {
               return (
@@ -133,13 +137,14 @@ const About = () => {
           </Swiper>
         </div>
       </div>
+      </div>
     </React.Fragment>
   );
 };
 
 const ProjectCard = ({ project }) => {
   return (
-    <div className="text-gray-200 text-center max-w-sm px-4 bg-zinc-800 pb-6 px-3 rounded-3xl shadow-lg">
+    <div className="text-gray-200 text-center max-w-sm px-4 test-bg pb-6 px-3 rounded-3xl shadow-lg">
       <h4 className="pt-4 px-4 text-xl font-semibold uppercase leading-tight truncate">
         {project.title}
       </h4>
@@ -155,7 +160,7 @@ const ProjectCard = ({ project }) => {
         <picture>
           <source srcSet={project.webp} type="image/webp" />
           <img
-            className={"h-36 absolute " + project.class}
+            className={"h-32 absolute " + project.class}
             src={project.image}
             alt="project-vector"
           />
@@ -165,51 +170,69 @@ const ProjectCard = ({ project }) => {
   );
 };
 
-const VisionCard = ({ vision }) => {
-  return (
-    <div className="flex items-center h-auto w-full flex-wrap lg:flex-nowrap mx-auto my-20 lg:my-10 text-black">
-      <div className="w-full lg:w-4/5 h-full lg:h-96 rounded-lg shadow-2xl bg-gray-300 mx-6 lg:mx-0">
-        <div className="p-4 lg:p-12 md:p-8 text-center lg:text-left">
-          <div
-            className="block lg:hidden rounded-full shadow-xl mx-auto mt-16 md:mt-4 h-48 w-48 bg-cover bg-center"
-            style={{ backgroundImage: `url(${vision.image})` }}
-          ></div>
-          <h1 className="text-3xl font-bold pt-8 text-center lg:pt-0 md:whitespace-nowrap">
-            {vision.name}
-          </h1>
-          <div className="mx-auto lg:mx-0 pt-3 border-b-2 border-green-500 opacity-50"></div>
-          <div className="flex items-center justify-center lg:justify-start px-8">
-            <div className="pt-4">
-              <FontAwesomeIcon icon={faBriefcase} />
-            </div>
-            <div className="pt-4 pl-2">
-              <p className="text-base font-bold">{vision.post}</p>
-            </div>
-          </div>
-          <p className="leading-loose md:py-3 lg:py-6 lg:px-8 text-md text-justify">
-            {vision.content}
-          </p>
-        </div>
-      </div>
-      <div className="w-full lg:w-2/5">
-        {/* <img
-          src={vision.image}
-          alt="pic"
-          className="rounded-none object-cover h-80 lg:rounded-lg shadow-2xl hidden lg:block"
-        /> */}
-        <picture className="">
-          <source srcSet={vision.webp} type="image/webp" />
-          <img
-            src={vision.image}
-            className="rounded-none object-cover h-full lg:rounded-lg shadow-2xl hidden lg:block"
-            alt="Electrothon Logo"
-          />
-        </picture>
-      </div>
-    </div>
-  );
-};
+// const VisionCard = ({ vision }) => {
+//   return (
+//     <div className="flex items-center h-auto w-full flex-wrap lg:flex-nowrap mx-auto my-20 lg:my-10 text-black">
+//       <div className="w-full lg:w-4/5 h-full lg:h-96 rounded-lg shadow-2xl bg-gray-300 mx-6 lg:mx-0">
+//         <div className="p-4 lg:p-12 md:p-8 text-center lg:text-left">
+//           <div
+//             className="block lg:hidden rounded-full shadow-xl mx-auto mt-16 md:mt-4 h-48 w-48 bg-cover bg-center"
+//             style={{ backgroundImage: `url(${vision.image})` }}
+//           ></div>
+//           <h1 className="text-3xl font-bold pt-8 text-center lg:pt-0 md:whitespace-nowrap">
+//             {vision.name}
+//           </h1>
+//           <div className="mx-auto lg:mx-0 pt-3 border-b-2 border-green-500 opacity-50"></div>
+//           <div className="flex items-center justify-center lg:justify-start px-8">
+//             <div className="pt-4">
+//               <FontAwesomeIcon icon={faBriefcase} />
+//             </div>
+//             <div className="pt-4 pl-2">
+//               <p className="text-base font-bold">{vision.post}</p>
+//             </div>
+//           </div>
+//           <p className="leading-loose md:py-3 lg:py-6 lg:px-8 text-md text-justify">
+//             {vision.content}
+//           </p>
+//         </div>
+//       </div>
+//       <div className="w-full lg:w-2/5">
+//         {/* <img
+//           src={vision.image}
+//           alt="pic"
+//           className="rounded-none object-cover h-80 lg:rounded-lg shadow-2xl hidden lg:block"
+//         /> */}
+//         <picture className="">
+//           <source srcSet={vision.webp} type="image/webp" />
+//           <img
+//             src={vision.image}
+//             className="rounded-none object-cover h-full lg:rounded-lg shadow-2xl hidden lg:block"
+//             alt="Electrothon Logo"
+//           />
+//         </picture>
+//       </div>
+//     </div>
+//   );
+// };
 
+const VisionCard2 = ({ vision }) => {
+  return (
+  <div className="h-auto flex flex-col lg:flex-row bg-transparent">
+    <div className="lg:w-2/5 w-full h-full">
+      <picture className="flex items-center justify-center">
+        <source srcSet={vision.webp} type="image/webp" />
+        <img
+          src={vision.image}
+          className="rounded-none object-cover lg:rounded-lg shadow-2xl block h-[14rem] w-[14rem] md:h-[18rem] md:w-[18rem] lg:h-[25rem] lg:w-[25rem]"
+          alt="vision-photo"
+        />
+      </picture>
+    </div>
+    <div className="lg:w-4/5 h-full text-white lg:leading-loose md:py-3 lg:mt-10 lg:py-6 p-10 lg:px-8 text-lg lg:text-xl text-center">
+     <p> {vision.content}</p>
+    </div>
+  </div>
+  )}
 class Home extends React.Component {
   state = {
     data: [],
@@ -228,7 +251,7 @@ class Home extends React.Component {
   render() {
     const slider2 = (
       <Swiper
-        modules={[Pagination, Autoplay]}
+        modules={[Pagination,Autoplay]}
         pagination={{ clickable: true }}
         loop={true}
         autoplay={{ delay: 4000 }}
@@ -238,7 +261,7 @@ class Home extends React.Component {
         {visionData.map((element, index) => {
           return (
             <SwiperSlide key={index + Math.random()}>
-              <VisionCard vision={element} />
+              <VisionCard2 vision={element} />
             </SwiperSlide>
           );
         })}
@@ -247,22 +270,23 @@ class Home extends React.Component {
     return (
       <>
         <Head title="Home" />
-        <Hero />
         <Layout curLocation={this.state.pathName}>
+        <Hero />
+        <div className="shade top-[63rem] left-[68rem] w-[80rem] h-[80rem]"></div>
           <div className="relative">
             <div className="mt-24">
-              <div className="max-w-6xl mx-auto pt-6 sm:px-6 lg:px-8">
+              <div className="max-w-7xl mx-auto pt-6 sm:px-6 lg:px-8">
                 <About />
               </div>
             </div>
             <div className="mt-40 relative">
               <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 className="text-5xl font-outfit text-center">
-                  What <span className="text-rose-500">WE</span> do?
+                <h1 className="text-5xl font-outfit text-center text-white">
+                  What <span className="">WE</span> do?
                 </h1>
               </div>
-              <div className="max-w-6xl mx-auto py-6 sm:px-6 lg:px-8 flex justify-center">
-                <div className="px-4 py-6 sm:px-0 rounded-lg h-auto grid gap-x-12 lg:gap-x-12 gap-y-24 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center">
+              <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 flex justify-center">
+                <div className="px-4 py-6 sm:px-0 rounded-lg h-auto grid gap-x-12 lg:gap-x-24 gap-y-36 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center">
                   {projects.map((element, index) => (
                     <ProjectCard
                       key={index + Math.random()}
@@ -272,13 +296,13 @@ class Home extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="mt-24">
-              <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 className="text-6xl font-outfit text-center">
-                  <span className="text-rose-500">Our</span> Vision
+            <div className="mt-32">
+              <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 lg:px-8">
+                <h1 className="text-6xl font-outfit text-center text-white">
+                  <span className="">Our</span> Vision
                 </h1>
               </div>
-              <div className="max-w-5xl mx-auto py-6 sm:px-6 lg:px-8">
+              <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">  
                 {slider2}
               </div>
             </div>

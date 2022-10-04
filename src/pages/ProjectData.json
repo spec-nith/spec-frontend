@@ -3,7 +3,7 @@
     "title": "Augmented Reality",
     "content": "Augmented reality refers to any technology that 'augments' the user's perception of their environment.",
     "image": "/images/projects/augment.png",
-    "class": "top-20 h-40 lg:-right-12 right-2/3",
+    "class": "top-20 lg:-right-12 right-2/3",
     "webp": "/images/projects/webp/augment.webp"
   },
   {
@@ -23,9 +23,9 @@
   {
     "title": "Embedded Systems",
     "content": "An embedded system is a microprocessor-based computer hardware system with software.",
-    "image": "/images/projects/embedded.png",
-    "class": "top-20 -right-12 h-40 ",
-    "webp": "/images/projects/webp/embedded.webp"
+    "image": "/images/projects/embed.png",
+    "class": "top-20 -right-12 ",
+    "webp": "/images/projects/webp/embed.webp"
   },
   {
     "title": "App Development",

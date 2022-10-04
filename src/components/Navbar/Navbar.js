@@ -46,13 +46,11 @@ class Navbar extends Component {
   render() {
     return (
       <React.Fragment>
-        <nav className="hidden md:block fixed w-full h-16 text-gray-200 z-50 opacity-90 top-0">
+        <nav className="hidden md:block fixed w-full h-12 text-gray-200 z-50 opacity-90 top-0">
           {/* Desktop View starts */}
           <div
             className={
-              "hidden md:flex justify-between w-full navbar-testing " +
-              (this.state.show ? "scrolled-up" : "scrolled-down") +
-              (this.state.isBg ? " bg-zinc-900" : null)
+              "hidden md:flex w-full navbar-testing " 
             }
           >
             <img
@@ -60,16 +58,21 @@ class Navbar extends Component {
               alt="Logo"
               className="ml-6 md:mt-2 h-14"
             />
-            <div className="flex ">
+            <div className="flex w-full items-center justify-center">
+
+            <div className={"flex rounded-full  "+
+              (this.state.show ? "scrolled-up " : "scrolled-down ") +
+              (this.state.isBg ? "bg-zinc-900" : null)} >
               {NavbarItems.map((element, index) => (
                 <NavItem
-                  item={element}
-                  key={index + Math.random()}
-                  clicked={this.drawerHandler}
-                  icons={false}
+                item={element}
+                key={index + Math.random()}
+                clicked={this.drawerHandler}
+                icons={false}
                 />
-              ))}
+                ))}
             </div>
+                </div>
           </div>
         </nav>
         {/* Desktop View ends */}

@@ -11,13 +11,13 @@ const NavItem = ({ item, icons }) => {
   return !item.external ? (
     <Link
       to={"/" + item.route}
-      activeClassName="block bg-indigo-700 text-white"
+      activeClassName="block btn-gradient text-white rounded-full"
     >
       <span
         onClick={item.clicked}
         className={
-          "flex items-center p-4 hover:bg-indigo-500 hover:text-white " +
-          (path && "bg-indigo-700 text-white")
+          "flex items-center px-4 py-2 hover:bg-violet-900/90 hover:rounded-full hover:text-white " +
+          (path && "btn-gradient text-white")
         }
         onKeyDown={item.clicked}
         role="button"
@@ -45,8 +45,8 @@ const NavItem = ({ item, icons }) => {
         role="button"
         tabIndex="0"
         className={
-          "flex items-center p-4 hover:bg-indigo-500 hover:text-white " +
-          (path && "bg-indigo-700 text-white")
+          "flex items-center px-4 py-2 hover:btn-gradient hover:text-white " +
+          (path && "btn-gradient text-white")
         }
       >
         {icons && (
