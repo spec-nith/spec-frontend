@@ -34,41 +34,41 @@
 
 .card{
   object-fit: cover;
-  filter: blur(1.5px);
-  height: 32rem;
-  width: 24rem;
+  height: 24rem;
+  width: 18rem;
+  margin :1px;
 }
 
 
 /* Smart Phones */
 @media (min-width: 640px) { 
   .card{
-    height: 32rem;
-    width: 24rem;
+    height: 26rem;
+    width: 20rem;
   }
  }
 
 /* Ipad Air and small tablets */
 @media (min-width: 768px) { 
   .card{
-    height: 26rem;
-    width: 24rem
+    height: 24rem;
+    width: 20rem
   }
  }
 
 /* Ipad Pro and large Tablets */
 @media (min-width: 1024px) { 
   .card{
-    height: 28rem;
-    width: 24rem;
+    height: 22rem;
+    width: 18rem;
   }
  }
 
  /* 720p Monitors */
 @media (min-width: 1280px) { 
   .card{
-    height: 26rem;
-    width: 24rem;
+    height: 20rem;
+    width: 14rem;
   }
  }
 

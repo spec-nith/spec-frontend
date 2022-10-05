@@ -43,7 +43,7 @@ const WorkshopCard = ({ shop }) => {
     <React.Fragment>
       <div className={"contain z-40" + (toggle ? " hidden" : " block")}>
         <div
-          className="z-50 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 min-h-1/2 border-2 flex flex-col md:flex-row text-white bg-black opacity-80"
+          className="z-50 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 min-h-1/2 border-2 flex flex-col md:flex-row text-white bg-black opacity-80 border-indigo-500"
           ref={ref}
         >
           <button
@@ -88,49 +88,53 @@ const WorkshopCard = ({ shop }) => {
         </div>
       </div>
       {/* Main Body */}
-      <div className="workshop-card-container ">
-        <div className="">
-          <picture className="card">
-            <source srcSet={shop.cover_webp_url} type="image/webp" />
-            <img
-              className="card"
-              src={shop.cover_url}
-              alt={shop.title + "_pic"}
-            />
-          </picture>
-        </div>
-        <div className="z-10 flex flex-wrap text-white card-overlay w-full h-full justify-center pt-8">
-          <span className="block self-start text-center text-2xl font-semibold border-2 p-2">
-            {shop.title.toUpperCase()}
+      <div className="workshop-card-container bg-[#535a83] rounded-xl border-2 border-indigo-300 ">
+        <div className="z-10 flex flex-wrap text-white card-overlay w-full h-full justify-center pt-2">
+          <span className="flex flex-col h-20 content-center">
+            <span className="block self-start text-center text-2xl font-semibold ">
+              {shop.title.toUpperCase()}
+            </span>
+            {/* <span class="h-1 w-full bg-purple-600 mt-2"></span> */}
           </span>
-          <span className="flex flex-wrap w-full text-center self-center">
-            <span className="flex justify-center w-full mb-2">
-              <a
-                className="p-3 pointer-events-none block w-7/12 bg-blue-600"
+          <img
+            className="card rounded-md shadow-xl"
+            src="https://media.istockphoto.com/vectors/abstract-vector-dynamic-background-vector-id1159749274?k=20&m=1159749274&s=612x612&w=0&h=9u2n1GDqWYwUqA3XsL1KLiWHRLQctsFgjKKiqO-Djbc="
+            alt={shop.title + "_pic"}
+          />
+          <span className="flex flex-row w-full text-center self-center mx-4 space-x-4 mt-4">
+            {/* <a
+                className="p-3 pointer-events-none block w-7/12 gradientButton mx-auto"
                 href="https://blank.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Register Now
-              </a>
-            </span>
-            <span className="flex justify-center w-full mt-2">
-              <button
-                className="p-3 w-7/12 block bg-blue-600"
-                onClick={() => {
-                  setToggle((prevState) => !prevState);
-                }}
-              >
-                Read More
-              </button>
-            </span>
+              </a> */}
+
+            <button
+              disabled = "true"
+              className="p-3 w-7/12 block gradientButton mx-auto rounded-md text-lg hover:scale-105 "
+              onClick={() => {
+                setToggle((prevState) => !prevState);
+              }}
+            >
+              Register Now
+            </button>
+            <button
+              className="p-3 w-7/12 block gradientButton mx-auto rounded-md text-lg hover:scale-105"
+              onClick={() => {
+                setToggle((prevState) => !prevState);
+              }}
+            >
+              Read More
+            </button>
           </span>
-          <span className="flex flex-wrap w-full text-right self-end pb-4 pr-2">
-            <span className="block w-full">
+          <span className="flex w-full space-x-4 p-4 justify-center">
+            <span className="flex-1 block w-full">
               <FontAwesomeIcon icon={faCalendarAlt} />
               {" " + shop.event_date.toDateString()}
             </span>
-            <span className="block w-full">
+            <span className="flex-1 block w-full">
               <FontAwesomeIcon icon={faMapMarkerAlt} />
               {" " + shop.venue}
             </span>
@@ -168,24 +172,24 @@ const MainBody = (props) => {
         displayChoice={displayChoice}
         setDisplayChoice={setDisplayChoice}
       />
-      <div className="flex flex-wrap justify-center mx-4 lg:mx-8 xl:mx-12 2xl:mx-16">
+      <div className="flex flex-wrap justify-center mx-6 lg:mx-8 xl:mx-12 2xl:mx-16">
         {displayData
           .slice(parseInt(pageChoice) * 8, 8 * (parseInt(pageChoice) + 1))
           .map((shoop) => (
             <div
-              className="flex w-full md:w-1/2 xl:w-1/4 2xl:w-1/5 p-4"
+              className="flex md:w-1/2 xl:w-1/3 2xl:w-1/4 p-2"
               key={shoop.id}
             >
               <WorkshopCard shop={shoop} className="" />
             </div>
           ))}
       </div>
-      <div className="flex justify-center w-full">
+      <div className="flex justify-center w-full mt-8 rounded-xl">
         {totalPages.map((pageNo) => {
           return (
             <div className="w-max" key={pageNo}>
               <button
-                className="p-3 bg-blue-600"
+                className="p-3 gradientButton"
                 data-page={pageNo}
                 onClick={(e) =>
                   setPageChoice(parseInt(e.target.getAttribute("data-page")))

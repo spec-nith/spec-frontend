@@ -62,13 +62,13 @@ const Filter = ({
   let overflow = filter_keys.slice(toShow);
 
   return (
-    <div className="flex fixed bottom-0 justify-center w-full md:mb-10 md:relative z-30">
+    <div className="flex fixed bottom-0 justify-center w-full md:mb-10 md:relative z-30 ">
       <div className="flex flex-row w-full md:w-auto flex-wrap">
         {filter_keys.slice(0, toShow).map((choice, index) => {
           return (
             <button
               className={
-                "px-4 md:px-6 py-2 text-white transition-all duration-300 hover:bg-black outline-0 grow md:grow-0 " +
+                "px-4 md:px-6 py-2 text-white transition-all duration-300 hover:bg-black outline-0 grow md:grow-0 border border-transparent gradientButton hover:scale-105 " +
                 (displayChoice === choice
                   ? "active-filter-button "
                   : "filter-button ") +
@@ -92,7 +92,7 @@ const Filter = ({
           <div ref={ref}>
             <button
               className={
-                "p-2 text-white md:rounded-r-full transition-all duration-300 hover:bg-black outline-0 " +
+                "p-2 text-white md:rounded-r-full transition-all duration-300 outline-0 border border-transparent gradientButton hover:scale-105" +
                 (overflow.includes(displayChoice)
                   ? "active-filter-button "
                   : "filter-button ")
@@ -114,7 +114,7 @@ const Filter = ({
                 (toggle ? " max-h-0" : " max-h-96")
               }
             >
-              <ul className=" bg-blue-600 p-2 ">
+              <ul className=" bg-violet-600 p-2 ">
                 {overflow.map((choice) => {
                   return (
                     <li key={choice}>
@@ -123,7 +123,7 @@ const Filter = ({
                         onClick={(e) =>
                           setDisplayChoice(e.target.getAttribute("data-choice"))
                         }
-                        className="bg-blue-600 p-2"
+                        className="gradientButton hover:scale-105 p-2 text-white"
                       >
                         {choice}
                       </button>
