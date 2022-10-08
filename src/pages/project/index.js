@@ -127,7 +127,7 @@ const MainBody = (props) => {
           return (
             <div className="w-max">
               <button
-                className="p-3 bg-blue-600"
+                className={"p-3 text-white hover:bg-violet-900 "+(pageNo==pageChoice?"btn-gradient":"bg-grey-800")}
                 data-page={pageNo}
                 onClick={(e) =>
                   setPageChoice(parseInt(e.target.getAttribute("data-page")))

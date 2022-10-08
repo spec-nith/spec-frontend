@@ -66,7 +66,7 @@ class GenericPage extends React.Component {
         <div className="flex h-90v justify-center items-center">
           <Loader
             type="Puff"
-            color="#00BFFF"
+            color="#961adb7a"
             height={100}
             width={100}
             timeout={10000} // 10 secs wait until error message shows

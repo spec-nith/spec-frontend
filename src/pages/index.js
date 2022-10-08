@@ -39,14 +39,14 @@ const data = [
 ];
 const writeup = (
   <p className="text-justify lg:col-span-3">
-    <span className="text-yellow-400">SPEC</span> is being run under the aegis
+    <span className="font-bold">SPEC</span> is being run under the aegis
     of the Electronics and Communication Department, NIT Hamirpur. We at{" "}
-    <span className="text-yellow-400">SPEC</span>, organize various events,
+    <span className="font-bold">SPEC</span>, organize various events,
     workshops, and competitions to pique the scientific temperament of the
     students. The society is reputed for conducting a national level hackathon:{" "}
-    <span className="text-yellow-400">ELECTROTHON</span>, one of the most
+    <span className="font-bold">ELECTROTHON</span>, one of the most
     ingenious and diverse hackathon. It also conducts its yearly technical fest,{" "}
-    <span className="text-yellow-400">SPEC-FEST</span> covering advancements and
+    <span className="font-bold">SPEC-FEST</span> covering advancements and
     marvels of the tech world."
   </p>
 );
@@ -116,8 +116,8 @@ const About = () => {
             </a>
           </div>
         </div>
-        <div className="w-full flex justify-center items-center xl:absolute z-10 xl:left-3 md:pl-6 lg:pl-16 pt-12 md:pt-20 xl:w-10/16 xl:-top-10">
-        <div className="w-full md:w-4/5">
+        <div className="w-full flex justify-center items-center xl:absolute z-10 xl:left-1 md:pl-6 lg:pl-16 pt-12 md:pt-20 xl:w-10/16 xl:-top-20">
+        <div className="w-full md:w-4/5 lg:w-full">
           <Swiper
             modules={[Pagination,EffectCards,Autoplay]}
             pagination={{ dynamicBullets: true, clickable: true }}
@@ -220,9 +220,9 @@ const VisionCard2 = ({ vision }) => {
   <div className="h-auto flex flex-col lg:flex-row bg-transparent">
     <div className="lg:w-2/5 w-full h-full">
       <picture className="flex items-center justify-center">
-        <source srcSet={vision.webp} type="image/webp" />
+        <source srcSet="/images/vision/webp/test.webp" type="image/webp" />
         <img
-          src={vision.image}
+          src="/images/vision/test.png"
           className="rounded-none object-cover lg:rounded-lg shadow-2xl block h-[14rem] w-[14rem] md:h-[18rem] md:w-[18rem] lg:h-[25rem] lg:w-[25rem]"
           alt="vision-photo"
         />

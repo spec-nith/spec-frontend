@@ -11,12 +11,12 @@ const NavItem = ({ item, icons }) => {
   return !item.external ? (
     <Link
       to={"/" + item.route}
-      activeClassName="block btn-gradient text-white rounded-full"
+      activeClassName="block btn-gradient text-white md:rounded-full"
     >
       <span
         onClick={item.clicked}
         className={
-          "flex items-center px-4 py-2 hover:bg-violet-900/90 hover:rounded-full hover:text-white " +
+          "flex items-center px-3 py-2 md:py-1 md:rounded-full hover:bg-violet-900/90 md:hover:rounded-full hover:text-white " +
           (path && "btn-gradient text-white")
         }
         onKeyDown={item.clicked}
@@ -28,7 +28,7 @@ const NavItem = ({ item, icons }) => {
             <FontAwesomeIcon className="text-lg" icon={item.icon} />
           </span>
         )}
-        <span className="block px-3 py-2 rounded-md text-base font-medium">
+        <span className="block px-3 py-2 md:py-1 text-base font-medium">
           {item.name}
         </span>
       </span>
@@ -45,7 +45,7 @@ const NavItem = ({ item, icons }) => {
         role="button"
         tabIndex="0"
         className={
-          "flex items-center px-4 py-2 hover:btn-gradient hover:text-white " +
+          "flex items-center px-3 py-2 md:py-1 hover:btn-gradient hover:text-white " +
           (path && "btn-gradient text-white")
         }
       >
@@ -54,7 +54,7 @@ const NavItem = ({ item, icons }) => {
             <FontAwesomeIcon className="text-lg" icon={item.icon} fixedWidth />
           </span>
         )}
-        <span className="block px-3 py-2 rounded-md text-base font-medium">
+        <span className="block px-3 py-2 md:py-1 rounded-md text-base font-medium">
           {item.name}
         </span>
       </span>

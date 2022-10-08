@@ -46,7 +46,7 @@ class Navbar extends Component {
   render() {
     return (
       <React.Fragment>
-        <nav className="hidden md:block fixed w-full h-12 text-gray-200 z-50 opacity-90 top-0">
+        <nav className="hidden md:block fixed w-full h-10 text-gray-200 z-50 opacity-90 top-0">
           {/* Desktop View starts */}
           <div
             className={
@@ -106,7 +106,7 @@ class Navbar extends Component {
         )}
         {/* transparent Backdrop ends */}
         <aside
-          className={`text-gray-200 transform top-0 left-0 w-64 bg-zinc-800 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
+          className={`text-gray-200 transform top-0 left-0 w-48 bg-zinc-800 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 ${
             this.state.isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
           onClick={this.drawerHandler}

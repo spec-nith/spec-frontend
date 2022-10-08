@@ -32,7 +32,7 @@ const navItems = [
     external: false,
   },
   {
-    name: "Team Spec",
+    name: "Team SPEC",
     route: "team",
     icon: faUsers,
     external: false,

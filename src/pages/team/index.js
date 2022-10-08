@@ -15,8 +15,8 @@ import { teamURL } from "utils/routes";
 
 const TeamCard = ({ data }) => {
   return (
-    <div className="mx-4 w-full">
-      <div className="w-full profile-backdrop md:bg-slate-900 relative flex items-center justify-center md:justify-start flex-col md:flex-row">
+    <div className="px-4 w-full">
+      <div className="w-full h-full profile-backdrop md:bg-slate-900 relative flex items-center justify-center md:justify-start flex-col md:flex-row">
         <div className="max-h-56 w-3/5 md:max-w-2/5 overflow-hidden border-2 shadow-lg shadow-indigo-500/50 rounded-full md:rounded-none profile-pic relative bg-gray-300 mt-8 md:my-0">
           <picture>
             <source srcSet={data.profile_pic_webp_url} type="image/webp" />
@@ -27,7 +27,7 @@ const TeamCard = ({ data }) => {
             />
           </picture>
         </div>
-        <div className="h-full w-full md:w-3/5 pt-4 pb-2 md:pt-0 bg-white md:bg-inherit text-black md:text-white">
+        <div className="h-full w-full md:w-3/5 pt-4 pb-2 md:pt-0 bg-white md:bg-inherit text-black md:text-white flex flex-col justify-center items-center">
           <span className="text-xl block">{data.name}</span>
           <span className="text-lg block">{data.title}</span>
         </div>
@@ -100,7 +100,7 @@ const MainBody = ({ data }) => {
                       .filter((person) => person.title === post_name)
                       .map((person) => (
                         <div
-                          className="w-full md:w-1/2 lg:w-1/3 flex justify-center my-8"
+                          className="w-full md:w-1/2 lg:w-1/3 flex justify-center py-14"
                           key={person.name + "_pic"}
                         >
                           <TeamCard data={person} />

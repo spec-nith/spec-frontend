@@ -142,7 +142,7 @@ const Footer = () => {
               </div>
               <div className="mt-8">
                 <button
-                  className="uppercase bg-zinc-500 hover:bg-zinc-600 text-gray-100 p-3 rounded-lg w-full "
+                  className="uppercase btn-gradient hover:bg-violet-800 text-gray-100 p-3 rounded-lg w-full "
                   type="submit"
                   disabled={state.submitting}
                 >
@@ -152,7 +152,7 @@ const Footer = () => {
             </form>
           </div>
         </div>
-        <div className="md:flex justify-center gap-10 md:justify-around pt-5 pb-10 border-t border-gray-900">
+        <div className="md:flex justify-center gap-10 md:justify-around pt-5 pb-10 md:border-t md:border-gray-900">
           <div className="flex justify-center mt-4 space-x-2 md:space-x-4 sm:mt-0">
             <a
               href="https://www.facebook.com/spec.ece/"
