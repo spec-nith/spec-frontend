@@ -68,9 +68,9 @@ const Filter = ({
           return (
             <button
               className={
-                "px-4 md:px-6 py-2 text-white transition-all duration-300 hover:bg-black outline-0 grow md:grow-0 border border-transparent gradientButton hover:scale-105 " +
+                "px-4 md:px-6 py-2 text-white transition-all duration-300 hover:bg-gray-600 outline-0 grow md:grow-0 border border-transparent hover:scale-105 " +
                 (displayChoice === choice
-                  ? "active-filter-button "
+                  ? "btn-gradient "
                   : "filter-button ") +
                 (index === 0 ? "md:rounded-l-full " : "border-x-2 -ml-2 ") +
                 (index === toShow - 1 && overflow.length === 0
@@ -92,9 +92,9 @@ const Filter = ({
           <div ref={ref}>
             <button
               className={
-                "p-2 text-white md:rounded-r-full transition-all duration-300 outline-0 border border-transparent gradientButton hover:scale-105" +
+                "p-2 text-white md:rounded-r-full transition-all duration-300 hover:bg-gray-600 outline-0 outline-0 border border-transparent hover:scale-105 " +
                 (overflow.includes(displayChoice)
-                  ? "active-filter-button "
+                  ? "btn-gradient "
                   : "filter-button ")
               }
               onClick={() => setToggle((prev) => !prev)}
@@ -123,7 +123,7 @@ const Filter = ({
                         onClick={(e) =>
                           setDisplayChoice(e.target.getAttribute("data-choice"))
                         }
-                        className="gradientButton hover:scale-105 p-2 text-white"
+                        className=" hover:scale-105 p-2 text-white"
                       >
                         {choice}
                       </button>
