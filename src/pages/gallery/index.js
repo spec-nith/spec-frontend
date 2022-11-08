@@ -30,7 +30,7 @@ export default class GallerySecondary extends Component {
             >
               <Link
                 to="/gallery/view/?view=SpecFest"
-                className="w-1/1 h-1/1 flex gallery-link k justify-center items-center hover:bg-gray-100 hover:bg-opacity-20"
+                className="w-1/1 h-1/1 flex gallery-link k justify-center items-center bg-gray-800 bg-opacity-40 hover:bg-opacity-20 duration-200 ease-in-out"
               >
                 <div className="gallay-mainpage-inner">
                   <button className="text-2xl font-bold xl:text-3xl  text-white font-bold py-2 px-4 rounded">
@@ -48,7 +48,7 @@ export default class GallerySecondary extends Component {
             >
               <Link
                 to="/gallery/view/?view=Electrothon"
-                className="w-1/1 h-1/1 flex gallery-link k justify-center items-center hover:bg-gray-100 hover:bg-opacity-20"
+                className="w-1/1 h-1/1 flex gallery-link k justify-center items-center bg-gray-800 bg-opacity-40 hover:bg-opacity-20 duration-200 ease-in-out"
               >
                 <div className="gallay-mainpage-inner">
                   <button className="text-2xl font-bold xl:text-3xl  text-white font-bold py-2 px-4 rounded">
@@ -63,7 +63,7 @@ export default class GallerySecondary extends Component {
             >
               <Link
                 to="/gallery/view/?view=Workshop"
-                className="w-1/1 h-1/1 flex gallery-link justify-center items-center hover:bg-gray-100 hover:bg-opacity-20 hover:"
+                className="w-1/1 h-1/1 flex gallery-link justify-center items-center bg-gray-800 bg-opacity-40 hover:bg-opacity-20 duration-200 ease-in-out"
               >
                 <div className="gallay-mainpage-inner">
                   <button className="text-2xl font-bold xl:text-3xl  text-white font-bold py-2 px-4 rounded">
@@ -73,12 +73,12 @@ export default class GallerySecondary extends Component {
               </Link>
             </div>
             <div
-              className="w-58 h-60 lg:col-span-3 bg-gray-400  object-cover gallery-main-boxes"
+              className="w-58 h-60 lg:col-span-3  object-cover gallery-main-boxes "
               style={{ backgroundImage: `url('images/gallery/random.jpg')` }}
             >
               <Link
                 to="/gallery/view/?view=SPEC"
-                className="w-1/1 h-1/1 flex gallery-link k justify-center items-center hover:bg-gray-100 hover:bg-opacity-20"
+                className="w-1/1 h-1/1 flex gallery-link k justify-center items-center bg-gray-800 bg-opacity-40 hover:bg-opacity-20 duration-200 ease-in-out"
               >
                 <div className="gallay-mainpage-inner">
                   <button className="text-2xl font-bold xl:text-3xl  text-white font-bold py-2 px-4 rounded">
