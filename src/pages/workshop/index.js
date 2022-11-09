@@ -32,6 +32,7 @@ const WorkshopCard = ({ shop }) => {
     const checkIfClickedOutside = (e) => {
       if (!toggle && ref.current && !ref.current.contains(e.target)) {
         setToggle(true);
+        document.body.style.overflow = "unset";
       }
     };
     document.addEventListener("mousedown", checkIfClickedOutside);
@@ -89,6 +90,7 @@ const WorkshopCard = ({ shop }) => {
               className="flex w-full items-center justify-center rounded-br-md border border-transparent btn-gradient text-base font-medium text-white hover:scale-105 p-2"
               onClick={() => {
                 setToggle((prevState) => !prevState);
+                document.body.style.overflow = "hidden";
               }}
             >
               Read More
@@ -105,6 +107,7 @@ const WorkshopCard = ({ shop }) => {
             className="absolute top-0 right-0 m-4 text-white"
             onClick={() => {
               setToggle((prevState) => !prevState);
+              document.body.style.overflow = "unset";
             }}
           >
             <FontAwesomeIcon icon={faTimes} size="lg" />
