@@ -51,7 +51,7 @@ const Footer = () => {
 
   return (
     <footer className=" bg-transparent text-white relative">
-      <div className="shade top-[-20rem] left-[-36rem] w-[55rem] h-[55rem]"></div>
+      <div className="shade top-[-20rem] left-[-36rem] w-[55rem] h-[55rem] z-10"></div>
       <div className="bg-transparent">
         <div className="max-w-screen-xl md:mt-4 px-8 grid gap-x-24 gap-y-8 grid-cols-1 md:grid-cols-2 md:px-12  md:py-16 mx-auto ">
           <div className="flex flex-col justify-center items-center">

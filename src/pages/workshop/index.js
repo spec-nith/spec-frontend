@@ -4,6 +4,7 @@ import GenericPage from "pageBoiler";
 import Layout from "components/Layout/Layout";
 import Head from "utils/helmet";
 import Filter from "utils/filters";
+import Modal from "components/Modal/Modal";
 
 // Icons and Styles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,11 +14,13 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import "./workshopcard.css";
+import axios from "axios";
 
 // Constants, JSONs, and Styles
 import { worskhopURL } from "utils/routes";
 const filter = {
-  "All Years": [2021, 2020, 2019, 2018],
+  "All Years": [2022,2021, 2020, 2019, 2018],
+  2022: [2022],
   2021: [2021],
   2020: [2020],
   2019: [2019],
@@ -25,8 +28,9 @@ const filter = {
 };
 let range = (n) => [...Array(n).keys()];
 
-const WorkshopCard = ({ shop }) => {
+const WorkshopCard = ({ shop,modalHandler }) => {
   let [toggle, setToggle] = useState(true);
+  let today = new Date();
   const ref = useRef();
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
@@ -40,9 +44,13 @@ const WorkshopCard = ({ shop }) => {
       document.removeEventListener("mousedown", checkIfClickedOutside);
     };
   }, [toggle]);
+
+  const modalViewHandler=()=>{
+    modalHandler(shop.title);
+  }
   return (
     <React.Fragment>
-      <div className="max-w-[19rem] rounded-xl overflow-hidden shadow-lg ">
+      <div className="max-w-[19rem] rounded-xl overflow-hidden shadow-lg z-30">
         <div
           className="h-0 relative bg-gray-300 overflow-hidden"
           style={{ paddingBottom: "111%" }}
@@ -78,11 +86,8 @@ const WorkshopCard = ({ shop }) => {
           </span>
           <div className="flex justify-center">
             <button
-              disabled="true"
               className="flex w-full items-center justify-center rounded-bl-md border border-transparent btn-gradient text-base font-medium text-white hover:scale-105 p-2"
-              onClick={() => {
-                setToggle((prevState) => !prevState);
-              }}
+              onClick={modalViewHandler}
             >
               Register Now
             </button>
@@ -189,7 +194,7 @@ const MainBody = (props) => {
               className="flex md:w-1/2 xl:w-1/3 2xl:w-1/4 my-4 justify-center max-w-sm"
               key={shoop.id}
             >
-              <WorkshopCard shop={shoop} />
+              <WorkshopCard shop={shoop} modalHandler={props.modalHandler} />
             </div>
           ))}
       </div>
@@ -217,7 +222,50 @@ const MainBody = (props) => {
 class Workshop extends GenericPage {
   constructor() {
     super();
-    this.state.url = worskhopURL;
+    this.state.url = "http://127.0.0.1:8000/api/workshop/";
+    this.state.modalShow=false;
+    this.state.workshop="";
+    this.state.name="";
+    this.state.email="";
+    this.state.suggestions="";
+    this.state.output=null;
+    // this.state.error=null;
+  }
+  modalHandler = (value) => {
+    this.setState((prevState) => ({
+      modalShow: !prevState.modalShow,
+      workshop: value,
+    }))
+  }
+
+  inputHandler = (e) => {
+   this.setState((prevState)=>({
+      [e.target.name]:e.target.value
+   }))
+  }
+
+  submitHandler = (e) => {
+   e.preventDefault();
+   const getItem=this.state.data.filter((item)=>item.title===this.state.workshop);
+   const formData={
+      name:this.state.name,
+      email:this.state.email,
+      suggestions:this.state.suggestions,
+      workshop:getItem[0].title_date
+   }
+   console.log('data sent',formData)
+   axios.post("http://127.0.0.1:8000/workshop/register/", formData)
+   .then((res)=>{
+      console.log(res.data)
+      this.setState({
+          output:res.data
+      })
+   }).catch((err)=>{
+      console.log(err)
+    //   this.setState({
+    //     error:err.data
+    // })
+   })
   }
 
   render() {
@@ -227,17 +275,57 @@ class Workshop extends GenericPage {
     });
     const sortedData = data.sort((a, b) => a.event_date < b.event_date);
     this.state.data = sortedData;
+
+    let inputForm = (<form onSubmit={this.submitHandler} method='POST' className="mt-10 py-6" autoComplete="off">
+    <div className="flex justify-center items-center flex-col">
+      <div className="relative w-[20rem] pt-10">
+        <input type="text" name="name" className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-violet-600 focus:outline-none focus:ring-0" placeholder=" " onChange={this.inputHandler} value={this.state.name} autoComplete="nope" required pattern="[A-Za-z]*"/>
+        <label className="absolute top-3 -z-10 origin-[0] -translate-y-6 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-3 peer-focus:scale-[0.85]">Your name</label>
+      </div>
+      <div className="relative w-[20rem] pt-10">
+        <input type="text" name="email" pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-violet-600 focus:outline-none focus:ring-0" placeholder=" " onChange={this.inputHandler} value={this.state.email} autoComplete="nope" required/>
+        <label className="absolute top-3 -z-10 origin-[0] -translate-y-3 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-3 peer-focus:scale-[0.85]" >Your email</label>
+      </div>
+      <div className="relative w-[20rem] pt-10">
+        <input type="text" name="workshop" className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-gray-300 py-2.5 px-0 text-sm text-gray-900 focus:border-red-500 focus:outline-none focus:ring-0" value={this.state.workshop} placeholder=" " readOnly/>
+        <label className="absolute top-3 -z-10 origin-[0] -translate-y-3 scale-[0.85] transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-3 peer-focus:scale-[0.85]">Workshop</label>
+      </div>
+      <div className="relative w-[20rem] pt-10">
+        <textarea name="suggestions" rows="4" className="peer block w-full appearance-none border-0 border-b border-gray-500 bg-transparent py-2.5 px-0 text-sm text-gray-900 focus:border-violet-600 focus:outline-none focus:ring-0" placeholder=" " onChange={this.inputHandler} value={this.state.suggestions} autoComplete="nope"></textarea>
+        <label className="absolute top-3 -z-10 origin-[0] -translate-y-3 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-3 peer-focus:scale-[0.85]">Your suggestion</label>
+      </div>
+      <div className="space-x-10">
+    <button type="submit" className='btn-gradient mt-6 p-2 focus:outline-none rounded text-lg text-gray-200'>Register</button>
+    <button className='bg-red-500 mt-6 p-2 focus:outline-none rounded text-lg text-gray-200 px-4' onClick={this.modalHandler}>Close</button>
+      </div>
+    </div>
+  </form>)
+
+  if(this.state.output){
+    inputForm=(<div className="flex justify-center items-center flex-col h-56 md:h-80 w-full">
+    <h1 className="text-xl md:text-2xl font-bold text-gray-700 pb-6">{this.state.output.message}</h1>
+    {/* <h1 className="text-2xl font-bold text-gray-700">Thank you for registering</h1> */}
+    <button className='bg-red-500 mt-6 p-2 focus:outline-none rounded text-lg text-gray-200 px-4' onClick={this.modalHandler}>Close</button>
+  </div>)
+  }
     return (
+      <React.Fragment>
       <Layout>
         <Head title="Events" />
         {this.renderLoader()}
         {this.renderError()}
         {this.state.wait || this.state.error ? (
           ""
-        ) : (
-          <MainBody data={this.state.data} />
-        )}
+          ) : 
+            (<React.Fragment>
+              <Modal show={this.state.modalShow} clicked={this.modalHandler}>
+                {inputForm}
+              </Modal>
+              <MainBody data={this.state.data} modalHandler={this.modalHandler} />
+            </React.Fragment>
+            )}
       </Layout>
+      </React.Fragment>
     );
   }
 }
