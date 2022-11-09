@@ -41,6 +41,61 @@ const WorkshopCard = ({ shop }) => {
   }, [toggle]);
   return (
     <React.Fragment>
+      <div className="max-w-[19rem] rounded-xl overflow-hidden shadow-lg ">
+        <div
+          className="h-0 relative bg-gray-300 overflow-hidden"
+          style={{ paddingBottom: "111%" }}
+        >
+          <div
+            className="min-h-[3rem] text-center  text-xl font-semibold "
+            style={{ backgroundColor: "rgb(14,15,18)", color: "white" }}
+          >
+            {shop.title.toUpperCase()}
+          </div>
+          <picture>
+            <source srcSet={""} type="image/webp" />
+            <img
+              className="object-fill rounded-md shadow-xl"
+              src="https://cdn.w600.comps.canstockphoto.com/workshop-blue-round-grungy-vintage-clip-art_csp20078222.jpg"
+              alt={shop.title + "_pic"}
+            />
+          </picture>
+        </div>
+        <div
+          className="pt-2"
+          style={{ backgroundColor: "rgb(14,15,18)", color: "white" }}
+        >
+          <span className="flex p-1 justify-center">
+            <span className="flex-1 block w-full">
+              <FontAwesomeIcon icon={faCalendarAlt} />
+              {" " + shop.event_date.toDateString()}
+            </span>
+            <span className="flex-1 block w-full text-right">
+              <FontAwesomeIcon icon={faMapMarkerAlt} />
+              {" " + shop.venue}
+            </span>
+          </span>
+          <div className="flex justify-center">
+            <button
+              disabled="true"
+              className="flex w-full items-center justify-center rounded-bl-md border border-transparent btn-gradient text-base font-medium text-white hover:scale-105 p-2"
+              onClick={() => {
+                setToggle((prevState) => !prevState);
+              }}
+            >
+              Register Now
+            </button>
+            <button
+              className="flex w-full items-center justify-center rounded-br-md border border-transparent btn-gradient text-base font-medium text-white hover:scale-105 p-2"
+              onClick={() => {
+                setToggle((prevState) => !prevState);
+              }}
+            >
+              Read More
+            </button>
+          </div>
+        </div>
+      </div>
       <div className={"contain z-40" + (toggle ? " hidden" : " block")}>
         <div
           className="z-50 fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 min-h-1/2 border-2 flex flex-col md:flex-row text-white bg-black opacity-80 border-indigo-500"
@@ -87,60 +142,6 @@ const WorkshopCard = ({ shop }) => {
           </div>
         </div>
       </div>
-      {/* Main Body */}
-      <div className="workshop-card-container bg-[#535a83] rounded-xl border-2 border-indigo-300 ">
-        <div className="z-10 flex flex-wrap text-white card-overlay w-full h-full justify-center pt-2">
-          <span className="flex flex-col h-20 content-center">
-            <span className="block self-start text-center text-2xl font-semibold ">
-              {shop.title.toUpperCase()}
-            </span>
-            {/* <span class="h-1 w-full bg-purple-600 mt-2"></span> */}
-          </span>
-          <img
-            className="card rounded-md shadow-xl"
-            src="https://media.istockphoto.com/vectors/abstract-vector-dynamic-background-vector-id1159749274?k=20&m=1159749274&s=612x612&w=0&h=9u2n1GDqWYwUqA3XsL1KLiWHRLQctsFgjKKiqO-Djbc="
-            alt={shop.title + "_pic"}
-          />
-          <span className="flex flex-row w-full text-center self-center mx-4 space-x-4 mt-4">
-            {/* <a
-                className="p-3 pointer-events-none block w-7/12 gradientButton mx-auto"
-                href="https://blank.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Register Now
-              </a> */}
-
-            <button
-              disabled = "true"
-              className="p-3 w-7/12 block gradientButton mx-auto rounded-md text-lg hover:scale-105 "
-              onClick={() => {
-                setToggle((prevState) => !prevState);
-              }}
-            >
-              Register Now
-            </button>
-            <button
-              className="p-3 w-7/12 block gradientButton mx-auto rounded-md text-lg hover:scale-105"
-              onClick={() => {
-                setToggle((prevState) => !prevState);
-              }}
-            >
-              Read More
-            </button>
-          </span>
-          <span className="flex w-full space-x-4 p-4 justify-center">
-            <span className="flex-1 block w-full">
-              <FontAwesomeIcon icon={faCalendarAlt} />
-              {" " + shop.event_date.toDateString()}
-            </span>
-            <span className="flex-1 block w-full">
-              <FontAwesomeIcon icon={faMapMarkerAlt} />
-              {" " + shop.venue}
-            </span>
-          </span>
-        </div>
-      </div>
     </React.Fragment>
   );
 };
@@ -177,19 +178,19 @@ const MainBody = (props) => {
           .slice(parseInt(pageChoice) * 8, 8 * (parseInt(pageChoice) + 1))
           .map((shoop) => (
             <div
-              className="flex md:w-1/2 xl:w-1/3 2xl:w-1/4 p-2"
+              className="flex md:w-1/2 xl:w-1/3 2xl:w-1/4 my-4 justify-center max-w-sm"
               key={shoop.id}
             >
-              <WorkshopCard shop={shoop} className="" />
+              <WorkshopCard shop={shoop} />
             </div>
           ))}
       </div>
       <div className="flex justify-center w-full mt-8 rounded-xl">
         {totalPages.map((pageNo) => {
           return (
-            <div className="w-max" key={pageNo}>
+            <div className="w-max m-1" key={pageNo}>
               <button
-                className="p-3 gradientButton"
+                className="flex w-full items-center justify-center rounded-md border border-transparent btn-gradient text-base font-medium text-white hover:scale-105 p-2"
                 data-page={pageNo}
                 onClick={(e) =>
                   setPageChoice(parseInt(e.target.getAttribute("data-page")))
