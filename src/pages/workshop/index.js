@@ -133,7 +133,12 @@ const WorkshopCard = ({ shop }) => {
                 {" " + shop.venue}
               </span>
             </div>
-            <div className="mt-2 text-sm md:text-lg">{shop.description}</div>
+            <div
+              style={{ height: "500px", overflowY: "scroll" }}
+              className="mt-2 text-sm md:text-lg"
+            >
+              {shop.description}
+            </div>
             <div className="mt-4 md:mt-10">
               <button
                 className="text-sm md:text-lg border-2 rounded-xl py-2 px-4 cursor-not-allowed"
