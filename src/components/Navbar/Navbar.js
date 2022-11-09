@@ -46,17 +46,17 @@ class Navbar extends Component {
   render() {
     return (
       <React.Fragment>
-        <nav className="hidden md:block fixed w-full h-10 text-gray-200 z-50 opacity-90 top-0">
+        <nav className="hidden lg:block fixed w-full h-10 text-gray-200 z-50 opacity-90 top-0">
           {/* Desktop View starts */}
           <div
             className={
-              "hidden md:flex w-full navbar-testing " 
+              "hidden lg:flex w-full navbar-testing " 
             }
           >
             <img
               src="/images/logo.png"
               alt="Logo"
-              className="ml-6 md:mt-2 h-14"
+              className="ml-6 lg:mt-2 h-14"
             />
             <div className="flex w-full items-center justify-center">
 
@@ -77,7 +77,7 @@ class Navbar extends Component {
         </nav>
         {/* Desktop View ends */}
         {/* Mobile View starts */}
-        <div className="md:hidden flex fixed top-0 text-gray-200 z-20">
+        <div className="lg:hidden flex fixed top-0 text-gray-200 z-20">
           <button
             className="top-0 h-16 w-16"
             aria-label="Open Menu"
