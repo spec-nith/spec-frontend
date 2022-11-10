@@ -45,27 +45,35 @@ const Carousel = () => {
 
 const ProjectCard = ({ project }) => {
   return (
-    <div className="max-w-sm w-full lg:max-w-full lg:flex">
-      <div
-        className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-        style={{ backgroundImage: `url(${project.cover_webp_url})` }}
-        title="Woman holding a mug"
-      ></div>
-      <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
-        <div className="mb-8">
-          <div className="text-gray-900 font-bold text-xl mb-2">
-            {project.name}
-          </div>
-          <p className="text-gray-700 text-base">
-            {project.description.slice(0, 130) + "..."}
-          </p>
+    <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-auto">
+      <img class="rounded-t-lg" src={project.cover_webp_url} alt="" />
+      <div class="p-5">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+          {project.name}
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          {project.description.slice(0, 130) + "..."}
+        </p>
+        <div className="flex space-x-4 text-sm justify-between items-center py-4 mx-2">
+          <p className="text-white leading-none">{project.domain}</p>
+          <p className="text-white">{project.year}</p>
         </div>
-        <div className="flex items-center">
-          <div className="text-sm">
-            <p className="text-gray-900 leading-none">{project.domain}</p>
-            <p className="text-gray-600">{project.year}</p>
-          </div>
-        </div>
+        <button className="flex w-full items-center justify-center rounded-md border border-transparent btn-gradient text-base font-medium text-white hover:scale-105 p-2">
+          Read More
+          <svg
+            aria-hidden="true"
+            class="ml-2 -mr-1 w-4 h-4"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        </button>
       </div>
     </div>
   );
@@ -113,11 +121,14 @@ const MainBody = (props) => {
         displayChoice={displayChoice}
         setDisplayChoice={setDisplayChoice}
       />
-      <div className="flex flex-wrap justify-center mx-4 lg:mx-8 xl:mx-12 2xl:mx-16">
+      <div className="flex flex-wrap justify-center mx-4 lg:mx-8 xl:mx-12 2xl:mx-16 ">
         {displayData
           .slice(parseInt(pageChoice) * 6, 6 * (parseInt(pageChoice) + 1))
           .map((project) => (
-            <div className="flex w-full lg:w-1/2 xl:w-1/3 p-4" key={project.id}>
+            <div
+              className="flex w-full lg:w-1/2 xl:w-1/3 p-4 mx-auto"
+              key={project.id}
+            >
               <ProjectCard project={project} className="" />
             </div>
           ))}
@@ -125,9 +136,12 @@ const MainBody = (props) => {
       <div className="flex justify-center w-full">
         {totalPages.map((pageNo) => {
           return (
-            <div className="w-max">
+            <div className="w-max mx-1">
               <button
-                className={"p-3 text-white hover:bg-violet-900 "+(pageNo==pageChoice?"btn-gradient":"bg-grey-800")}
+                className={
+                  "p-3 text-white hover:bg-violet-900 rounded-md " +
+                  (pageNo == pageChoice ? "btn-gradient" : "bg-grey-800")
+                }
                 data-page={pageNo}
                 onClick={(e) =>
                   setPageChoice(parseInt(e.target.getAttribute("data-page")))
