@@ -220,7 +220,7 @@ const VisionCard2 = ({ vision }) => {
   <div className="h-auto md:w-1/2 items-center flex flex-col sm:flex-row md:flex-col lg:flex-row bg-transparent">
     <div className="lg:w-2/5 w-full h-full flex items-center justify-center">
       <picture className="flex items-center justify-center">
-        <source srcSet="/images/vision/webp/test.webp" type="image/webp" />
+        <source srcSet={vision.webp} type="image/webp" />
         <img
           src={vision.image}
           className="rounded-none object-cover lg:rounded-lg shadow-2xl block h-[10rem] w-[10rem] md:h-[12rem] md:w-[12rem] lg:h-[16rem] lg:w-[16rem]"
