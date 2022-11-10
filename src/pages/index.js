@@ -217,18 +217,21 @@ const ProjectCard = ({ project }) => {
 
 const VisionCard2 = ({ vision }) => {
   return (
-  <div className="h-auto flex flex-col lg:flex-row bg-transparent">
-    <div className="lg:w-2/5 w-full h-full">
+  <div className="h-auto md:w-1/2 items-center flex flex-col sm:flex-row md:flex-col lg:flex-row bg-transparent">
+    <div className="lg:w-2/5 w-full h-full flex items-center justify-center">
       <picture className="flex items-center justify-center">
         <source srcSet="/images/vision/webp/test.webp" type="image/webp" />
         <img
-          src="/images/vision/test.png"
-          className="rounded-none object-cover lg:rounded-lg shadow-2xl block h-[14rem] w-[14rem] md:h-[18rem] md:w-[18rem] lg:h-[25rem] lg:w-[25rem]"
+          src={vision.image}
+          className="rounded-none object-cover lg:rounded-lg shadow-2xl block h-[10rem] w-[10rem] md:h-[12rem] md:w-[12rem] lg:h-[16rem] lg:w-[16rem]"
           alt="vision-photo"
         />
       </picture>
     </div>
-    <div className="lg:w-4/5 h-full text-white lg:leading-loose md:py-3 lg:mt-10 lg:py-6 p-10 lg:px-8 text-lg lg:text-xl text-center">
+    
+    <div className="lg:w-4/5 h-full text-white lg:leading-loose md:py-3 lg:mt-10  p-10 pt-4 lg:py-6 lg:px-8 text-sm lg:text-md text-center">
+    <p className="text-2xl HeroText font-semibold">{vision.name}</p>
+    <p className="text-lg mb-2">{vision.post}</p>
      <p> {vision.content}</p>
     </div>
   </div>
@@ -250,22 +253,15 @@ class Home extends React.Component {
   }
   render() {
     const slider2 = (
-      <Swiper
-        modules={[Pagination,Autoplay]}
-        pagination={{ clickable: true }}
-        loop={true}
-        autoplay={{ delay: 4000 }}
-        spaceBetween={0}
-        slidesPerView={1}
-      >
+     <div className="flex flex-col md:flex-row flex-wrap justify-center">
         {visionData.map((element, index) => {
           return (
-            <SwiperSlide key={index + Math.random()}>
+        
               <VisionCard2 vision={element} />
-            </SwiperSlide>
+           
           );
         })}
-      </Swiper>
+      </div>
     );
     return (
       <>
