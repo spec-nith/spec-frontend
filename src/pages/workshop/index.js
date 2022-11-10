@@ -32,6 +32,7 @@ const WorkshopCard = ({ shop,modalHandler }) => {
   let [toggle, setToggle] = useState(true);
   let today = new Date();
   const ref = useRef();
+
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (!toggle && ref.current && !ref.current.contains(e.target)) {
@@ -50,7 +51,7 @@ const WorkshopCard = ({ shop,modalHandler }) => {
   }
   return (
     <React.Fragment>
-      <div className="max-w-[19rem] rounded-xl overflow-hidden shadow-lg z-30">
+      <div className="max-w-[19rem] rounded-xl overflow-hidden shadow-lg z-[11]">
         <div
           className="h-0 relative bg-gray-300 overflow-hidden"
           style={{ paddingBottom: "111%" }}
@@ -62,10 +63,10 @@ const WorkshopCard = ({ shop,modalHandler }) => {
             {shop.title.toUpperCase()}
           </div>
           <picture>
-            <source srcSet={""} type="image/webp" />
+            <source srcSet={shop.cover_webp_url} type="image/webp" />
             <img
               className="object-fill rounded-md shadow-xl"
-              src="https://cdn.w600.comps.canstockphoto.com/workshop-blue-round-grungy-vintage-clip-art_csp20078222.jpg"
+              src={shop.cover_url}
               alt={shop.title + "_pic"}
             />
           </picture>
@@ -86,8 +87,9 @@ const WorkshopCard = ({ shop,modalHandler }) => {
           </span>
           <div className="flex justify-center">
             <button
-              className="flex w-full items-center justify-center rounded-bl-md border border-transparent btn-gradient text-base font-medium text-white hover:scale-105 p-2"
+              className={"flex w-full items-center justify-center rounded-bl-md border border-transparent text-base font-medium text-white hover:scale-105 p-2 "+(today.getTime() > shop.event_date.getTime()?" bg-gray-500 ":" btn-gradient ")}
               onClick={modalViewHandler}
+              disabled={today.getTime() > shop.event_date.getTime()}
             >
               Register Now
             </button>
@@ -147,9 +149,10 @@ const WorkshopCard = ({ shop,modalHandler }) => {
             <div className="mt-4 md:mt-10">
               <button
                 className="text-sm md:text-lg border-2 rounded-xl py-2 px-4 cursor-not-allowed"
-                disabled
+                disabled={today.getTime() > shop.event_date.getTime()}
+                onClick={modalViewHandler}
               >
-                Event Complete
+                {today.getTime() > shop.event_date.getTime()?" Event Complete ":" Register Now"}
               </button>
             </div>
           </div>
@@ -222,7 +225,7 @@ const MainBody = (props) => {
 class Workshop extends GenericPage {
   constructor() {
     super();
-    this.state.url = "http://127.0.0.1:8000/api/workshop/";
+    this.state.url = worskhopURL;
     this.state.modalShow=false;
     this.state.workshop="";
     this.state.name="";
@@ -254,7 +257,7 @@ class Workshop extends GenericPage {
       workshop:getItem[0].title_date
    }
    console.log('data sent',formData)
-   axios.post("http://127.0.0.1:8000/workshop/register/", formData)
+   axios.post("https://azure-faltu.azurewebsites.net/workshop/register/", formData)
    .then((res)=>{
       console.log(res.data)
       this.setState({
