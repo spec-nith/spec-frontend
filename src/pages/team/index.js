@@ -116,6 +116,13 @@ const MainBody = ({ data }) => {
           setDisplayChoice={setPost}
           visibleChoices={5}
         />
+        <div className="shade top-[63rem] left-[68rem] w-[80rem] h-[80rem]"></div>
+        <div className="shade top-[123rem] left-[-56rem] w-[80rem] h-[80rem]"></div>
+        <div className="shade top-[183rem] left-[68rem] w-[80rem] h-[80rem]"></div>
+        <div className="shade top-[243rem] left-[-56rem] w-[80rem] h-[80rem]"></div>
+        <div className="shade top-[303rem] left-[68rem] w-[80rem] h-[80rem]"></div>
+        <div className="shade top-[363rem] left-[-56rem] w-[80rem] h-[80rem]"></div>
+        <div className="shade top-[423rem] left-[68rem] w-[80rem] h-[80rem]"></div>
         <div className="px-2 xs:px-8">
           {Object.keys(post_mapping)
             .slice(1)
@@ -124,16 +131,16 @@ const MainBody = ({ data }) => {
                 className={
                   "text-white text-4xl font-monty text-center transition-all duration-500 overflow-hidden h-fit " +
                   (post === s_post || s_post === "Team SPEC"
-                    ? "h-auto md:max-h-inf"
+                    ? "h-auto"
                     : "max-h-0")
                 }
                 key={post}
               >
-                <span style={{ color: "rgb(46, 224, 154)" }}>{post}</span>
+                <span className="HeroText">{post}</span>
                 <div className="my-10 flex justify-center flex-wrap">
                   {post_mapping[post].map((post_name) => {
         
-                    if(data.filter((person) => person.title === post_name).length===0) return <div className="text-white text-2xl"> Comming Soon </div>
+                    if(data.filter((person) => person.title === post_name).length===0) return <div className="text-white text-2xl"> Coming Soon </div>
                     else return data
                       .filter((person) => person.title === post_name)
                       .map((person) => (

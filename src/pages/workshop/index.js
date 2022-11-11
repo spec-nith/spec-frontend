@@ -189,6 +189,7 @@ const MainBody = (props) => {
         displayChoice={displayChoice}
         setDisplayChoice={setDisplayChoice}
       />
+      <div className="shade top-[0rem] left-[68rem] w-[80rem] h-[80rem]"></div>
       <div className="flex flex-wrap justify-center mx-6 lg:mx-8 xl:mx-12 2xl:mx-16">
         {displayData
           .slice(parseInt(pageChoice) * 8, 8 * (parseInt(pageChoice) + 1))

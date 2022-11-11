@@ -99,7 +99,7 @@ const MainBody = ({ data }) => {
           displayChoice={selected_year}
           setDisplayChoice={setYear}
         />
-
+        <div className="shade top-[63rem] left-[68rem] w-[80rem] h-[80rem]"></div>
         <div className="px-8">
           {Object.keys(year_mapping)
             .slice(1)
@@ -114,7 +114,7 @@ const MainBody = ({ data }) => {
                 key={year}
               >
                 Batch
-                <span style={{ color: "rgb(46, 224, 154)" }}>{year}</span>
+                <span className="HeroText">{year}</span>
                 <AlumniSwiper>
                   {data
                     .filter((user) => year_mapping[year].includes(user.batch))
