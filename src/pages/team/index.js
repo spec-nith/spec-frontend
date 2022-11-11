@@ -96,7 +96,9 @@ const MainBody = ({ data }) => {
                 <span style={{ color: "rgb(46, 224, 154)" }}>{post}</span>
                 <div className="my-10 flex justify-center flex-wrap">
                   {post_mapping[post].map((post_name) => {
-                    return data
+        
+                    if(data.filter((person) => person.title === post_name).length===0) return <div className="text-white text-2xl"> Comming Soon </div>
+                    else return data
                       .filter((person) => person.title === post_name)
                       .map((person) => (
                         <div
