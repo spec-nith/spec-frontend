@@ -23,11 +23,11 @@ const TeamCard = ({ data }) => {
             <img
               src={data.profile_pic_url}
               alt={data.name + "_pic"}
-              className="w-full block"
+              className="h-[12rem] w-[12rem] object-cover"
             />
           </picture>
         </div>
-        <div className="h-full w-full md:w-3/5 pt-4 pb-2 md:pt-0 bg-white md:bg-inherit text-black md:text-white flex flex-col justify-center items-center">
+        <div className="h-full w-full md:w-3/5 md:pt-4 md:pb-2 md:pt-0 bg-white md:bg-inherit text-black md:text-white flex flex-col justify-center items-center">
           <span className="text-xl block">{data.name}</span>
           <span className="text-lg block">{data.title}</span>
         </div>
@@ -61,10 +61,11 @@ const MainBody = ({ data }) => {
     "Final Year": [
       "President",
       "Vice President",
-      "Technical Lead",
       "Web Development Head",
-      "Public Relation Head",
-      "Finance Head",
+      "Developer Relations Head",
+      "External Affairs Secretary",
+      "Marketing And Strategy Analyst",
+      "Treasurer",
     ],
     Coordinators: ["Coordinator"],
     Executives: ["Executive"],

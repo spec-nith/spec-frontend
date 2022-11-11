@@ -46,7 +46,7 @@ const Carousel = () => {
 const ProjectCard = ({ project }) => {
   return (
     <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 mx-auto">
-      <img class="rounded-t-lg" src={project.cover_webp_url} alt="" />
+      <img class="rounded-t-lg w-[24rem] object-cover h-[16rem]" src={project.cover_webp_url} alt="" />
       <div class="p-5">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           {project.name}
@@ -58,7 +58,8 @@ const ProjectCard = ({ project }) => {
           <p className="text-white leading-none">{project.domain}</p>
           <p className="text-white">{project.year}</p>
         </div>
-        <button className="flex w-full items-center justify-center rounded-md border border-transparent btn-gradient text-base font-medium text-white hover:scale-105 p-2">
+        <form action={project.github_link}>
+        <button className="flex w-full items-center justify-center rounded-md border border-transparent btn-gradient text-base font-medium text-white hover:scale-105 p-2" type="submit">
           Read More
           <svg
             aria-hidden="true"
@@ -66,14 +67,15 @@ const ProjectCard = ({ project }) => {
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
-          >
+            >
             <path
               fill-rule="evenodd"
               d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
               clip-rule="evenodd"
-            ></path>
+              ></path>
           </svg>
         </button>
+      </form>
       </div>
     </div>
   );
